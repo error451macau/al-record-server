@@ -11,11 +11,20 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">{{__('NAVBAR_TITLE')}}</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="deputies">{{__('NAVBAR_DEPUTIES')}}</a></li>
-                <li><a href="bills">{{__('NAVBAR_BILLS')}}</a></li>
-                <li><a href="documents">{{__('NAVBAR_DOCS')}}</a></li>
+            <a href="/{{locale}}/" class="brand-logo">{{__('NAVBAR_TITLE')}}</a>
+            <ul class="right">
+                {% if locale != 'zh' %}
+                    <li><a href="/zh{{url}}">{{__('NAVBAR_CHINESE')}}</a></li>
+                {% endif %}
+                {% if locale != 'en' %}
+                    <li><a href="/en{{url}}">{{__('NAVBAR_ENGLISH')}}</a></li>
+                {% endif %}
+            </ul>
+            <span class="right hide-on-med-and-down">|</span>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/{{locale}}/deputies">{{__('NAVBAR_DEPUTIES')}}</a></li>
+                <li><a href="/{{locale}}/bills">{{__('NAVBAR_BILLS')}}</a></li>
+                <li><a href="/{{locale}}/documents">{{__('NAVBAR_DOCS')}}</a></li>
             </ul>
         </div>
     </nav>

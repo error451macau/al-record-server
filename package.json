@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
+    "i18n": "^0.8.3",
     "moment": "^2.19.1",
-    "nunjucks": "^3.0.1"
+    "nunjucks": "^3.0.1",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "http-proxy-middleware": "^0.17.4"

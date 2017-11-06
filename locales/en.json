@@ -1,7 +1,9 @@
 {
-	"SITE_TITLE": "AL Monitor",
-	"NAVBAR_TITLE": "AL Monitor",
+	"SITE_TITLE": "AL Record",
+	"NAVBAR_TITLE": "AL Record",
 	"NAVBAR_DEPUTIES": "Deputies",
 	"NAVBAR_BILLS": "Bills",
-	"NAVBAR_DOCS": "Documents"
+	"NAVBAR_DOCS": "Documents",
+	"NAVBAR_CHINESE": "中文",
+	"NAVBAR_ENGLISH": "English"
 }

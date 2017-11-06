@@ -1,7 +1,9 @@
 {
 	"SITE_TITLE": "澳門立法會民間記錄站",
 	"NAVBAR_TITLE": "澳門立法會民間記錄站",
-	"NAVBAR_DEPUTIES": "NAVBAR_DEPUTIES",
-	"NAVBAR_BILLS": "NAVBAR_BILLS",
-	"NAVBAR_DOCS": "NAVBAR_DOCS"
+	"NAVBAR_DEPUTIES": "議員",
+	"NAVBAR_BILLS": "決議",
+	"NAVBAR_DOCS": "文件",
+	"NAVBAR_CHINESE": "中文",
+	"NAVBAR_ENGLISH": "Eng."
 }
