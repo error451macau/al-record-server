@@ -1,14 +1,22 @@
 const express = require('express');
+const i18n = require('i18n');
 const moment = require('moment');
 const nunjucks = require('nunjucks');
 const proxy = require('http-proxy-middleware');
 
 var app = express();
 
+// configure i18n
+i18n.configure({
+	locales:['en', 'zh'],
+	directory: __dirname + '/locales',
+	autoReload: (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')
+});
+
 // configure express app
 app.enable('strict routing');
 app.disable('x-powered-by');
-
+app.use(i18n.init);
 
 // configure nunjucks view engine
 nunjucks.configure('views/', {

@@ -3,6 +3,7 @@ const express = require('express');
 var router = express.Router({mergeParams: true});
 
 router.use(function(req, res, next){
+    req.setLocale(req.params.lang);
     next();
 });
 
