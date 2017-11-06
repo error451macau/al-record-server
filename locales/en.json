@@ -1,3 +1,7 @@
 {
-	"hello": "Hello"
+	"SITE_TITLE": "AL Monitor",
+	"NAVBAR_TITLE": "AL Monitor",
+	"NAVBAR_DEPUTIES": "Deputies",
+	"NAVBAR_BILLS": "Bills",
+	"NAVBAR_DOCS": "Documents"
 }

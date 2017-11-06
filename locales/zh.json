@@ -1,3 +1,7 @@
 {
-	"hello": "你好"
+	"SITE_TITLE": "澳門立法會民間記錄站",
+	"NAVBAR_TITLE": "澳門立法會民間記錄站",
+	"NAVBAR_DEPUTIES": "NAVBAR_DEPUTIES",
+	"NAVBAR_BILLS": "NAVBAR_BILLS",
+	"NAVBAR_DOCS": "NAVBAR_DOCS"
 }
