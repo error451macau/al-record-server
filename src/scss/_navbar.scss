@@ -1,5 +1,9 @@
-nav .brand-logo {
-    white-space: nowrap;
+nav {
+    margin-bottom: 20px;
+    
+    .brand-logo {
+        white-space: nowrap;
+    }
 }
 
 @media #{$large-and-up} {
