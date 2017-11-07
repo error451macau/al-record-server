@@ -7,20 +7,28 @@
         <div class="row row--no-mb">
             <h1 class="col s12 center-align">{{__('DEPUTIES_TITLE')}}</h1>
         </div>
+        {# <ul class="row tabs">
+            <li class="tab col s4"><a href="#test1">Test 1</a></li>
+            <li class="tab col s4"><a class="active" href="#test2">Test 2</a></li>
+            <li class="tab col s4"><a href="#test4">Test 4</a></li>
+        </ul> #}
         {% for method, deputies in deputies | groupby('electedMethod') %}
             <div class="row">
                 <div class="col s12">
                     <h4>{{__('DEPUTIES_METHOD_' + method)}}</h4>
                 </div>
-                <ul class="row"> {# no .col #}
+                <ul class="row deputies-group"> {# no .col #}
                     {% for deputy in deputies %}
-                        <li class="col s12 m6 l4 xl3">
+                        <li class="col s12 m6 l3 xl2">
                             <a href="{{mklink('/deputy/' + deputy.slug)}}">
                                 <div class="card-panel deputy-card">
                                     <img src="http://almacau.net/wp-content/uploads/2013/10/b41.png">
-                                    <div class="deputy-card__name">
-                                        <div class="bigger">{{deputy.nameChi}}</div>
-                                        <div>{{deputy.namePort}}</div>
+                                    <div class="deputy-card__name deputy-card__name--{{locale}}">
+                                        {% if locale == 'en' %}
+                                            {{deputy.namePort}}
+                                        {% elif locale == 'zh' %}
+                                            {{deputy.nameChi}}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </a>

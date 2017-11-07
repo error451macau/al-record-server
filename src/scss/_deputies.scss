@@ -12,17 +12,25 @@
     .deputy-card__name {
         display: inline-block;
         vertical-align: middle;
-        h5 {
-            margin-top: 0;
-        }
-        h6 {
-            margin-bottom: 0;
+        max-width: calc( 100% - 65px ); // 50px image + 10px margin-righjt + 5px of space
+        &--zh {
+            font-size: 1.5rem;
         }
     }
 
     &:hover {
         background-color: color('grey', 'lighten-3');
         cursor: pointer;
+    }
+}
+
+.deputies-group {
+    clear: left;
+}
+
+@media (min-width: $s2m-screen-up) and (max-width: $medium-screen) { // "upper tablet"
+    .deputies-group .col {
+        width: (100% / 3) !important;
     }
 }
 
