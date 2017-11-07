@@ -21,3 +21,15 @@ dal.getDeputies = function(callback = () => {}){
         callback(err, body);
     })
 }
+
+dal.getDeputyByName = function(slug, callback = () => {}){
+    request({
+        uri: '/deputies',
+        qs: {slug},
+        json: true,
+    }, function(err, response, body){
+        if(err) return callback(err);
+        if(body.length == 0) return callback(null, null); // return null if no match
+        callback(err, body[0]);
+    })
+}

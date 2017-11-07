@@ -1,0 +1,13 @@
+{% extends "parent.njk" %}
+
+{% block title %}
+    {% if locale == 'en' %}
+        {{deputy.namePort}}
+    {% elif locale == 'zh' %}
+        {{deputy.nameChi}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{deputy | dump}}
+{% endblock %}

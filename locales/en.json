@@ -5,5 +5,9 @@
 	"NAVBAR_BILLS": "Bills",
 	"NAVBAR_DOCS": "Documents",
 	"NAVBAR_CHINESE": "中文",
-	"NAVBAR_ENGLISH": "English"
+	"NAVBAR_ENGLISH": "English",
+	"DEPUTIES_TITLE": "DEPUTIES_TITLE",
+	"DEPUTIES_METHOD_indirect": "DEPUTIES_METHOD_indirect",
+	"DEPUTIES_METHOD_direct": "DEPUTIES_METHOD_direct",
+	"DEPUTIES_METHOD_appointed": "DEPUTIES_METHOD_appointed"
 }

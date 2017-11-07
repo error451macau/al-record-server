@@ -26,4 +26,12 @@ router.get('/deputies', function(req, res, next){
     });
 });
 
+router.get('/deputy/:slug', function(req, res, next){
+    dal.getDeputyByName(req.params.slug, function(err, deputy){
+        if(err) return next(err);
+        if(!deputy) return res.status(404).end();
+        res.render('deputy.njk', {deputy});
+    })
+});
+
 module.exports = router;
