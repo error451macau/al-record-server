@@ -1,11 +1,12 @@
 {
 	"SITE_TITLE": "澳門立法會民間記錄站",
 	"NAVBAR_TITLE": "澳門立法會民間記錄站",
-	"NAVBAR_DEPUTIES": "本屆議員",
+	"NAVBAR_DEPUTIES": "議員",
 	"NAVBAR_BILLS": "決議",
 	"NAVBAR_DOCS": "文件",
 	"NAVBAR_CHINESE": "中文",
 	"NAVBAR_ENGLISH": "Eng.",
+	"DEPUTIES_TITLE": "本屆議員",
 	"DEPUTIES_METHOD_indirect": "間選",
 	"DEPUTIES_METHOD_direct": "直選",
 	"DEPUTIES_METHOD_appointed": "官委"

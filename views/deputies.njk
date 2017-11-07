@@ -3,7 +3,7 @@
 {% block body %}
     <div class="deputies">
         <div class="row row--no-mb">
-            <h1 class="col s12 center-align">{{__('NAVBAR_DEPUTIES')}}</h1>
+            <h1 class="col s12 center-align">{{__('DEPUTIES_TITLE')}}</h1>
         </div>
         {% for method, deputies in deputies | groupby('electedMethod') %}
             <div class="row">
@@ -13,13 +13,15 @@
                 <ul class="row"> {# no .col #}
                     {% for deputy in deputies %}
                         <li class="col s12 m6 l4 xl3">
-                            <div class="card-panel deputy-card">
-                                <img src="http://almacau.net/wp-content/uploads/2013/10/b41.png">
-                                <div class="deputy-card__name">
-                                    <div class="bigger">{{deputy.nameChi}}</div>
-                                    <div>{{deputy.namePort}}</div>
+                            <a href="{{mklink('/deputy/' + deputy.slug)}}">
+                                <div class="card-panel deputy-card">
+                                    <img src="http://almacau.net/wp-content/uploads/2013/10/b41.png">
+                                    <div class="deputy-card__name">
+                                        <div class="bigger">{{deputy.nameChi}}</div>
+                                        <div>{{deputy.namePort}}</div>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>

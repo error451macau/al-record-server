@@ -1,5 +1,7 @@
 .deputy-card {
     padding: 14px;
+    transition: 0.2s background-color linear;
+    color: $off-black;
 
     img {
         width: 50px;
@@ -16,6 +18,11 @@
         h6 {
             margin-bottom: 0;
         }
+    }
+
+    &:hover {
+        background-color: color('grey', 'lighten-3');
+        cursor: pointer;
     }
 }
 

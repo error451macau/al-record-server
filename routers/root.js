@@ -6,6 +6,12 @@ var router = express.Router({mergeParams: true});
 router.use(function(req, res, next){
     req.setLocale(req.params.lang);
     res.locals.url = req.url;
+
+    // helper method to generate link with locale (for use in template)
+    res.locals.mklink = function(path){ // path is expect to start with /
+        return `/${res.locals.locale}${path}`;
+    }
+
     next();
 });
 
