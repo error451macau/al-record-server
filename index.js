@@ -47,4 +47,4 @@ if(process.env.NODE_ENV == 'development'){
 
 app.use('/:lang(en|zh)', require('./routers/root.js'));
 
-app.listen(80);
+app.listen(process.env.PORT || 80);
