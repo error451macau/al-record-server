@@ -1,2 +1,13 @@
 @charset "UTF-8";
+
+$small-screen-up: 561px !default;
+$medium-screen-up: 1001px !default;
+$large-screen-up: 1401px !default;
+$small-screen: 560px !default;
+$medium-screen: 1000px !default;
+$large-screen: 1400px !default;
 @import './materialize';
+
+@import './common';
+@import './navbar';
+@import './deputies';

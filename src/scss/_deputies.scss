@@ -1,0 +1,26 @@
+.deputy-card {
+    padding: 14px;
+
+    img {
+        width: 50px;
+        margin-right: 10px;
+        vertical-align: middle;
+    }
+
+    .deputy-card__name {
+        display: inline-block;
+        vertical-align: middle;
+        h5 {
+            margin-top: 0;
+        }
+        h6 {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media #{$small-and-down} {
+    .deputy-card {
+        margin: 0;
+    }  
+}

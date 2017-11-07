@@ -1,0 +1,19 @@
+@mixin clearFloat(){
+    &::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+body {
+    font-family: -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif;    
+}
+
+.bigger {
+    font-size: 120%;
+}
+
+.row.row--no-mb {
+    margin-bottom: 0;
+}

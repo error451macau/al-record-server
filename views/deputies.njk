@@ -1,5 +1,29 @@
 {% extends "parent.njk" %}
 
 {% block body %}
-    {{deputies | dump}}
+    <div class="deputies">
+        <div class="row row--no-mb">
+            <h1 class="col s12 center-align">{{__('NAVBAR_DEPUTIES')}}</h1>
+        </div>
+        {% for method, deputies in deputies | groupby('electedMethod') %}
+            <div class="row">
+                <div class="col s12">
+                    <h4>{{__('DEPUTIES_METHOD_' + method)}}</h4>
+                </div>
+                <ul class="row"> {# no .col #}
+                    {% for deputy in deputies %}
+                        <li class="col s12 m6 l4 xl3">
+                            <div class="card-panel deputy-card">
+                                <img src="http://almacau.net/wp-content/uploads/2013/10/b41.png">
+                                <div class="deputy-card__name">
+                                    <div class="bigger">{{deputy.nameChi}}</div>
+                                    <div>{{deputy.namePort}}</div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

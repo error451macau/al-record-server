@@ -1,0 +1,9 @@
+nav .brand-logo {
+    white-space: nowrap;
+}
+
+@media #{$large-and-up} {
+    nav .brand-logo {
+        left: 20px;
+    }    
+}
