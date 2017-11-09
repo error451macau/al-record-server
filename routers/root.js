@@ -1,3 +1,4 @@
+const _ = require('underscore');
 const dal = require('./dal');
 const express = require('express');
 
@@ -32,6 +33,22 @@ router.get('/deputy/:slug', function(req, res, next){
         if(!deputy) return res.status(404).end();
         res.render('deputy.njk', {deputy});
     })
+});
+
+router.get('/bills', function(req, res, next){
+    dal.getBills((err, bills) => {
+        if(err) return next(err);
+
+        var proposerDeputyIds = _.pluck(bills, 'proposerDeputyId');
+        dal.getDeputiesByIds(proposerDeputyIds, function(err, deputies){
+            if(err) return next(err);
+            
+            res.render('bills.njk', {
+                bills,
+                deputiesDict: _.indexBy(deputies, 'id'),
+            });
+        });
+    });
 });
 
 module.exports = router;

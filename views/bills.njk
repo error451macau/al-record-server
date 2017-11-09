@@ -1,0 +1,40 @@
+{% extends "parent.njk" %}
+
+{% block title %}{{__('BILLS_TITLE')}}{% endblock %}
+
+{% block body %}
+    <div class="bills container">
+        <div class="clear-margin">
+            <h2 class="center-align">{{__('BILLS_TITLE')}}</h2>
+        </div>
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>{{__('BILLS_BILL_TITLE')}}</th>
+                    <th>{{__('BILLS_BILL_PROPROSER')}}</th>
+                    <th>{{__('BILLS_BILL_DATE')}}</th>
+                    <th>{{__('BILLS_BILL_PASSED')}}</th>
+                </tr>
+            </thead>
+            <tbody class="collection">
+                {% for bill in bills %}
+                    <tr class="collection-item">
+                        <td><a href="{{mklink('/bill/' + bill.slug)}}">{{bill.title}}</a></td>
+                        <td>
+                            {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
+                            <a href="{{mklink('/deputy/' + proposerDeputy.slug)}}">
+                                {% if locale == 'en' %}
+                                    {{proposerDeputy.namePort}}
+                                {% elif locale == 'zh' %}
+                                    {{proposerDeputy.nameChi}}
+                                {% endif %}
+                            </a>
+                        </td>
+                        <td>{{bill.date | dateFormat}}</td>
+                        <td>{{__('BILLS_RESULT_' + bill.result)}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

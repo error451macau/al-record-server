@@ -33,3 +33,23 @@ dal.getDeputyByName = function(slug, callback = () => {}){
         callback(err, body[0]);
     })
 }
+
+dal.getDeputiesByIds = function(ids, callback = () => {}){
+    request({
+        uri: '/deputies',
+        qs: {id: ids},
+        qsStringifyOptions: {arrayFormat: 'repeat'},
+        json: true,
+    }, function(err, response, body){
+        callback(err, body);
+    })
+}
+
+dal.getBills = function(callback = () => {}){
+    request({
+        uri: '/bills',
+        json: true,
+    }, function(err, response, body){
+        callback(err, body);
+    });
+}
