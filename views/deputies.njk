@@ -3,9 +3,9 @@
 {% block title %}{{__('DEPUTIES_TITLE')}}{% endblock %}
 
 {% block body %}
-    <div class="deputies">
+    <div class="deputies container">
         <div class="row row--no-mb">
-            <h1 class="col s12 center-align">{{__('DEPUTIES_TITLE')}}</h1>
+            <h2 class="col s12 center-align">{{__('DEPUTIES_TITLE')}}</h2>
         </div>
         {# <ul class="row tabs">
             <li class="tab col s4"><a href="#test1">Test 1</a></li>
@@ -19,7 +19,7 @@
                 </div>
                 <ul class="row deputies-group"> {# no .col #}
                     {% for deputy in deputies %}
-                        <li class="col s12 m6 l3 xl2">
+                        <li class="col s12 m6 l3">
                             <a href="{{mklink('/deputy/' + deputy.slug)}}">
                                 <div class="card-panel deputy-card">
                                     <img src="http://almacau.net/wp-content/uploads/2013/10/b41.png">
