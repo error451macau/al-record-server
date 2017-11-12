@@ -22,7 +22,7 @@ dal.getDeputies = function(callback = () => {}){
     })
 }
 
-dal.getDeputyByName = function(slug, callback = () => {}){
+dal.getDeputyBySlug = function(slug, callback = () => {}){
     request({
         uri: '/deputies',
         qs: {slug},
@@ -52,4 +52,16 @@ dal.getBills = function(callback = () => {}){
     }, function(err, response, body){
         callback(err, body);
     });
+}
+
+dal.getBillBySlug = function(slug, callback = () => {}){
+    request({
+        uri: '/bills',
+        qs: {slug},
+        json: true,
+    }, function(err, response, body){
+        if(err) return callback(err);
+        if(body.length == 0) return callback(null, null); // return null if no match
+        callback(err, body[0]);
+    })
 }

@@ -40,6 +40,7 @@ router.get('/bills', function(req, res, next){
         if(err) return next(err);
 
         var proposerDeputyIds = _.pluck(bills, 'proposerDeputyId');
+
         dal.getDeputiesByIds(proposerDeputyIds, function(err, deputies){
             if(err) return next(err);
             
@@ -49,6 +50,24 @@ router.get('/bills', function(req, res, next){
             });
         });
     });
+});
+
+router.get('/bill/:slug', function(req, res, next){
+    dal.getBillBySlug(req.params.slug, function(err, bill){
+        if(err) return next(err);
+        if(!bill) return res.status(404).end();
+        
+        var relatedDeputyIds = _.pluck(bill.deputyVotes, 'deputyId').concat(bill.proposerDeputyId);
+
+        dal.getDeputiesByIds(relatedDeputyIds, function(err, deputies){
+            if(err) return next(err);
+            
+            res.render('bill.njk', {
+                bill,
+                deputiesDict: _.indexBy(deputies, 'id'),
+            });
+        });
+    })
 });
 
 module.exports = router;

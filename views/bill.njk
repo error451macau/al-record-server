@@ -1,0 +1,8 @@
+{% extends "parent.njk" %}
+
+{% block title %}{{bill.title}}{% endblock %}
+
+{% block body %}
+    {{bill | dump}}<br>
+    {{deputiesDict | dump}}
+{% endblock %}
