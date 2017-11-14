@@ -3,6 +3,36 @@
 {% block title %}{{bill.title}}{% endblock %}
 
 {% block body %}
-    {{bill | dump}}<br>
-    {{deputiesDict | dump}}
+    <div class="bill container clear-margin">
+        <div class="bill-result right">
+            <div>{{__('BILL_RESULT')}}</div>
+            <div class="bill-result__text bill-result__text--{{bill.result | lower}}">{{__('BILL_RESULT_' + bill.result)}}</div>
+        </div>
+        <h3>{{bill.title}}</h3>
+        <div>
+            {% set proposer = deputiesDict[bill.proposerDeputyId] %}
+            <span>{{__('BILL_PROPOSER')}}{{__(': ')}}{{proposer.nameChi}} ({{__('DEPUTIES_METHOD_' + proposer.electedMethod)}})</span>&nbsp;&nbsp;&nbsp;
+            <span>{{__('BILL_PROPOSE_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}</span>
+        </div>
+        <div class="bill-synopsis">
+            <strong>SYNOPSIS</strong>
+            <div>{{bill.synopsis}}</div>
+        </div>
+        <div class="bill-votes">
+            <ul class="bill-votes__elem bill-votes__elem--yes">
+
+            </ul>
+            <ul class="bill-votes__elem bill-votes__elem--no">
+
+            </ul>
+            <ul class="bill-votes__elem bill-votes__elem--abstain">
+
+            </ul>
+            <ul class="bill-votes__elem bill-votes__elem--absent">
+
+            </ul>
+        </div>
+        {{bill | dump}}<br>
+        {{deputiesDict | dump}}
+    </div>
 {% endblock %}
