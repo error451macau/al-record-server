@@ -6,7 +6,7 @@
     <div class="bill container clear-margin">
         <div class="bill-result right">
             <div>{{__('BILL_RESULT')}}</div>
-            <div class="bill-result__text bill-result__text--{{bill.result | lower}}">{{__('BILL_RESULT_' + bill.result)}}</div>
+            <div class="bill-result__text result-{{bill.result | lower}} content-highlight">{{__('BILL_RESULT_' + bill.result)}}</div>
         </div>
         <h3>{{bill.title}}</h3>
         <div>
@@ -16,7 +16,7 @@
         </div>
         <div class="bill-synopsis">
             <strong>{{__('BILL_SYNOPSIS')}}</strong>
-            <div>{{bill.synopsis}}</div>
+            <div class="content-highlight">{{bill.synopsis}}</div>
         </div>
         <div class="bill-votes">
             <ul class="bill-votes__elem bill-votes__elem--yes">

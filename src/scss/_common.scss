@@ -35,6 +35,21 @@ body {
     color: color('grey', 'base');
 }
 
+.result-y {
+    color: color('teal', 'base');
+}
+.result-n {
+    color: color('deep-orange', 'darken-1')
+}
+
 .clear-margin {
     padding: 0.1px;
+}
+
+.content-highlight {
+    margin-left: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+    padding: 4px 8px;
+    border: 1px solid #e0e0e0;
 }
