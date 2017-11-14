@@ -11,11 +11,11 @@
         <h3>{{bill.title}}</h3>
         <div>
             {% set proposer = deputiesDict[bill.proposerDeputyId] %}
-            <span>{{__('BILL_PROPOSER')}}{{__(': ')}}{{proposer.nameChi}} ({{__('DEPUTIES_METHOD_' + proposer.electedMethod)}})</span>&nbsp;&nbsp;&nbsp;
+            <span>{{__('BILL_PROPOSER')}}{{__(': ')}}{{proposer.nameChi}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>&nbsp;&nbsp;&nbsp;
             <span>{{__('BILL_PROPOSE_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}</span>
         </div>
         <div class="bill-synopsis">
-            <strong>SYNOPSIS</strong>
+            <strong>{{__('BILL_SYNOPSIS')}}</strong>
             <div>{{bill.synopsis}}</div>
         </div>
         <div class="bill-votes">
