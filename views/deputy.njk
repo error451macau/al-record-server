@@ -12,7 +12,8 @@
     <div class="container row deputy">
         <div class="col s12 l5 deputy-info">
             <div class="deputy-info__avatar">
-                <img src="http://almacau.net/wp-content/uploads/2013/10/b41.png">
+                <img src="{{mklink('/img/deputies/' + deputy.id + '.jpg')}}">
+                {{-''-}}
                 <div class="deputy-info__avatar__names">
                     <h3>{{deputy.nameChi}}</h3>
                     <span>{{__('DEPUTY_METHOD_' + deputy.electedMethod)}}</span>

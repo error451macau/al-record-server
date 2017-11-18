@@ -9,8 +9,16 @@ router.use(function(req, res, next){
     res.locals.url = req.url;
 
     // helper method to generate link with locale (for use in template)
-    res.locals.mklink = function(path){ // path is expect to start with /
-        return `/${res.locals.locale}${path}`;
+    res.locals.mklink = function(path){
+        // cannot mklink with non-string
+        if(typeof path !== 'string') return '';
+
+        // if absolute, return as-is (reserve for future use)
+        if(path[0] == '/'){
+            return path;
+        } else { // assume relative, prepend locale
+            return `/${res.locals.locale}/${path}`;
+        }
     }
 
     next();

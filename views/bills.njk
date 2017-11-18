@@ -19,10 +19,10 @@
             <tbody class="collection">
                 {% for bill in bills %}
                     <tr class="collection-item">
-                        <td><a href="{{mklink('/bill/' + bill.slug)}}">{{bill.title}}</a></td>
+                        <td><a href="{{mklink('bill/' + bill.slug)}}">{{bill.title}}</a></td>
                         <td>
                             {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
-                            <a href="{{mklink('/deputy/' + proposerDeputy.slug)}}">
+                            <a href="{{mklink('deputy/' + proposerDeputy.slug)}}">
                                 {% if locale == 'en' %}
                                     {{proposerDeputy.namePort}}
                                 {% elif locale == 'zh' %}
