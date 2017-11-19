@@ -14,25 +14,35 @@
             <span>{{__('BILL_PROPOSER')}}{{__(': ')}}{{proposer.nameChi}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>&nbsp;&nbsp;&nbsp;
             <span>{{__('BILL_PROPOSE_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}</span>
         </div>
-        <div class="bill-synopsis">
+        <section class="bill-synopsis">
             <strong>{{__('BILL_SYNOPSIS')}}</strong>
             <div class="content-highlight">{{bill.synopsis}}</div>
-        </div>
-        <div class="bill-votes">
-            <ul class="bill-votes__elem bill-votes__elem--yes">
-
-            </ul>
-            <ul class="bill-votes__elem bill-votes__elem--no">
-
-            </ul>
-            <ul class="bill-votes__elem bill-votes__elem--abstain">
-
-            </ul>
-            <ul class="bill-votes__elem bill-votes__elem--absent">
-
-            </ul>
-        </div>
-        {{bill | dump}}<br>
-        {{deputiesDict | dump}}
+        </section>
+        <section class="bill-votes-section">
+            <strong>{{__('BILL_VOTES')}}</strong>
+            <div class="content-highlight content-highlight--equal-padding">
+                <ul class="bill-votes">
+                    {% for deputyVote in bill.deputyVotes %}
+                        {% set deputy = deputiesDict[deputyVote.deputyId] %}
+                        <li class="bill-vote bill-vote--{{deputyVote.vote | lower}}" data-vote="{{deputyVote.vote}}" data-elected-method="{{deputy.electedMethod}}">
+                            <div class="bill-vote__inner">
+                                <!-- {{ deputyVote | dump | safe }} -->
+                                <img src="{{mklink('/img/deputies/' + deputy.id + '.jpg')}}">
+                                <div class="name">{{deputy.nameChi}}</div>
+                                <div class="sub-content">
+                                    <span class="left method">{{__('DEPUTY_METHOD_SHORT_' + deputy.electedMethod)}}</span>
+                                    <span class="right vote vote-{{deputyVote.vote | lower}} bold">{{__('VOTE_' + deputyVote.vote)}}</span>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+        <section class="bill-documents">
+            <strong>{{__('BILL_DOCUMENTS')}}</strong>
+        </section>
+        <!--{{bill | dump}}<br>
+        {{deputiesDict | dump}}-->
     </div>
 {% endblock %}

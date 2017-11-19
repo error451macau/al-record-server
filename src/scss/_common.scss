@@ -13,6 +13,9 @@ body {
 .bigger {
     font-size: 120%;
 }
+.bold {
+    font-weight: 600;
+}
 
 .row.row--no-mb {
     margin-bottom: 0;
@@ -52,4 +55,8 @@ body {
     border-radius: 4px;
     padding: 4px 8px;
     border: 1px solid #e0e0e0;
+
+    &.content-highlight--equal-padding {
+        padding: 8px;
+    }
 }

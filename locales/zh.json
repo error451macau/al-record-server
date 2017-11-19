@@ -44,5 +44,7 @@
 	"BILL_RESULT": "結果",
 	"BILL_RESULT_Y": "通過",
 	"BILL_RESULT_N": "不通過",
-	"BILL_SYNOPSIS": "議案摘要"
+	"BILL_SYNOPSIS": "議案摘要",
+	"BILL_VOTES": "各議員投票意向",
+	"BILL_DOCUMENTS": "相關文件"
 }

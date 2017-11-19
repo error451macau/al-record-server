@@ -28,5 +28,11 @@ module.exports = {
     },
     plugins: [
         extractSass
-    ]
+    ],
+    resolve: {
+        alias: {
+            'masonry': 'masonry-layout',
+            'isotope': 'isotope-layout'
+        }
+    }
 };
