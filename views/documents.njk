@@ -1,0 +1,22 @@
+{% extends "parent.njk" %}
+
+{% block title %}{{__('DOCUMENTS_PAGE_TITLE')}}{% endblock %}
+
+{% block body %}
+    <div class="documents container">
+        <div class="clear-margin">
+            <h2 class="center-align">{{__('DOCUMENTS_PAGE_TITLE')}}</h2>
+        </div>
+        <ul class="collection">
+            {% for document in documents %}
+                <li class="collection-item" href="#">
+                    <h6><a href="{{mklink('document/' + document.slug)}}" class="title">{{document.title}}</a></h6>
+                    <span>
+                        {{__('DOCUMENT_DATE')}}{{__(': ')}}{{document.date | dateFormat}}
+                        {# {{document | dump}} #}
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -65,3 +65,12 @@ dal.getBillBySlug = function(slug, callback = () => {}){
         callback(err, body[0]);
     })
 }
+
+dal.getDocuments = function(callback = () => {}){
+    request({
+        uri: '/documents',
+        json: true,
+    }, function(err, response, body){
+        callback(err, body);
+    });
+}

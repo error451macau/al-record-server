@@ -91,4 +91,11 @@ router.get('/bill/:slug', function(req, res, next){
     })
 });
 
+router.get('/documents', function(req, res, next){
+    dal.getDocuments((err, documents) => {
+        if(err) return next(err);
+        res.render('documents.njk', {documents});
+    });
+});
+
 module.exports = router;
