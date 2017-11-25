@@ -1,0 +1,22 @@
+.bar {
+    display: inline-block;
+    width: 100%;
+    line-height: 0;
+}
+
+.bar__segment {
+    height: 1em;
+    float: left;
+
+    &.bar__segment--direct {
+        background-color: color('yellow', 'darken-1');
+    }
+
+    &.bar__segment--indirect {
+        background-color: color('green', 'darken-1');
+    }
+
+    &.bar__segment--appointed {
+        background-color: color('blue', 'darken-1');
+    }
+}

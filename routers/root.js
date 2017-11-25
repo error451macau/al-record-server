@@ -69,10 +69,23 @@ router.get('/bill/:slug', function(req, res, next){
 
         dal.getDeputiesByIds(relatedDeputyIds, function(err, deputies){
             if(err) return next(err);
-            
+
+            var deputiesDict = _.indexBy(deputies, 'id');
+
+            var voteSummary = {}; // {indirect: 10, appointedY: 1, directN: 2, ...}
+            bill.deputyVotes.forEach(deputyVote => {
+                var deputy = deputiesDict[deputyVote.deputyId];
+                var key = deputy.electedMethod + deputyVote.vote;
+                voteSummary[key] = (voteSummary[key] || 0) + 1; // per electedMethod per vote
+                voteSummary[deputyVote.vote] = (voteSummary[deputyVote.vote] || 0) + 1; // per vote
+            });
+            voteSummary.total = bill.deputyVotes.length;
+            voteSummary.relativeMax = Math.max(voteSummary.Y, voteSummary.N, voteSummary.A, voteSummary.P)
+
             res.render('bill.njk', {
                 bill,
-                deputiesDict: _.indexBy(deputies, 'id'),
+                voteSummary,
+                deputiesDict,
             });
         });
     })

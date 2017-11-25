@@ -18,7 +18,90 @@
             <strong>{{__('BILL_SYNOPSIS')}}</strong>
             <div class="content-highlight">{{bill.synopsis}}</div>
         </section>
-        <section class="bill-votes-section">
+        <section class="bill-votes-summary">
+            <strong>{{__('BILL_VOTES_SUMMARY')}}</strong>
+            <div class="content-highlight row">
+                <div class="col s12 l4">
+
+                </div>
+                <div class="col s12 l8">
+                    <table class="bordered centered">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th style="width:50%">{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
+                                <th>{{__('DEPUTY_METHOD_SHORT_direct')}}</th>
+                                <th>{{__('DEPUTY_METHOD_SHORT_indirect')}}</th>
+                                <th>{{__('DEPUTY_METHOD_SHORT_appointed')}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{__('VOTE_Y')}}</td>
+                                <td>
+                                    <div class="bar">
+                                        <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directY    / voteSummary.relativeMax * 100}}%"></div>
+                                        <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectY  / voteSummary.relativeMax * 100}}%"></div>
+                                        <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedY / voteSummary.relativeMax * 100}}%"></div>
+                                    </div>{{''-}}
+                                    <span class="percentage">{{(voteSummary.Y / voteSummary.total * 100) | round}}%</span>
+                                </td>
+                                <td>{{voteSummary.directY or 0}}</td>
+                                <td>{{voteSummary.indirectY or 0}}</td>
+                                <td>{{voteSummary.appointedY or 0}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('VOTE_N')}}</td>
+                                <td>
+                                    <div class="bar">
+                                        <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directN    / voteSummary.relativeMax * 100}}%"></div>
+                                        <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectN  / voteSummary.relativeMax * 100}}%"></div>
+                                        <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedN / voteSummary.relativeMax * 100}}%"></div>
+                                    </div>{{''-}}
+                                    <span class="percentage">{{(voteSummary.N / voteSummary.total * 100) | round}}%</span>
+                                </td>
+                                <td>{{voteSummary.directN or 0}}</td>
+                                <td>{{voteSummary.indirectN or 0}}</td>
+                                <td>{{voteSummary.appointedN or 0}}</td>
+                            </tr>
+                            {% if(voteSummary.A > 0) %}
+                                <tr>
+                                    <td>{{__('VOTE_A')}}</td>
+                                    <td>
+                                        <div class="bar">
+                                            <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directA    / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectA  / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedA / voteSummary.relativeMax * 100}}%"></div>
+                                        </div>{{''-}}
+                                        <span class="percentage">{{(voteSummary.A / voteSummary.total * 100) | round}}%</span>
+                                    </td>
+                                    <td>{{voteSummary.directA or 0}}</td>
+                                    <td>{{voteSummary.indirectA or 0}}</td>
+                                    <td>{{voteSummary.appointedA or 0}}</td>
+                                </tr>
+                            {% endif %}
+                            {% if(voteSummary.P > 0) %}
+                                <tr>
+                                    <td>{{__('VOTE_P')}}</td>
+                                    <td>
+                                        <div class="bar">
+                                            <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directP    / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectP  / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedP / voteSummary.relativeMax * 100}}%"></div>
+                                        </div>{{''-}}
+                                        <span class="percentage">{{(voteSummary.P / voteSummary.total * 100) | round}}%</span>
+                                    </td>
+                                    <td>{{voteSummary.directP or 0}}</td>
+                                    <td>{{voteSummary.indirectP or 0}}</td>
+                                    <td>{{voteSummary.appointedP or 0}}</td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section class="bill-votes-detail">
             <strong>{{__('BILL_VOTES')}}</strong>
             <div class="content-highlight content-highlight--equal-padding">
                 <ul class="bill-votes">
@@ -42,7 +125,8 @@
         <section class="bill-documents">
             <strong>{{__('BILL_DOCUMENTS')}}</strong>
         </section>
-        <!--{{bill | dump}}<br>
-        {{deputiesDict | dump}}-->
+        {{voteSummary | dump}}<br>
+        {{bill | dump}}<br>
+        {{deputiesDict | dump}}
     </div>
 {% endblock %}
