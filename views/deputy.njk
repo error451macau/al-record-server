@@ -68,10 +68,12 @@
         <div class="col s12 l7 deputy-voted">
             <h5>{{__('DEPUTY_VOTED')}}</h5>
             <ul class="collection">
-                <li class="collection-item">輕軌走線、預算及工期辯論動議<a class="secondary-content vote-y">{{__('VOTE_Y')}}</a></li>
-                <li class="collection-item">土地法-免公開競投及改用途條文<a class="secondary-content vote-n">{{__('VOTE_N')}}</a></li>
-                <li class="collection-item">保護路環山體決議案<a class="secondary-content vote-a">{{__('VOTE_A')}}</a></li>
-                <li class="collection-item">撤有線專營權辯論動議<a class="secondary-content vote-p">{{__('VOTE_P')}}</a></li>
+                {% for bill in latestBills %}
+                    <li class="collection-item">
+                        <a href="{{mklink('bill/' + bill.slug)}}">{{bill.title}}</a>
+                        <a class="secondary-content vote-{{bill.theirVote | lower}}">{{__('VOTE_' + bill.theirVote)}}</a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>

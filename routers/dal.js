@@ -54,6 +54,21 @@ dal.getBills = function(callback = () => {}){
     });
 }
 
+dal.getBillsLatest = function(limit, callback = () => {}){
+    request({
+        uri: '/bills',
+        qs: {
+            _sort:  'date',
+            _order: 'desc',
+            _start: 0,
+            _limit: limit,
+        },
+        json: true,
+    }, function(err, response, body){
+        callback(err, body);
+    });
+}
+
 dal.getBillBySlug = function(slug, callback = () => {}){
     request({
         uri: '/bills',

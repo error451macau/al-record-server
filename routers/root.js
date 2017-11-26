@@ -39,7 +39,19 @@ router.get('/deputy/:slug', function(req, res, next){
     dal.getDeputyBySlug(req.params.slug, function(err, deputy){
         if(err) return next(err);
         if(!deputy) return res.status(404).end();
-        res.render('deputy.njk', {deputy});
+
+        dal.getBillsLatest(10, function(err, latestBills){
+            if(err) return next(err);
+
+            latestBills.forEach(bill => {
+                var thisDeputyVote = _.findWhere(bill.deputyVotes, {deputyId: deputy.id});
+                bill.theirVote = thisDeputyVote ? thisDeputyVote.vote : 'NA';
+                // NA if this deputy not involved in this vote
+
+            });
+
+            res.render('deputy.njk', {deputy, latestBills});
+        })
     })
 });
 
