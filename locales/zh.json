@@ -46,5 +46,10 @@
 	"BILL_RESULT_N": "不通過",
 	"BILL_SYNOPSIS": "議案摘要",
 	"BILL_VOTES": "各議員投票意向",
-	"BILL_DOCUMENTS": "相關文件"
+	"BILL_DOCUMENTS": "相關文件",
+	"BILL_VOTES_SUMMARY": "投票概覧",
+	"BILL_VOTES_SUMMARY_TOTAL": "總數",
+	"DOCUMENTS_PAGE_TITLE": "文件存檔",
+	"DOCUMENT_DATE": "發佈日期",
+	"VOTE_NA": "VOTE_NA"
 }

@@ -14,6 +14,7 @@
     "isotope-layout": "^3.0.4",
     "moment": "^2.19.1",
     "nunjucks": "^3.0.1",
+    "plotly.js": "^1.31.2",
     "request": "^2.83.0",
     "underscore": "^1.8.3"
   },
