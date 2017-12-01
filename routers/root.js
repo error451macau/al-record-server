@@ -9,15 +9,16 @@ router.use(function(req, res, next){
     res.locals.url = req.url;
 
     // helper method to generate link with locale (for use in template)
-    res.locals.mklink = function(path){
-        // cannot mklink with non-string
-        if(typeof path !== 'string') return '';
-
-        // if absolute, return as-is (reserve for future use)
-        if(path[0] == '/'){
-            return path;
-        } else { // assume relative, prepend locale
-            return `/${res.locals.locale}/${path}`;
+    res.locals.mklink = function(type, object){
+        switch(type){
+            case 'abs':
+                return `/${object}`;
+            case 'bill':
+                return `/${res.locals.locale}/bills/${object.id}/${object.slug}`;
+            case 'deputy':
+                return `/${res.locals.locale}/deputies/${object.id}/${object.slug}`;
+            case 'document':
+                return `/${res.locals.locale}/documents/${object.id}/${object.slug}`;
         }
     }
 
@@ -35,7 +36,7 @@ router.get('/deputies', function(req, res, next){
     });
 });
 
-router.get('/deputy/:slug', function(req, res, next){
+router.get('/deputies/:id/:slug', function(req, res, next){
     dal.getDeputyBySlug(req.params.slug, function(err, deputy){
         if(err) return next(err);
         if(!deputy) return res.status(404).end();
@@ -72,7 +73,7 @@ router.get('/bills', function(req, res, next){
     });
 });
 
-router.get('/bill/:slug', function(req, res, next){
+router.get('/bills/:id/:slug', function(req, res, next){
     dal.getBillBySlug(req.params.slug, function(err, bill){
         if(err) return next(err);
         if(!bill) return res.status(404).end();

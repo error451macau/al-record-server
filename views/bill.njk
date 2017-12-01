@@ -121,7 +121,7 @@
                         <li class="bill-vote bill-vote--{{deputyVote.vote | lower}}" data-vote="{{deputyVote.vote}}" data-elected-method="{{deputy.electedMethod}}">
                             <div class="bill-vote__inner">
                                 <!-- {{ deputyVote | dump | safe }} -->
-                                <img src="{{mklink('/img/deputies/' + deputy.id + '.jpg')}}">
+                                <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
                                 <div class="name">{{deputy.nameChi}}</div>
                                 <div class="sub-content">
                                     <span class="left method">{{__('DEPUTY_METHOD_SHORT_' + deputy.electedMethod)}}</span>

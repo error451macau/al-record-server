@@ -20,9 +20,9 @@
                 <ul class="row deputies-group"> {# no .col #}
                     {% for deputy in deputies %}
                         <li class="col s12 m6 l3">
-                            <a href="{{mklink('deputy/' + deputy.slug)}}">
+                            <a href="{{mklink('deputy', deputy)}}">
                                 <div class="card-panel deputy-card">
-                                    <img src="{{mklink('/img/deputies/' + deputy.id + '.jpg')}}">
+                                    <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
                                     {{-''-}}
                                     <div class="deputy-card__name deputy-card__name--{{locale}}">
                                         {% if locale == 'en' %}

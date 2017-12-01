@@ -12,7 +12,7 @@
     <div class="container row deputy">
         <div class="col s12 l5 deputy-info">
             <div class="deputy-info__avatar">
-                <img src="{{mklink('/img/deputies/' + deputy.id + '.jpg')}}">
+                <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
                 {{-''-}}
                 <div class="deputy-info__avatar__names">
                     <h3>{{deputy.nameChi}}</h3>
@@ -70,7 +70,7 @@
             <ul class="collection">
                 {% for bill in latestBills %}
                     <li class="collection-item">
-                        <a href="{{mklink('bill/' + bill.slug)}}">{{bill.title}}</a>
+                        <a href="{{mklink('bill', bill)}}">{{bill.title}}</a>
                         <a class="secondary-content vote-{{bill.theirVote | lower}}">{{__('VOTE_' + bill.theirVote)}}</a>
                     </li>
                 {% endfor %}
