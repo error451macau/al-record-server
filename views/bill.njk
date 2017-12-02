@@ -12,7 +12,7 @@
         <div>
             {% set proposer = deputiesDict[bill.proposerDeputyId] %}
             <span>{{__('BILL_PROPOSER')}}{{__(': ')}}{{proposer.nameChi}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>&nbsp;&nbsp;&nbsp;
-            <span>{{__('BILL_PROPOSE_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}</span>
+            <span>{{__('BILL_VOTING_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}</span>
         </div>
         <section class="bill-synopsis">
             <strong>{{__('BILL_SYNOPSIS')}}</strong>

@@ -33,14 +33,11 @@
 	"VOTE_N": "反對",
 	"VOTE_A": "缺席",
 	"VOTE_P": "棄權",
+	"VOTE_NA": "不適用",
 	"BILLS_PAGE_TITLE": "重大決議",
-	"BILLS_BILL_TITLE": "議案名稱",
-	"BILLS_BILL_PROPROSER": "動議人",
-	"BILLS_BILL_DATE": "表決日期",
-	"BILLS_BILL_PASSED": "結果",
-	"BILLS_RESULT_Y": "通過",
+	"BILL_TITLE": "議案名稱",
 	"BILL_PROPOSER": "動議人",
-	"BILL_PROPOSE_DATE": "日期",
+	"BILL_VOTING_DATE": "表決日期",
 	"BILL_RESULT": "結果",
 	"BILL_RESULT_Y": "通過",
 	"BILL_RESULT_N": "不通過",
@@ -50,6 +47,5 @@
 	"BILL_VOTES_SUMMARY": "投票概覧",
 	"BILL_VOTES_SUMMARY_TOTAL": "總數",
 	"DOCUMENTS_PAGE_TITLE": "文件存檔",
-	"DOCUMENT_DATE": "發佈日期",
-	"VOTE_NA": "VOTE_NA"
+	"DOCUMENT_DATE": "發佈日期"
 }

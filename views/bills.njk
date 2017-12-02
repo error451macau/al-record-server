@@ -10,10 +10,10 @@
         <table class="highlight">
             <thead>
                 <tr>
-                    <th>{{__('BILLS_BILL_TITLE')}}</th>
-                    <th>{{__('BILLS_BILL_PROPROSER')}}</th>
-                    <th>{{__('BILLS_BILL_DATE')}}</th>
-                    <th>{{__('BILLS_BILL_PASSED')}}</th>
+                    <th>{{__('BILL_TITLE')}}</th>
+                    <th>{{__('BILL_PROPOSER')}}</th>
+                    <th>{{__('BILL_VOTING_DATE')}}</th>
+                    <th>{{__('BILL_RESULT')}}</th>
                 </tr>
             </thead>
             <tbody class="collection">
@@ -31,7 +31,7 @@
                             </a>
                         </td>
                         <td>{{bill.date | dateFormat}}</td>
-                        <td>{{__('BILLS_RESULT_' + bill.result)}}</td>
+                        <td class="result-{{bill.result | lower}}">{{__('BILL_RESULT_' + bill.result)}}</td>
                     </tr>
                 {% endfor %}
             </tbody>
