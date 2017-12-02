@@ -1,5 +1,9 @@
-// const $ = require('jquery/dist/jquery.slim');
-const Isotope = require('isotope-layout');
+// only if .bill-votes exists
+var elem = document.getElementsByClassName('bill-votes');
+if(elem.length > 0){
+
+var Isotope = require('isotope-layout');
+var imagesLoaded = require('imagesloaded');
 
 var iso = new Isotope( '.bill-votes', {
     percentPosition: true,
@@ -22,3 +26,9 @@ var iso = new Isotope( '.bill-votes', {
         }
     }
 });
+
+imagesLoaded('.bill-votes', function(){
+    iso.layout();
+});
+
+}
