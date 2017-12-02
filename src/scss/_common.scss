@@ -26,23 +26,23 @@ body {
 }
 
 .vote-y {
-    color: color('teal', 'base');
+    color: $color-vote-y;
 }
 .vote-n {
-    color: color('deep-orange', 'darken-1')
+    color: $color-vote-n;
 }
 .vote-p {
-    color: color('amber', 'darken-1');
+    color: $color-vote-p;
 }
 .vote-a {
-    color: color('grey', 'base');
+    color: $color-vote-a;
 }
 
 .result-y {
-    color: color('teal', 'base');
+    color: $color-result-y;
 }
 .result-n {
-    color: color('deep-orange', 'darken-1')
+    color: $color-result-n;
 }
 
 .clear-margin {

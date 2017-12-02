@@ -1,25 +1,8 @@
 @charset "UTF-8";
 
-$small-screen-up: 501px !default;
-$medium-screen-up: 1001px !default;
-$large-screen-up: 1401px !default;
-$small-screen: 500px !default;
-$medium-screen: 1000px !default;
-$large-screen: 1400px !default;
-
-// small-to-medium, custom use
-$s2m-screen: 750px !default;
-$s2m-screen-up: 751px !default;
-
-/*
-        Mobile        |        Tablet        |       Desktop        |    Larger Desktop
-----------------------|----------------------|----------------------|----------------------
-0                 500 | 501             1000 | 1001            1400 | 1410              inf
-                              750 | 751  <- "s2m" breakpoint
-
-*/
-
+@import './_materialize-variables';
 @import './materialize';
+@import './_local-variables';
 
 @import './common';
 @import './navbar';
@@ -28,3 +11,4 @@ $s2m-screen-up: 751px !default;
 @import './bills';
 @import './bill';
 @import './bar';
+@import './legend';

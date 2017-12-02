@@ -64,20 +64,20 @@
     border: 2px solid;
 
     &.bill-vote--y {
-        border-color: color('teal', 'lighten-2');
-        background-color: lighten(color('teal', 'lighten-2'), 45%);
+        border-color: rgba($color-vote-y, 0.6);
+        background-color: $color-vote-y-bg;
     }
     &.bill-vote--n {
-        border-color: color('deep-orange', 'lighten-3');
-        background-color: lighten(color('deep-orange', 'lighten-3'), 20%);
+        border-color: rgba($color-vote-n, 0.6);
+        background-color: $color-vote-n-bg;
     }
     &.bill-vote--p {
-        border-color: color('amber', 'lighten-2');
-        background-color: lighten(color('amber', 'lighten-2'), 32%);
+        border-color: rgba($color-vote-p, 0.6);
+        background-color: $color-vote-p-bg;
     }
     &.bill-vote--a {
-        border-color: color('grey', 'lighten-2');
-        background-color: lighten(color('grey', 'lighten-2'), 10%);
+        border-color: rgba($color-vote-a, 0.6);
+        background-color: $color-vote-a-bg;
     }
 }
 .bill-vote__inner {

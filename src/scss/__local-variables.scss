@@ -1,0 +1,16 @@
+$color-vote-y: color('teal', 'darken-1');
+$color-vote-n: color('deep-orange', 'darken-1');
+$color-vote-p: color('amber', 'darken-1');
+$color-vote-a: color('grey', 'base');
+
+$color-vote-y-bg: lighten(color('teal', 'lighten-2'), 45%);
+$color-vote-n-bg: lighten(color('deep-orange', 'lighten-3'), 20%);
+$color-vote-p-bg: lighten(color('amber', 'lighten-2'), 32%);
+$color-vote-a-bg: lighten(color('grey', 'lighten-2'), 10%);
+
+$color-result-y: color('teal', 'base');
+$color-result-n: color('deep-orange', 'darken-1');
+
+$color-method-d: mix(color('yellow', 'darken-1'), color('yellow', 'darken-2'), 60%);
+$color-method-i: color('green', 'darken-1');
+$color-method-a: color('blue', 'darken-1');

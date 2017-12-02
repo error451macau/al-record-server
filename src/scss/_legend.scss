@@ -1,22 +1,20 @@
-.bar {
+.legend {
+    width: 7px;
+    margin-right: 4px;
     display: inline-block;
-    width: 100%;
-    line-height: 0;
-}
-
-.bar__segment {
     height: 1em;
-    float: left;
+    
+    &, & + span {
+        vertical-align: middle;
+    }
 
-    &.bar__segment--direct {
+    &.legend--direct {
         background-color: $color-method-d;
     }
-
-    &.bar__segment--indirect {
+    &.legend--indirect {
         background-color: $color-method-i;
     }
-
-    &.bar__segment--appointed {
+    &.legend--appointed {
         background-color: $color-method-a;
     }
 }
