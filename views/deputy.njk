@@ -1,11 +1,7 @@
 {% extends "parent.njk" %}
 
 {% block title %}
-    {% if locale == 'en' %}
-        {{deputy.namePort}}
-    {% elif locale == 'zh' %}
-        {{deputy.nameChi}}
-    {% endif %}
+    {{deputy.name[locale]}}
 {% endblock %}
 
 {% block body %}
@@ -15,15 +11,15 @@
                 <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
                 {{-''-}}
                 <div class="deputy-info__avatar__names">
-                    <h3>{{deputy.nameChi}}</h3>
-                    <span>{{__('DEPUTY_METHOD_' + deputy.electedMethod)}}</span>
+                    <h3>{{deputy.name[locale]}}</h3>
+                    <span>{{__('DEPUTY_METHOD_LONG_' + deputy.electedMethod)}}</span>
                 </div>
             </div>
             <dl class="deputy-info__data">
                 <dt>{{__('DEPUTY_QUALIFICATION')}}</dt>
-                <dd>{{deputy.qualifications}}</dd>
+                <dd>{{deputy.qualifications[locale]}}</dd>
                 <dt>{{__('DEPUTY_JOB')}}</dt>
-                <dd>{{deputy.job}}</dd>
+                <dd>{{deputy.job[locale]}}</dd>
                 <dt>{{__('DEPUTY_PROPERTY')}}</dt>
                 <dd>
                     <ul>
@@ -56,7 +52,7 @@
                 <dt>{{__('DEPUTY_CONTACT')}}</dt>
                 <dd>
                     <ul class="emmet-m0">
-                        {% if deputy.contact.address %}<li>{{__('DEPUTY_CONTACT_ADDRESS')}}{{__(': ')}}{{deputy.contact.address}}</li>{% endif %}
+                        {% if deputy.contact.address %}<li>{{__('DEPUTY_CONTACT_ADDRESS')}}{{__(': ')}}{{deputy.contact.address[locale]}}</li>{% endif %}
                         {% if deputy.contact.phone %}<li>{{__('DEPUTY_CONTACT_PHONE')}}{{__(': ')}}{{deputy.contact.phone}}</li>{% endif %}
                         {% if deputy.contact.wesite %}<li>{{__('DEPUTY_CONTACT_WEBSITE')}}{{__(': ')}}<a href="{{deputy.contact.wesite}}" target="_blank">{{deputy.contact.wesite}}</a></li>{% endif %}
                         {% if deputy.contact.email %}<li>{{__('DEPUTY_CONTACT_EMAIL')}}{{__(': ')}}<a href="mailto:{{deputy.contact.email}}">{{deputy.contact.email}}</a></li>{% endif %}
@@ -70,7 +66,7 @@
             <ul class="collection">
                 {% for bill in latestBills %}
                     <li class="collection-item">
-                        <a href="{{mklink('bill', bill)}}">{{bill.title}}</a>
+                        <a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a>
                         <a class="secondary-content vote-{{bill.theirVote | lower}}">{{__('VOTE_' + bill.theirVote)}}</a>
                     </li>
                 {% endfor %}

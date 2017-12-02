@@ -15,7 +15,7 @@
         {% for method, deputies in deputies | groupby('electedMethod') %}
             <div class="row">
                 <div class="col s12">
-                    <h4>{{__('DEPUTY_METHOD_SHORT_' + method)}}</h4>
+                    <h4>{{__('DEPUTY_METHOD_' + method)}}</h4>
                 </div>
                 <ul class="row deputies-group"> {# no .col #}
                     {% for deputy in deputies %}
@@ -25,11 +25,7 @@
                                     <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
                                     {{-''-}}
                                     <div class="deputy-card__name deputy-card__name--{{locale}}">
-                                        {% if locale == 'en' %}
-                                            {{deputy.namePort}}
-                                        {% elif locale == 'zh' %}
-                                            {{deputy.nameChi}}
-                                        {% endif %}
+                                        {{deputy.name[locale]}}
                                     </div>
                                 </div>
                             </a>

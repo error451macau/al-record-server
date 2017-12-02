@@ -10,7 +10,7 @@
         <ul class="collection">
             {% for document in documents %}
                 <li class="collection-item" href="#">
-                    <h6><a href="{{mklink('document', document)}}" class="title">{{document.title}}</a></h6>
+                    <h6><a href="{{mklink('document', document)}}" class="title">{{document.title[locale]}}</a></h6>
                     <span>
                         {{__('DOCUMENT_DATE')}}{{__(': ')}}{{document.date | dateFormat}}
                         {# {{document | dump}} #}

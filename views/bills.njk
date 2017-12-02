@@ -19,15 +19,11 @@
             <tbody class="collection">
                 {% for bill in bills %}
                     <tr class="collection-item">
-                        <td><a href="{{mklink('bill', bill)}}">{{bill.title}}</a></td>
+                        <td><a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a></td>
                         <td>
                             {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
                             <a href="{{mklink('deputy', proposerDeputy)}}">
-                                {% if locale == 'en' %}
-                                    {{proposerDeputy.namePort}}
-                                {% elif locale == 'zh' %}
-                                    {{proposerDeputy.nameChi}}
-                                {% endif %}
+                                {{proposerDeputy.name[locale]}}
                             </a>
                         </td>
                         <td>{{bill.date | dateFormat}}</td>

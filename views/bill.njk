@@ -8,15 +8,15 @@
             <div class="bill-result__title">{{__('BILL_RESULT')}}</div>
             <div class="bill-result__text result-{{bill.result | lower}} content-highlight">{{__('BILL_RESULT_' + bill.result)}}</div>
         </div>
-        <h3>{{bill.title}}</h3>
+        <h3>{{bill.title[locale]}}</h3>
         <div>
             {% set proposer = deputiesDict[bill.proposerDeputyId] %}
-            <span>{{__('BILL_PROPOSER')}}{{__(': ')}}{{proposer.nameChi}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>&nbsp;&nbsp;&nbsp;
+            <span>{{__('BILL_PROPOSER')}}{{__(': ')}}<a href="{{mklink('deputy', proposer)}}">{{proposer.name[locale]}}</a> ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>&nbsp;&nbsp;&nbsp;
             <span>{{__('BILL_VOTING_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}</span>
         </div>
         <section class="bill-synopsis">
             <strong>{{__('BILL_SYNOPSIS')}}</strong>
-            <div class="content-highlight">{{bill.synopsis}}</div>
+            <div class="content-highlight">{{bill.synopsis[locale]}}</div>
         </section>
         <section class="bill-votes-summary">
             <strong>{{__('BILL_VOTES_SUMMARY')}}</strong>
@@ -120,9 +120,8 @@
                         {% set deputy = deputiesDict[deputyVote.deputyId] %}
                         <li class="bill-vote bill-vote--{{deputyVote.vote | lower}}" data-vote="{{deputyVote.vote}}" data-elected-method="{{deputy.electedMethod}}">
                             <div class="bill-vote__inner">
-                                <!-- {{ deputyVote | dump | safe }} -->
                                 <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
-                                <div class="name">{{deputy.nameChi}}</div>
+                                <div class="name">{{deputy.name[locale]}}</div>
                                 <div class="sub-content">
                                     <span class="left method">{{__('DEPUTY_METHOD_SHORT_' + deputy.electedMethod)}}</span>
                                     <span class="right vote vote-{{deputyVote.vote | lower}} bold">{{__('VOTE_' + deputyVote.vote)}}</span>
