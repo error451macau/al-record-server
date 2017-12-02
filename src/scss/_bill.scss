@@ -1,7 +1,11 @@
 .bill-result {
-    margin-top: 0.5rem;
+    margin-top: 1.46rem; // margin-top of h3
     font-size: 1.3rem;
     text-align: center;
+}
+
+.bill-result__title {
+    line-height: 1.3;
 }
 
 .bill-result__text {
@@ -15,10 +19,23 @@
 
 .bill-votes-summary {
     margin-top: 1rem;
-
-    table {
-        text-align: center;
+    
+    .content-highlight { // compensate the .row effect
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
+}
+
+.bill-votes-summary__pie {
+    .svg-container {
+        margin: auto !important;
+    }
+}
+
+.bill-votes-summary__table {
+    text-align: center;
 
     tr:last-child {
         border-bottom: none;
@@ -27,13 +44,7 @@
     th,
     td {
         padding: 5px;
-    }
-
-    .content-highlight {
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 0;
-        padding-right: 0;
+        white-space: nowrap;
     }
 
     .bar {

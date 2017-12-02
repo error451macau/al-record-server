@@ -12,6 +12,7 @@ var data = JSON.parse(elem.dataset.pieData);
 
 var layout = {
     height: document.getElementsByClassName('bill-votes-summary__table')[0].clientHeight,
+    width:  document.getElementsByClassName('bill-votes-summary__table')[0].clientHeight,
     showlegend: false,
     margin: {
         l: 10,

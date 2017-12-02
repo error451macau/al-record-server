@@ -5,7 +5,7 @@
 {% block body %}
     <div class="bill container clear-margin">
         <div class="bill-result right">
-            <div>{{__('BILL_RESULT')}}</div>
+            <div class="bill-result__title">{{__('BILL_RESULT')}}</div>
             <div class="bill-result__text result-{{bill.result | lower}} content-highlight">{{__('BILL_RESULT_' + bill.result)}}</div>
         </div>
         <h3>{{bill.title}}</h3>
@@ -40,7 +40,7 @@
                         <thead>
                             <tr>
                                 <th>&nbsp;</th>
-                                <th style="width:50%">{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
+                                <th style="width:80%">{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
                                 <th><span class="legend legend--direct"   ></span><span>{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
                                 <th><span class="legend legend--indirect" ></span><span>{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
                                 <th><span class="legend legend--appointed"></span><span>{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
