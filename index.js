@@ -39,6 +39,7 @@ if(process.env.NODE_ENV == 'development'){
     console.log('running in development mode');
     var apiPort = process.env.API_PORT || 7777;
     app.use('/admin', express.static('../monitor-admin/build'));
+    app.use('/uploads', express.static('../monitor-api/uploads'));
 	app.use('/api', proxy(`http://127.0.0.1:${apiPort}`, {pathRewrite: {'^/api': ''}}));
 	app.use('/', express.static('./build'));
 	app.use('/', express.static('./static'));
