@@ -2,7 +2,7 @@ const express = require('express');
 const i18n = require('i18n');
 const moment = require('moment');
 const nunjucks = require('nunjucks');
-const proxy = require('http-proxy-middleware');
+// const proxy = require('http-proxy-middleware');
 
 var app = express();
 
@@ -40,10 +40,10 @@ if(process.env.NODE_ENV == 'development'){
     var apiPort = process.env.API_PORT || 7777;
     app.use('/admin', express.static('../monitor-admin/build'));
     app.use('/uploads', express.static('../monitor-api/uploads'));
-	app.use('/api', proxy(`http://127.0.0.1:${apiPort}`, {pathRewrite: {'^/api': ''}}));
+	// app.use('/api', proxy(`http://127.0.0.1:${apiPort}`, {pathRewrite: {'^/api': ''}}));
 	app.use('/', express.static('./build'));
 	app.use('/', express.static('./static'));
-    console.log('proxy_pass-ing /api to 127.0.0.1:%s', apiPort);
+    // console.log('proxy_pass-ing /api to 127.0.0.1:%s', apiPort);
 }
 
 app.use('/:lang(en|zh)', require('./routers/root.js'));
