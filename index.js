@@ -48,4 +48,8 @@ if(process.env.NODE_ENV == 'development'){
 
 app.use('/:lang(en|zh)', require('./routers/root.js'));
 
-app.listen(process.env.PORT || 80);
+var port = process.env.PORT || 7770;
+app.listen(port, function(err){
+    if(err) return console.error(`failed to listen at port ${port}`);
+    console.log(`listening at port ${port}`)
+});
