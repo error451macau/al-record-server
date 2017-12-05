@@ -14,8 +14,9 @@
         display: inline-block;
         vertical-align: middle;
         max-width: calc( 100% - 65px ); // 50px image + 10px margin-righjt + 5px of space
-        &--zh {
-            font-size: 1.5rem;
+
+        html[hreflang=zh] & {
+            font-size: 140%;
         }
     }
 
@@ -39,4 +40,10 @@
     .deputy-card {
         margin: 0;
     }  
+}
+
+@media (max-width: $large-screen) {
+    .deputy-card {
+        padding: 10px 12px;
+    }
 }

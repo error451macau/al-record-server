@@ -50,5 +50,8 @@
 	"BILL_VOTES_SUMMARY_TOTAL": "Total",
 	"BILL_DOCUMENTS": "Related Documents",
 	"DOCUMENTS_PAGE_TITLE": "Document Archive",
-	"DOCUMENT_DATE": "Date Published"
+	"DOCUMENT_DATE": "Date Published",
+	"DOWNLOAD_LINKS": "Download Links",
+	"DOWNLOAD_LINKS_ORIGINAL": "Official Site",
+	"DOWNLOAD_LINKS_BACKUP": "Local Backup"
 }
