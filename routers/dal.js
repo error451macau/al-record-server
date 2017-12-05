@@ -89,3 +89,14 @@ dal.getDocuments = function(callback = () => {}){
         callback(err, body);
     });
 }
+
+dal.getDocumentsByIds = function(ids, callback = () => {}){
+    request({
+        uri: '/documents',
+        qs: {id: ids},
+        qsStringifyOptions: {arrayFormat: 'repeat'},
+        json: true,
+    }, function(err, response, body){
+        callback(err, body);
+    })
+}

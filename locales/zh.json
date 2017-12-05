@@ -50,5 +50,10 @@
 	"BILL_VOTES_SUMMARY": "投票概覧",
 	"BILL_VOTES_SUMMARY_TOTAL": "總數",
 	"DOCUMENTS_PAGE_TITLE": "文件存檔",
-	"DOCUMENT_DATE": "發佈日期"
+	"DOCUMENT_DATE": "發佈日期",
+	"NONE": "沒有",
+	"BILL_STATEMENT": "議決案",
+	"DOWNLOAD_LINKS": "下載連結",
+	"DOWNLOAD_LINKS_ORIGINAL": "官方載點",
+	"DOWNLOAD_LINKS_BACKUP": "本站備份"
 }

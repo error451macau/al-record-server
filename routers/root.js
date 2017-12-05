@@ -1,4 +1,5 @@
 const _ = require('underscore');
+const async = require('async');
 const dal = require('./dal');
 const express = require('express');
 
@@ -19,6 +20,8 @@ router.use(function(req, res, next){
                 return `/${res.locals.locale}/deputies/${object.id}/${object.slug}`;
             case 'document':
                 return `/${res.locals.locale}/documents/${object.id}/${object.slug}`;
+            case 'uploads':
+                return `/uploads/${object}`;
         }
     }
 
@@ -80,11 +83,20 @@ router.get('/bills/:id/:slug', function(req, res, next){
         
         var relatedDeputyIds = _.pluck(bill.deputyVotes, 'deputyId').concat(bill.proposerDeputyId);
 
-        dal.getDeputiesByIds(relatedDeputyIds, function(err, deputies){
+        async.parallel({
+            deputies: callback => {
+                dal.getDeputiesByIds(relatedDeputyIds, callback);
+            },
+            documents: callback => {
+                dal.getDocumentsByIds(bill.documentIds, callback);
+            },
+        }, function(err, results){
             if(err) return next(err);
 
-            var deputiesDict = _.indexBy(deputies, 'id');
+            var deputiesDict  = _.indexBy(results.deputies, 'id');
+            var documentsDict = _.indexBy(results.documents, 'id');
 
+            // generate voteSummary / statistics
             var voteSummary = {}; // {indirect: 10, appointedY: 1, directN: 2, ...}
             bill.deputyVotes.forEach(deputyVote => {
                 var deputy = deputiesDict[deputyVote.deputyId];
@@ -99,6 +111,7 @@ router.get('/bills/:id/:slug', function(req, res, next){
                 bill,
                 voteSummary,
                 deputiesDict,
+                documentsDict,
             });
         });
     })

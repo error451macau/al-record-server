@@ -119,6 +119,12 @@
 
 .bill-documents {
     margin-top: 1rem;
+
+    // remove margin and padding for ul
+    ul.content-highlight {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 @media (min-width: $s2m-screen-up) and (max-width: $large-screen) {
