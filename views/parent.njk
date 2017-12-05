@@ -8,27 +8,29 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="/main.css">
 </head>
-<body class="light-green lighten-5">
-    <nav class="green">
-        <div class="nav-wrapper">
-            <a href="/{{locale}}/" class="brand-logo">{{__('NAVBAR_TITLE')}}</a>
-            <ul class="right">
-                {% if locale != 'zh' %}
-                    <li><a href="/zh{{url}}">{{__('NAVBAR_CHINESE')}}</a></li>
-                {% endif %}
-                {% if locale != 'en' %}
-                    <li><a href="/en{{url}}">{{__('NAVBAR_ENGLISH')}}</a></li>
-                {% endif %}
-            </ul>
-            <span class="right hide-on-med-and-down">|</span>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="/{{locale}}/deputies">{{__('NAVBAR_DEPUTIES')}}</a></li>
-                <li><a href="/{{locale}}/bills">{{__('NAVBAR_BILLS')}}</a></li>
-                <li><a href="/{{locale}}/documents">{{__('NAVBAR_DOCS')}}</a></li>
-            </ul>
-        </div>
-    </nav>
-
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="/{{locale}}/" class="brand-logo">{{__('NAVBAR_TITLE')}}</a>
+                <ul class="right">
+                    {% if locale != 'zh' %}
+                        <li><a href="/zh{{url}}">{{__('NAVBAR_CHINESE')}}</a></li>
+                    {% endif %}
+                    {% if locale != 'en' %}
+                        <li><a href="/en{{url}}">{{__('NAVBAR_ENGLISH')}}</a></li>
+                    {% endif %}
+                </ul>
+                <span class="right hide-on-med-and-down">|</span>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/{{locale}}/deputies">{{__('NAVBAR_DEPUTIES')}}</a></li>
+                    <li><a href="/{{locale}}/bills">{{__('NAVBAR_BILLS')}}</a></li>
+                    <li><a href="/{{locale}}/documents">{{__('NAVBAR_DOCS')}}</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
     {% block body %}{% endblock %}
     <script src="/bundle.js"></script>
 </body>

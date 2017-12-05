@@ -7,7 +7,13 @@
 }
 
 body {
-    font-family: -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif;    
+    font-family: -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif;
+    background-color: color('light-green', 'lighten-5');
+}
+
+body > .container {
+    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .bigger {
