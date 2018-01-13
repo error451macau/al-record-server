@@ -1,0 +1,30 @@
+.deputies-body {
+    > .row {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        &:nth-child(2) {
+            margin-top: 38px;
+        }
+
+        &:nth-child(n + 3) {
+            margin-top: 57px;
+        }
+    }
+
+    .deputy-card {
+        margin-bottom: 20px;
+    }
+}
+
+.deputies-group {
+    margin-top: 17px;
+    margin-bottom: -20px; // compensate for .deputy-card margin-bottom
+    clear: left;
+}
+
+@media (min-width: $s2m-screen-up) and (max-width: $medium-screen) { // "upper tablet"
+    .deputies-group .col {
+        width: (100% / 3) !important;
+    }
+}

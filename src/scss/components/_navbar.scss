@@ -1,13 +1,15 @@
 nav {
-    background-color: color('green', 'base');
+    background-color: #ffffff;;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     .brand-logo {
         white-space: nowrap;
+        color: #1e1e1e;
     }
 }
 
 @media #{$large-and-up} {
     nav .brand-logo {
         left: 20px;
-    }    
+    }
 }

@@ -1,3 +1,7 @@
+$theme-yellow: #ffb901;
+$theme-skyblue: #03ceff;
+$theme-purple: #6a67ce;
+
 $color-vote-y: color('teal', 'darken-1');
 $color-vote-n: color('deep-orange', 'darken-1');
 $color-vote-p: color('amber', 'darken-1');
@@ -11,6 +15,6 @@ $color-vote-a-bg: lighten(color('grey', 'lighten-2'), 10%);
 $color-result-y: color('teal', 'base');
 $color-result-n: color('deep-orange', 'darken-1');
 
-$color-method-d: mix(color('yellow', 'darken-1'), color('yellow', 'darken-2'), 60%);
-$color-method-i: color('green', 'darken-1');
-$color-method-a: color('blue', 'darken-1');
+$color-method-d: $theme-yellow;
+$color-method-i: $theme-purple;
+$color-method-a: $theme-skyblue;

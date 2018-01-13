@@ -1,10 +1,22 @@
+@function rem($fontSize){
+    @return $fontSize / 15px * 1rem;
+}
+
+// 12. Global
+// Media Query Ranges
 $small-screen-up: 501px;
 $medium-screen-up: 1001px;
 $large-screen-up: 1401px;
 $small-screen: 500px;
 $medium-screen: 1000px;
 $large-screen: 1400px;
-
-// small-to-medium, custom use
-$s2m-screen: 750px;
+$s2m-screen: 750px; // small-to-medium, custom use
 $s2m-screen-up: 751px;
+
+// 14. Navigation Bar
+$navbar-font-color: #323232;
+$navbar-brand-font-size: rem(25px);
+
+// 21. Typography
+$h1-fontsize: rem(44px);
+$h4-fontsize: rem(22px);

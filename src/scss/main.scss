@@ -5,11 +5,14 @@
 @import './_local-variables';
 
 @import './common';
-@import './navbar';
-@import './deputies';
-@import './deputy';
-@import './bills';
-@import './bill';
-@import './bar';
-@import './legend';
-@import './document-desc';
+
+@import './components/navbar';
+@import './components/bar';
+@import './components/legend';
+@import './components/document-desc';
+@import './components/deputy-card';
+
+@import './pages/deputies';
+@import './pages/deputy';
+@import './pages/bills';
+@import './pages/bill';
