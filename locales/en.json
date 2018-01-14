@@ -43,7 +43,7 @@
 	"BILL_RESULT_Y": "Approved",
 	"BILL_RESULT_N": "Unapproved",
 	"BILL_PROPOSER": "Proposer",
-	"BILL_VOTING_DATE": "Voting Date",
+	"BILL_VOTING_DATE": "Date",
 	"BILL_SYNOPSIS": "Synopsis",
 	"BILL_VOTES": "Deputy Vote Detail",
 	"BILL_VOTES_SUMMARY": "Vote Summary",

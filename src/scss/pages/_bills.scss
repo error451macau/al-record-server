@@ -1,3 +1,42 @@
 .bills {
-    
+    table {
+        line-height: rem(22px);
+        margin-top: 36px;
+    }
+
+    tbody {
+        border-left: 1px solid $theme-border-grey;
+        border-right: 1px solid $theme-border-grey;
+    }
+
+    .col-proposer {
+        white-space: nowrap;
+        
+        a {
+            position: relative;
+        }
+
+        img {
+            position: absolute;
+            vertical-align: middle;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            left: 0;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+
+        span {
+            margin-left: (30px + 8px);
+        }
+    }
+
+    .col-voting-date {
+        width: 10em;
+    }
+
+    .col-result {
+        width: 7.5em;
+    }
 }

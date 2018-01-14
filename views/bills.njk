@@ -4,26 +4,24 @@
 
 {% block body %}
     <div class="bills container">
-        <div class="clear-margin">
-            <h2 class="center-align">{{__('BILLS_PAGE_TITLE')}}</h2>
-        </div>
-        <table class="highlight">
+        <h1 class="center-align">{{__('BILLS_PAGE_TITLE')}}</h1>
+        <table class="highlight striped bordered">
             <thead>
                 <tr>
                     <th>{{__('BILL_TITLE')}}</th>
                     <th>{{__('BILL_PROPOSER')}}</th>
-                    <th>{{__('BILL_VOTING_DATE')}}</th>
-                    <th>{{__('BILL_RESULT')}}</th>
+                    <th class="col-voting-date">{{__('BILL_VOTING_DATE')}}</th>
+                    <th class="col-result">{{__('BILL_RESULT')}}</th>
                 </tr>
             </thead>
-            <tbody class="collection">
+            <tbody>
                 {% for bill in bills %}
-                    <tr class="collection-item">
+                    <tr>
                         <td><a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a></td>
-                        <td>
+                        <td class="col-proposer">
                             {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
                             <a href="{{mklink('deputy', proposerDeputy)}}">
-                                {{proposerDeputy.name[locale]}}
+                                <img src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}"><span>{{proposerDeputy.name[locale]}}</span>
                             </a>
                         </td>
                         <td>{{bill.date | dateFormat}}</td>

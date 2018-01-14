@@ -2,6 +2,9 @@
     @return $fontSize / 15px * 1rem;
 }
 
+// 1. Colors
+$link-color: #323232;
+
 // 12. Global
 // Media Query Ranges
 $small-screen-up: 501px;
@@ -17,6 +20,10 @@ $s2m-screen-up: 751px;
 $navbar-height: 70px;
 $navbar-font-color: #323232;
 $navbar-brand-font-size: rem(25px);
+
+// 19. Tables
+$table-border-color: #ddddde;
+$table-striped-color: #fcfcfc;
 
 // 21. Typography
 $off-black: #323232;
