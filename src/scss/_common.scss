@@ -15,6 +15,26 @@ body > .container {
     margin-bottom: 100px;
 }
 
+.page-footer {
+    padding-top: 0;
+    border-top: 1px solid #ddddde;
+
+    a {
+        color: inherit;
+
+        &:not(:last-child) {
+            margin-left: 30px;
+        }
+    }
+
+    .facebook-svg {
+        position: relative;
+        width: 7px;
+        height: 14px;
+        top: 1px;
+    }
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }

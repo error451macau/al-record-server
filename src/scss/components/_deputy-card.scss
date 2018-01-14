@@ -23,6 +23,7 @@
         display: inline-block;
         vertical-align: middle;
         max-width: calc( 100% - 60px ); // 44px image + 12px margin-righjt + 4px of space
+        line-height: (18px / 15px);
     }
 
     &.deputy-card--direct:hover {

@@ -14,9 +14,15 @@ $s2m-screen: 750px; // small-to-medium, custom use
 $s2m-screen-up: 751px;
 
 // 14. Navigation Bar
+$navbar-height: 70px;
 $navbar-font-color: #323232;
 $navbar-brand-font-size: rem(25px);
 
 // 21. Typography
+$off-black: #323232;
 $h1-fontsize: rem(44px);
 $h4-fontsize: rem(22px);
+
+// 22. Footer
+$footer-copyright-font-color: #9b9b9b;
+$footer-copyright-bg-color: #ffffff;

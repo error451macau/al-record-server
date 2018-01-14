@@ -32,5 +32,17 @@
     
     {% block body %}{% endblock %}
     <script src="/bundle.js"></script>
+
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <span>{{__('FOOTER_COPYRIGHT')}}</span>
+                <a class="right" target="_blank" href="https://fb.com/ERROR451Macau/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="38.79 0 77.57 155.14" class="facebook-svg"><path fill="#9b9b9b" d="M89.58 155.14V84.38h23.75l3.56-27.59h-27.3V39.2c0-7.99 2.2-13.43 13.66-13.43h14.6V1.07A197.9 197.9 0 0 0 96.58 0C75.52 0 61.1 12.85 61.1 36.45V56.8H37.3v27.59H61.1v70.76h28.48z"/></svg></a>
+                <a class="right hide-on-med-and-down" href="/{{locale}}/documents">{{__('NAVBAR_DOCS')}}</a>
+                <a class="right hide-on-med-and-down" href="/{{locale}}/bills">{{__('NAVBAR_BILLS')}}</a>
+                <a class="right hide-on-med-and-down" href="/{{locale}}/deputies">{{__('NAVBAR_DEPUTIES')}}</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
