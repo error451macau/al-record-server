@@ -5,15 +5,15 @@ $theme-skyblue: #03ceff;
 $theme-purple: #6a67ce;
 $theme-border-grey: #ddddde;
 
-$color-vote-y: color('teal', 'darken-1');
-$color-vote-n: color('deep-orange', 'darken-1');
-$color-vote-p: color('amber', 'darken-1');
-$color-vote-a: color('grey', 'base');
+$color-vote-y: $theme-green;
+$color-vote-n: $theme-orange;
+$color-vote-p: #4a4a4a;
+$color-vote-a: #e6e6e6;
 
-$color-vote-y-bg: lighten(color('teal', 'lighten-2'), 45%);
-$color-vote-n-bg: lighten(color('deep-orange', 'lighten-3'), 20%);
-$color-vote-p-bg: lighten(color('amber', 'lighten-2'), 32%);
-$color-vote-a-bg: lighten(color('grey', 'lighten-2'), 10%);
+$color-vote-y-bg: rgba($color-vote-y, 0.16);
+$color-vote-n-bg: rgba($color-vote-n, 0.1);
+$color-vote-p-bg: rgba($color-vote-p, 0.08);
+$color-vote-a-bg: #ffffff;
 
 $color-result-y: $theme-green;
 $color-result-n: $theme-orange;

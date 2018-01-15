@@ -2,119 +2,132 @@
 
 {% block title %}{{bill.title[locale]}}{% endblock %}
 
+{# the value is X as in X% #}
+{% set voteYPercent = (voteSummary.Y / voteSummary.total * 100) | round %}
+{% set voteNPercent = (voteSummary.N / voteSummary.total * 100) | round %}
+{% set votePPercent = (voteSummary.P / voteSummary.total * 100) | round %}
+{% set voteAPercent = (voteSummary.A / voteSummary.total * 100) | round %}
+
 {% block body %}
     <div class="bill container clear-margin">
-        <div class="bill-result right">
-            <div class="bill-result__title">{{__('BILL_RESULT')}}</div>
-            <div class="bill-result__text result-{{bill.result | lower}} content-highlight">{{__('BILL_RESULT_' + bill.result)}}</div>
-        </div>
-        <h3>{{bill.title[locale]}}</h3>
-        <div>
+        <h1>{{bill.title[locale]}}{{a}}</h1>
+        <section class="row bill-meta">
             {% set proposer = deputiesDict[bill.proposerDeputyId] %}
-            <span>{{__('BILL_PROPOSER')}}{{__(': ')}}<a href="{{mklink('deputy', proposer)}}">{{proposer.name[locale]}}</a> ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>&nbsp;&nbsp;&nbsp;
-            <span>{{__('BILL_VOTING_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}</span>
-        </div>
+            <div class="col s4 bill-meta-proposer">
+                {{__('BILL_PROPOSER')}}{{__(': ')}}<a href="{{mklink('deputy', proposer)}}">{{proposer.name[locale]}}</a> ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})
+            </div>
+            <div class="col s4 bill-meta-voting-date">
+                {{__('BILL_VOTING_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}
+            </div>
+            <div class="col s4">
+                <div class="bill-meta-result bill-meta-result--{{bill.result | lower}}">
+                    {{__('BILL_RESULT_' + bill.result)}}
+                </div>
+            </div>
+        </section>
         <section class="bill-synopsis">
-            <strong>{{__('BILL_SYNOPSIS')}}</strong>
+            <h4>{{__('BILL_SYNOPSIS')}}</h4>
             <div class="content-highlight">{{bill.synopsis[locale]}}</div>
         </section>
         <section class="bill-votes-summary">
-            <strong>{{__('BILL_VOTES_SUMMARY')}}</strong>
-            <div class="content-highlight row">
-                <div class="col s12 l4">
-                    {# the order of pie is Y->A->P->N is intention due to how plotly render #}
-                    {# todo: un-hardcode color #}
-                    {% set pieData = [{
-                        values: [voteSummary.Y, voteSummary.A, voteSummary.P, voteSummary.N],
-                        labels: [__('VOTE_Y'), __('VOTE_A'), __('VOTE_P'), __('VOTE_N')],
-                        type: 'pie',
-                        sort: false,
-                        marker: {
-                            colors: ['#009688', '#9e9e9e', '#ffb300', '#f4511e']
-                        }
-                    }] %}
-                    <div id="bill-votes-summary__pie" class="bill-votes-summary__pie" data-pie-data="{{pieData | dump}}"></div>
-                </div>
-                <div class="col s12 l8">
-                    <table class="bordered centered bill-votes-summary__table">
-                        <thead>
-                            <tr>
-                                <th>&nbsp;</th>
-                                <th style="width:80%">{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
-                                <th><span class="legend legend--direct"   ></span><span>{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
-                                <th><span class="legend legend--indirect" ></span><span>{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
-                                <th><span class="legend legend--appointed"></span><span>{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{__('VOTE_Y')}}</td>
-                                <td>
-                                    <div class="bar">
-                                        <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directY    / voteSummary.relativeMax * 100}}%"></div>
-                                        <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectY  / voteSummary.relativeMax * 100}}%"></div>
-                                        <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedY / voteSummary.relativeMax * 100}}%"></div>
-                                    </div>{{''-}}
-                                    <span class="percentage">{{(voteSummary.Y / voteSummary.total * 100) | round}}%</span>
-                                </td>
-                                <td>{{voteSummary.directY or 0}}</td>
-                                <td>{{voteSummary.indirectY or 0}}</td>
-                                <td>{{voteSummary.appointedY or 0}}</td>
-                            </tr>
-                            <tr>
-                                <td>{{__('VOTE_N')}}</td>
-                                <td>
-                                    <div class="bar">
-                                        <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directN    / voteSummary.relativeMax * 100}}%"></div>
-                                        <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectN  / voteSummary.relativeMax * 100}}%"></div>
-                                        <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedN / voteSummary.relativeMax * 100}}%"></div>
-                                    </div>{{''-}}
-                                    <span class="percentage">{{(voteSummary.N / voteSummary.total * 100) | round}}%</span>
-                                </td>
-                                <td>{{voteSummary.directN or 0}}</td>
-                                <td>{{voteSummary.indirectN or 0}}</td>
-                                <td>{{voteSummary.appointedN or 0}}</td>
-                            </tr>
-                            {% if(voteSummary.P > 0) %}
+            <h4>{{__('BILL_VOTES_SUMMARY')}}</h4>
+            <div class="content-highlight">
+                <div class="row">
+                    <div class="col s12 l4">
+                        {# todo: un-hardcode color #}
+                        {% set pieData = [{
+                            values: [voteSummary.Y, voteSummary.N, voteSummary.P, voteSummary.A],
+                            labels: [__('VOTE_Y'), __('VOTE_N'), __('VOTE_P'), __('VOTE_A')],
+                            type: 'pie',
+                            sort: false,
+                            direction: 'clockwise',
+                            marker: {
+                                colors: ['#5cd693', '#ff775b', '#4a4a4a', '#e6e6e6']
+                            }
+                        }] %}
+                        <div id="bill-votes-summary__pie" class="bill-votes-summary__pie" data-pie-data="{{pieData | dump}}"></div>
+                    </div>
+                    <div class="col s12 l8">
+                        <table class="bordered bill-votes-summary__table">
+                            <thead>
                                 <tr>
-                                    <td>{{__('VOTE_P')}}</td>
+                                    <th>{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
+                                    <th style="width:80%">&nbsp;</th>
+                                    <th><span class="legend legend--direct"   ></span><span>{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
+                                    <th><span class="legend legend--indirect" ></span><span>{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
+                                    <th><span class="legend legend--appointed"></span><span>{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{__('VOTE_Y')}}</td>
                                     <td>
                                         <div class="bar">
-                                            <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directP    / voteSummary.relativeMax * 100}}%"></div>
-                                            <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectP  / voteSummary.relativeMax * 100}}%"></div>
-                                            <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedP / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directY    / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectY  / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedY / voteSummary.relativeMax * 100}}%"></div>
                                         </div>{{''-}}
-                                        <span class="percentage">{{(voteSummary.P / voteSummary.total * 100) | round}}%</span>
+                                        <span class="percentage">{{voteYPercent}}%</span>
                                     </td>
-                                    <td>{{voteSummary.directP or 0}}</td>
-                                    <td>{{voteSummary.indirectP or 0}}</td>
-                                    <td>{{voteSummary.appointedP or 0}}</td>
+                                    <td class="center-align">{{voteSummary.directY or 0}}</td>
+                                    <td class="center-align">{{voteSummary.indirectY or 0}}</td>
+                                    <td class="center-align">{{voteSummary.appointedY or 0}}</td>
                                 </tr>
-                            {% endif %}
-                            {% if(voteSummary.A > 0) %}
                                 <tr>
-                                    <td>{{__('VOTE_A')}}</td>
+                                    <td>{{__('VOTE_N')}}</td>
                                     <td>
                                         <div class="bar">
-                                            <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directA    / voteSummary.relativeMax * 100}}%"></div>
-                                            <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectA  / voteSummary.relativeMax * 100}}%"></div>
-                                            <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedA / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directN    / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectN  / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedN / voteSummary.relativeMax * 100}}%"></div>
                                         </div>{{''-}}
-                                        <span class="percentage">{{(voteSummary.A / voteSummary.total * 100) | round}}%</span>
+                                        <span class="percentage">{{voteNPercent}}%</span>
                                     </td>
-                                    <td>{{voteSummary.directA or 0}}</td>
-                                    <td>{{voteSummary.indirectA or 0}}</td>
-                                    <td>{{voteSummary.appointedA or 0}}</td>
+                                    <td class="center-align">{{voteSummary.directN or 0}}</td>
+                                    <td class="center-align">{{voteSummary.indirectN or 0}}</td>
+                                    <td class="center-align">{{voteSummary.appointedN or 0}}</td>
                                 </tr>
-                            {% endif %}
-                        </tbody>
-                    </table>
+                                {% if(voteSummary.P > 0) %}
+                                    <tr>
+                                        <td>{{__('VOTE_P')}}</td>
+                                        <td>
+                                            <div class="bar">
+                                                <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directP    / voteSummary.relativeMax * 100}}%"></div>
+                                                <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectP  / voteSummary.relativeMax * 100}}%"></div>
+                                                <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedP / voteSummary.relativeMax * 100}}%"></div>
+                                            </div>{{''-}}
+                                            <span class="percentage">{{votePPercent}}%</span>
+                                        </td>
+                                        <td class="center-align">{{voteSummary.directP or 0}}</td>
+                                        <td class="center-align">{{voteSummary.indirectP or 0}}</td>
+                                        <td class="center-align">{{voteSummary.appointedP or 0}}</td>
+                                    </tr>
+                                {% endif %}
+                                {% if(voteSummary.A > 0) %}
+                                    <tr>
+                                        <td>{{__('VOTE_A')}}</td>
+                                        <td>
+                                            <div class="bar">
+                                                <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directA    / voteSummary.relativeMax * 100}}%"></div>
+                                                <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectA  / voteSummary.relativeMax * 100}}%"></div>
+                                                <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedA / voteSummary.relativeMax * 100}}%"></div>
+                                            </div>{{''-}}
+                                            <span class="percentage">{{voteAPercent}}%</span>
+                                        </td>
+                                        <td class="center-align">{{voteSummary.directA or 0}}</td>
+                                        <td class="center-align">{{voteSummary.indirectA or 0}}</td>
+                                        <td class="center-align">{{voteSummary.appointedA or 0}}</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>
         <section class="bill-votes-detail">
-            <strong>{{__('BILL_VOTES')}}</strong>
-            <div class="content-highlight content-highlight--equal-padding">
+            <h4>{{__('BILL_VOTES')}}</h4>
+            {# <div class="content-highlight">
                 <ul class="bill-votes">
                     {% for deputyVote in bill.deputyVotes %}
                         {% set deputy = deputiesDict[deputyVote.deputyId] %}
@@ -130,10 +143,41 @@
                         </li>
                     {% endfor %}
                 </ul>
+            </div> #}
+            <div class="row">
+                <div class="col s12 l3">
+                    <div class="content-highlight content-highlight--y content-highlight--y-strong">
+                        <h5>{{__('VOTE_Y')}}</h5>
+                        <span class="summary">{{voteSummary.Y}} {{__('NOUN_VOTES')}} · {{voteYPercent}}%</span>
+                        <ul>
+                            <li><img src="/img/deputies/80.jpg"><span>Sou Ka Hou</span></li>
+                            <li><img src="/img/deputies/80.jpg"><span>Sou Ka Hou</span></li>
+                            <li><img src="/img/deputies/80.jpg"><span>Sou Ka Hou</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col s12 l3">
+                    <div class="content-highlight content-highlight--n content-highlight--n-strong">
+                        <h5>{{__('VOTE_N')}}</h5>
+                        <span class="summary">{{voteSummary.N}} {{__('NOUN_VOTES')}} · {{voteNPercent}}%</span>
+                    </div>
+                </div>
+                <div class="col s12 l3">
+                    <div class="content-highlight content-highlight--p">
+                        <h5>{{__('VOTE_P')}}</h5>
+                        <span class="summary">{{voteSummary.P}} {{__('NOUN_VOTES')}} · {{votePPercent}}%</span>
+                    </div>
+                </div>
+                <div class="col s12 l3">
+                    <div class="content-highlight content-highlight--a">
+                        <h5>{{__('VOTE_A')}}</h5>
+                        <span class="summary">{{voteSummary.A}} {{__('NOUN_VOTES')}} · {{voteAPercent}}%</span>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="bill-documents">
-            <strong>{{__('BILL_DOCUMENTS')}}</strong>
+            <h4>{{__('BILL_DOCUMENTS')}}</h4>
             {% if bill.documentIds.length > 0 %}
                 <ul class="content-highlight collection">
                     {% for documentId in bill.documentIds %}

@@ -1,30 +1,50 @@
-.bill-result {
-    margin-top: 1.46rem; // margin-top of h3
-    font-size: 1.3rem;
+.bill {
+    h4 {
+        font-size: rem(15px);
+        line-height: rem(18px);
+    }
+}
+
+.bill-meta {
+    @include clearFloat();
+    margin-top: 30px;
+}
+
+.bill-meta-result {
+    float: right;
+    height: 60px;
+    width: 100%;
+    max-width: 260px;
+    color: #ffffff;
+    font-size: rem(22px);
+    line-height: 60px;
     text-align: center;
-}
+    border-radius: 4px;
 
-.bill-result__title {
-    line-height: 1.3;
-}
+    &.bill-meta-result--y {
+        background-color: $theme-green;
+    }
 
-.bill-result__text {
-    font-size: 2rem;
-    padding: 6px 12px;
+    &.bill-meta-result--n {
+        background-color: $theme-orange;
+    }
 }
 
 .bill-synopsis {
-    margin-top: 1rem;
+    margin-top: 52px;
+
+    .content-highlight {
+        margin-top: 12px;
+        padding-right: 125px;
+    }
 }
 
 .bill-votes-summary {
-    margin-top: 1rem;
+    margin-top: 40px;
     
-    .content-highlight { // compensate the .row effect
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 0;
-        padding-right: 0;
+    .content-highlight {
+        margin-top: 12px;
+        padding: 25px;
     }
 }
 
@@ -59,89 +79,67 @@
 }
 
 .bill-votes-detail {
-    margin-top: 1rem;
-}
-.bill-votes {
-    margin: 0;
-    font-size: 90%;
-}
-.bill-vote {
-    display: inline-block;
-    width: (100% / 10 - 1%);
-    border-radius: 3px;
-    // border: 1px solid color('grey', 'lighten-2');
-    margin: 0.5%;
-    padding: 10px 10px 6px;
-    // background: white;
-    border: 2px solid;
+    margin-top: 40px;
 
-    &.bill-vote--y {
-        border-color: rgba($color-vote-y, 0.6);
-        background-color: $color-vote-y-bg;
-    }
-    &.bill-vote--n {
-        border-color: rgba($color-vote-n, 0.6);
-        background-color: $color-vote-n-bg;
-    }
-    &.bill-vote--p {
-        border-color: rgba($color-vote-p, 0.6);
-        background-color: $color-vote-p-bg;
-    }
-    &.bill-vote--a {
-        border-color: rgba($color-vote-a, 0.6);
-        background-color: $color-vote-a-bg;
-    }
-}
-.bill-vote__inner {
-    text-align: center;
-
-    img {
-        max-width: 100%;
-        vertical-align: top;
-        border-radius: 50%;
+    .row {
+        margin-top: 12px;
     }
 
-    .name {
-        margin: 6px -2px 0;
-        line-height: 1.3;
-    }
+    .content-highlight {
+        padding: 12px 15px 15px;
 
-    .method {
-        color: color('grey', 'base');
-    }
+        h5 {
+            font-size: rem(22px);
+            line-height: rem(26px);
+            letter-spacing: -0.2px;
+        }
 
-    .sub-content {
-        @include clearFloat;
-        margin: 5px -3px 0;
-        font-size: 90%;
-        line-height: 1.3;
+        .summary {
+            display: block;
+            line-height: (20px / 15px);
+            letter-spacing: -0.2px;
+            margin-top: 5px;
+            opacity: 0.4;
+        }
+
+        ul {
+            margin-top: 27px;
+            margin-bottom: 0;
+        }
+
+        li {
+            &:not(:first-child) {
+                margin-top: 10px;
+            }
+
+            img {
+                vertical-align: middle;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+            }
+
+            span {
+                vertical-align: middle;
+                margin-left: 10px;
+            }
+        }
+
+        &.content-highlight--y,
+        &.content-highlight--n {
+            .summary {
+                opacity: 0.75;
+            }
+        }
     }
 }
 
 .bill-documents {
-    margin-top: 1rem;
+    margin-top: 40px;
 
     // remove margin and padding for ul
     ul.content-highlight {
         margin: 0;
         padding: 0;
-    }
-}
-
-@media (min-width: $s2m-screen-up) and (max-width: $large-screen) {
-    .bill-vote {
-        width: (100% / 8 - 1%);
-    }
-}
-
-@media (min-width: $small-screen-up) and (max-width: $s2m-screen) {
-    .bill-vote {
-        width: (100% / 5 - 1%);
-    }
-}
-
-@media (min-width: 0) and (max-width: $small-screen) {
-    .bill-vote {
-        width: (100% / 3 - 1%);
     }
 }

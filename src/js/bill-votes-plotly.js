@@ -15,10 +15,10 @@ var layout = {
     width:  document.getElementsByClassName('bill-votes-summary__table')[0].clientHeight,
     showlegend: false,
     margin: {
-        l: 10,
-        r: 10,
-        b: 10,
-        t: 10,
+        l: 0,
+        r: 0,
+        b: 0,
+        t: 0,
     }
 };
 

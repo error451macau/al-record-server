@@ -45,6 +45,10 @@ td {
     }
 }
 
+.row {
+    margin-bottom: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
@@ -92,13 +96,39 @@ h4 {
 }
 
 .content-highlight {
-    margin-left: 0;
-    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 4px;
-    padding: 4px 8px;
-    border: 1px solid #e0e0e0;
+    padding: 19px 15px;
+    border: 1px solid $theme-border-grey;
 
-    &.content-highlight--equal-padding {
-        padding: 8px;
+    &.content-highlight--y {
+        background-color: $color-vote-y-bg;
+        border-color: $color-vote-y-bg;
+
+        &.content-highlight--y-strong {
+            background-color: $color-vote-y;
+            border-color: $color-vote-y;
+            color: #ffffff;
+        }
+    }
+
+    &.content-highlight--n {
+        background-color: $color-vote-n-bg;
+        border-color: $color-vote-n-bg;
+
+        &.content-highlight--n-strong {
+            background-color: $color-vote-n;
+            border-color: $color-vote-n;
+            color: #ffffff;
+        }
+    }
+
+    &.content-highlight--p {
+        background-color: $color-vote-p-bg;
+        border-color: $color-vote-p-bg;
+    }
+
+    &.content-highlight--a {
+        background-color: $color-vote-a-bg;
+        border-color: $theme-border-grey; // yes intended
     }
 }
