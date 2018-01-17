@@ -54,11 +54,12 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 h1 {
-    line-height: rem(60px);
+    line-height: (60px / 44px);
     font-family: 'Playfair Display', serif;
+    letter-spacing: (-0.5px / 44px * 1em);
 }
 h4 {
-    line-height: rem(26px);
+    line-height: (26px / 22px);
 }
 
 .bigger {

@@ -1,7 +1,7 @@
 .bill {
     h4 {
         font-size: rem(15px);
-        line-height: rem(18px);
+        line-height: (18px / 15px);
         font-weight: bold;
     }
 }
@@ -77,8 +77,15 @@
 .bill-votes-summary__table {
     text-align: center;
 
-    tr:last-child {
-        border-bottom: none;
+    tr {
+        &:last-child {
+            border-bottom: none;
+        }
+
+        th:first-child,
+        td:first-child {
+            padding-left: 0;
+        }
     }
 
     th,
@@ -88,12 +95,12 @@
     }
 
     .bar {
-        width: calc( 100% - 3.6em );
+        width: calc( 100% - 4.2em );
         vertical-align: middle;
     }
 
     .percentage {
-        margin-left: 0.6em;
+        margin-left: 1.2em;
         vertical-align: middle;
     }
 }
@@ -110,14 +117,14 @@
 
         h5 {
             font-size: rem(22px);
-            line-height: rem(26px);
-            letter-spacing: -0.2px;
+            line-height: (26px / 22px);
+            letter-spacing: (-0.2px / 22px * 1em);
         }
 
         .summary {
             display: block;
             line-height: (20px / 15px);
-            letter-spacing: -0.2px;
+            letter-spacing: (-0.2px / 15px * 1em);
             margin-top: 5px;
             opacity: 0.4;
         }
@@ -142,7 +149,7 @@
             }
 
             span {
-                line-height: (18 / 15);
+                line-height: (18px / 15px);
                 padding-left: 10px;
             }
         }
