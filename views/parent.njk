@@ -12,7 +12,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="/{{locale}}/" class="brand-logo">{{__('NAVBAR_TITLE')}}</a>
+                <a href="/{{locale}}/" class="brand-logo"><img src="{{mklink('abs', 'img/logo.' + locale + '.svg')}}" alt="{{__('NAVBAR_TITLE')}}"></a>
                 <ul class="right">
                     {% if locale != 'zh' %}
                         <li><a href="/zh{{url}}">{{__('NAVBAR_CHINESE')}}</a></li>
