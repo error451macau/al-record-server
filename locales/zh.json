@@ -55,5 +55,9 @@
 	"BILL_STATEMENT": "議決案",
 	"DOWNLOAD_LINKS": "下載連結",
 	"DOWNLOAD_LINKS_ORIGINAL": "官方載點",
-	"DOWNLOAD_LINKS_BACKUP": "本站備份"
+	"DOWNLOAD_LINKS_BACKUP": "本站備份",
+	"FOOTER_COPYRIGHT": "©2018 Error 451 Macau. All Rights Reserved",
+	"NOUN_VOTES": "票",
+	"NOUN_DOCUMENTS": "文件",
+	"VERB_DOWNLOAD": "下載"
 }
