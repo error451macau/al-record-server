@@ -149,3 +149,25 @@ h4 {
         vertical-align: middle;
     }
 }
+
+.button {
+    display: inline-block;
+    min-width: 110px;
+    padding: 0 10px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    letter-spacing: (-0.2px / 13px * 1em);
+    font-size: rem(13px);
+
+    &.button--green {
+        background-color: $theme-green;
+        color: #fff;
+    }
+
+    &.button--purple {
+        background-color: $theme-purple;
+        color: #fff;
+    }
+}

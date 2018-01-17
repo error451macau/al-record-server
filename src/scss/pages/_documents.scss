@@ -1,0 +1,30 @@
+.documents {
+    table {
+        line-height: (22px / 15px);
+        margin-top: 36px;
+    }
+
+    thead {
+        .col-date {
+            width: 11em;
+        }
+
+        .col-download {
+            width: 18em;    
+        }
+    }
+
+    tbody {
+        border-left: 1px solid $theme-border-grey;
+        border-right: 1px solid $theme-border-grey;
+
+        .col-download {
+            padding-top: 15px;
+            padding-bottom: 15px;
+    
+            .button:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+}

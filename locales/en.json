@@ -55,5 +55,7 @@
 	"DOWNLOAD_LINKS_ORIGINAL": "Official Site",
 	"DOWNLOAD_LINKS_BACKUP": "Local Backup",
 	"FOOTER_COPYRIGHT": "©2018 Error 451 Macau. All Rights Reserved",
-	"NOUN_VOTES": "Votes"
+	"NOUN_VOTES": "Votes",
+	"NOUN_DOCUMENTS": "Documents",
+	"VERB_DOWNLOAD": "Download"
 }

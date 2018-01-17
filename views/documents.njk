@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="documents container">
-        <div class="clear-margin">
+        {# <div class="clear-margin">
             <h2 class="center-align">{{__('DOCUMENTS_PAGE_TITLE')}}</h2>
         </div>
         <ul class="collection">
@@ -13,6 +13,28 @@
                     {% include "partials/document-desc.njk" %}
                 </li>
             {% endfor %}
-        </ul>
+        </ul> #}
+        <h1 class="center-align">{{__('DOCUMENTS_PAGE_TITLE')}}</h1>
+        <table class="highlight striped bordered">
+            <thead>
+                <tr>
+                    <th class="col-title">{{__('NOUN_DOCUMENTS')}}</th>
+                    <th class="col-date">{{__('DOCUMENT_DATE')}}</th>
+                    <th class="col-download">{{__('VERB_DOWNLOAD')}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for document in documents %}
+                    <tr>
+                        <td>{{document.title[locale]}}</td>
+                        <td>{{document.date | dateFormat}}</td>
+                        <td class="col-download">
+                            {% if document.originalUrl %}<a class="button button--green" target="_blank" href="{{document.originalUrl}}">{{__('DOWNLOAD_LINKS_ORIGINAL')}}</a>{% endif %}
+                            {%- if document.files[0].filename %}<a class="button button--purple" target="_blank" href="{{mklink('uploads', document.files[0].filename)}}">{{__('DOWNLOAD_LINKS_BACKUP')}}</a>{% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}
