@@ -107,10 +107,31 @@ router.get('/bills/:id/:slug', function(req, res, next){
             voteSummary.total = bill.deputyVotes.length;
             voteSummary.relativeMax = Math.max(voteSummary.Y, voteSummary.N, voteSummary.A, voteSummary.P)
 
+            // group deputies by vote and then sort each group in dir->indir->app
+            var deputiesGrouped = _.chain(bill.deputyVotes)
+                .groupBy('vote')
+                .mapObject(function(deputyVotesEntries, vote){ // deputyVotesEntries = [{deputyId: 3, vote: 'Y'}, {deputyId, vote}, ...]
+                    return _.chain(deputyVotesEntries)
+                        .map(function(deputyVotesEntry){ // {deputyId: 3, vote: 'Y'}
+                            return deputiesDict[deputyVotesEntry.deputyId];
+                        })
+                        // .tap(console.log) // expect: [{deputy Object}, ...] (NOT SORTED)
+                        .sortBy(function(deputy){
+                            return {
+                                'direct':    1,
+                                'indirect':  2,
+                                'appointed': 3,
+                            }[deputy.electedMethod];
+                        })
+                        .value()
+                })
+                .value();
+
             res.render('bill.njk', {
                 bill,
                 voteSummary,
                 deputiesDict,
+                deputiesGrouped,
                 documentsDict,
             });
         });

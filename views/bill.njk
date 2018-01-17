@@ -127,51 +127,42 @@
         </section>
         <section class="bill-votes-detail">
             <h4>{{__('BILL_VOTES')}}</h4>
-            {# <div class="content-highlight">
-                <ul class="bill-votes">
-                    {% for deputyVote in bill.deputyVotes %}
-                        {% set deputy = deputiesDict[deputyVote.deputyId] %}
-                        <li class="bill-vote bill-vote--{{deputyVote.vote | lower}}" data-vote="{{deputyVote.vote}}" data-elected-method="{{deputy.electedMethod}}">
-                            <div class="bill-vote__inner">
-                                <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
-                                <div class="name">{{deputy.name[locale]}}</div>
-                                <div class="sub-content">
-                                    <span class="left method">{{__('DEPUTY_METHOD_SHORT_' + deputy.electedMethod)}}</span>
-                                    <span class="right vote vote-{{deputyVote.vote | lower}} bold">{{__('VOTE_' + deputyVote.vote)}}</span>
-                                </div>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div> #}
+            {% macro renderBillVoteDetailColumn(deputiesList) %}
+                {% for deputy in deputiesList %}
+                    <li>
+                        <a href="{{mklink('deputy', deputy)}}">
+                            <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}"><span>{{deputy.name[locale]}}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% endmacro %}
             <div class="row">
                 <div class="col s12 l3">
-                    <div class="content-highlight content-highlight--y content-highlight--y-strong">
+                    <div class="content-highlight content-highlight--y {{'content-highlight--y-strong' if voteSummary.relativeMax == voteSummary.Y}}">
                         <h5>{{__('VOTE_Y')}}</h5>
                         <span class="summary">{{voteSummary.Y}} {{__('NOUN_VOTES')}} · {{voteYPercent}}%</span>
-                        <ul>
-                            <li><img src="/img/deputies/80.jpg"><span>Sou Ka Hou</span></li>
-                            <li><img src="/img/deputies/80.jpg"><span>Sou Ka Hou</span></li>
-                            <li><img src="/img/deputies/80.jpg"><span>Sou Ka Hou</span></li>
-                        </ul>
+                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.Y)}}</ul>
                     </div>
                 </div>
                 <div class="col s12 l3">
-                    <div class="content-highlight content-highlight--n content-highlight--n-strong">
+                    <div class="content-highlight content-highlight--n {{'content-highlight--n-strong' if voteSummary.relativeMax == voteSummary.N}}">
                         <h5>{{__('VOTE_N')}}</h5>
                         <span class="summary">{{voteSummary.N}} {{__('NOUN_VOTES')}} · {{voteNPercent}}%</span>
+                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.N)}}</ul>
                     </div>
                 </div>
                 <div class="col s12 l3">
                     <div class="content-highlight content-highlight--p">
                         <h5>{{__('VOTE_P')}}</h5>
                         <span class="summary">{{voteSummary.P}} {{__('NOUN_VOTES')}} · {{votePPercent}}%</span>
+                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.A)}}</ul>
                     </div>
                 </div>
                 <div class="col s12 l3">
                     <div class="content-highlight content-highlight--a">
                         <h5>{{__('VOTE_A')}}</h5>
                         <span class="summary">{{voteSummary.A}} {{__('NOUN_VOTES')}} · {{voteAPercent}}%</span>
+                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.P)}}</ul>
                     </div>
                 </div>
             </div>
