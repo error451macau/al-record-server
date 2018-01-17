@@ -130,6 +130,11 @@
 
     .row {
         margin-top: 12px;
+        margin-bottom: -20px; // compensate .col margin-bottom
+    }
+
+    .col {
+        margin-bottom: 20px;
     }
 
     .content-highlight {
@@ -188,7 +193,15 @@
 
     // remove margin and padding for ul
     ul.content-highlight {
-        margin: 0;
+        margin: 12px 0 0;
         padding: 0;
+    }
+}
+
+@media (min-width: $small-screen-up) and (max-width: $large-screen) {
+    .bill-votes-detail {
+        .col:nth-child(2n + 1) {
+            clear: left;
+        }
     }
 }
