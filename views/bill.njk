@@ -58,72 +58,40 @@
                             <thead>
                                 <tr>
                                     <th>{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
-                                    <th style="width:80%">&nbsp;</th>
-                                    <th><span class="legend legend--direct"   ></span><span>{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
-                                    <th><span class="legend legend--indirect" ></span><span>{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
-                                    <th><span class="legend legend--appointed"></span><span>{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
+                                    <th style="width:50%">&nbsp;</th>
+                                    <th class="center-align"><span class="legend legend--circle legend--direct"   ></span><span>{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
+                                    <th class="center-align"><span class="legend legend--circle legend--indirect" ></span><span>{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
+                                    <th class="center-align"><span class="legend legend--circle legend--appointed"></span><span>{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>{{__('VOTE_Y')}}</td>
-                                    <td>
-                                        <div class="bar">
-                                            <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directY    / voteSummary.relativeMax * 100}}%"></div>
-                                            <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectY  / voteSummary.relativeMax * 100}}%"></div>
-                                            <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedY / voteSummary.relativeMax * 100}}%"></div>
-                                        </div>{{''-}}
-                                        <span class="percentage">{{voteYPercent}}%</span>
-                                    </td>
-                                    <td class="center-align">{{voteSummary.directY or 0}}</td>
-                                    <td class="center-align">{{voteSummary.indirectY or 0}}</td>
-                                    <td class="center-align">{{voteSummary.appointedY or 0}}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{__('VOTE_N')}}</td>
-                                    <td>
-                                        <div class="bar">
-                                            <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directN    / voteSummary.relativeMax * 100}}%"></div>
-                                            <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectN  / voteSummary.relativeMax * 100}}%"></div>
-                                            <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedN / voteSummary.relativeMax * 100}}%"></div>
-                                        </div>{{''-}}
-                                        <span class="percentage">{{voteNPercent}}%</span>
-                                    </td>
-                                    <td class="center-align">{{voteSummary.directN or 0}}</td>
-                                    <td class="center-align">{{voteSummary.indirectN or 0}}</td>
-                                    <td class="center-align">{{voteSummary.appointedN or 0}}</td>
-                                </tr>
-                                {% if(voteSummary.P > 0) %}
+                                {% macro renderBillVotesSummaryRow(vote) %}
+                                    {% set votesFromDirect    = voteSummary['direct' + vote] or 0    %}
+                                    {% set votesFromIndirect  = voteSummary['indirect' + vote] or 0  %}
+                                    {% set votesFromAppointed = voteSummary['appointed' + vote] or 0 %}
                                     <tr>
-                                        <td>{{__('VOTE_P')}}</td>
+                                        <td><span class="legend legend--vote-{{vote | lower}}"></span><span>{{__('VOTE_' + vote)}}</span></td>
                                         <td>
                                             <div class="bar">
-                                                <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directP    / voteSummary.relativeMax * 100}}%"></div>
-                                                <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectP  / voteSummary.relativeMax * 100}}%"></div>
-                                                <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedP / voteSummary.relativeMax * 100}}%"></div>
+                                                <div class="bar__segment bar__segment--direct"    style="width:{{votesFromDirect    / voteSummary.relativeMax * 100}}%"></div>
+                                                <div class="bar__segment bar__segment--indirect"  style="width:{{votesFromIndirect  / voteSummary.relativeMax * 100}}%"></div>
+                                                <div class="bar__segment bar__segment--appointed" style="width:{{votesFromAppointed / voteSummary.relativeMax * 100}}%"></div>
                                             </div>{{''-}}
-                                            <span class="percentage">{{votePPercent}}%</span>
+                                            <span class="percentage">{{voteSummary[vote + 'Percent']}}%</span>
                                         </td>
-                                        <td class="center-align">{{voteSummary.directP or 0}}</td>
-                                        <td class="center-align">{{voteSummary.indirectP or 0}}</td>
-                                        <td class="center-align">{{voteSummary.appointedP or 0}}</td>
+                                        <td class="center-align">{{votesFromDirect or 0}}</td>
+                                        <td class="center-align">{{votesFromIndirect or 0}}</td>
+                                        <td class="center-align">{{votesFromAppointed or 0}}</td>
                                     </tr>
+                                {% endmacro %}
+                                
+                                {{ renderBillVotesSummaryRow('Y') }}
+                                {{ renderBillVotesSummaryRow('N') }}
+                                {% if(voteSummary.P > 0) %}
+                                    {{ renderBillVotesSummaryRow('P') }}
                                 {% endif %}
                                 {% if(voteSummary.A > 0) %}
-                                    <tr>
-                                        <td>{{__('VOTE_A')}}</td>
-                                        <td>
-                                            <div class="bar">
-                                                <div class="bar__segment bar__segment--direct"    style="width:{{voteSummary.directA    / voteSummary.relativeMax * 100}}%"></div>
-                                                <div class="bar__segment bar__segment--indirect"  style="width:{{voteSummary.indirectA  / voteSummary.relativeMax * 100}}%"></div>
-                                                <div class="bar__segment bar__segment--appointed" style="width:{{voteSummary.appointedA / voteSummary.relativeMax * 100}}%"></div>
-                                            </div>{{''-}}
-                                            <span class="percentage">{{voteAPercent}}%</span>
-                                        </td>
-                                        <td class="center-align">{{voteSummary.directA or 0}}</td>
-                                        <td class="center-align">{{voteSummary.indirectA or 0}}</td>
-                                        <td class="center-align">{{voteSummary.appointedA or 0}}</td>
-                                    </tr>
+                                    {{ renderBillVotesSummaryRow('A') }}
                                 {% endif %}
                             </tbody>
                         </table>

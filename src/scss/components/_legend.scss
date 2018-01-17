@@ -1,11 +1,15 @@
 .legend {
-    width: 7px;
-    margin-right: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
     display: inline-block;
-    height: 1em;
     
     &, & + span {
         vertical-align: middle;
+    }
+
+    &.legend--circle {
+        border-radius: 50%;
     }
 
     &.legend--direct {
@@ -16,5 +20,18 @@
     }
     &.legend--appointed {
         background-color: $color-method-a;
+    }
+
+    &.legend--vote-y {
+        background-color: $color-vote-y;
+    }
+    &.legend--vote-n {
+        background-color: $color-vote-n;
+    }
+    &.legend--vote-p {
+        background-color: $color-vote-p;
+    }
+    &.legend--vote-a {
+        background-color: $color-vote-a;
     }
 }

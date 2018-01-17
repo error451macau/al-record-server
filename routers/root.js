@@ -97,7 +97,7 @@ router.get('/bills/:id/:slug', function(req, res, next){
             var documentsDict = _.indexBy(results.documents, 'id');
 
             // generate voteSummary / statistics
-            var voteSummary = {}; // {indirect: 10, appointedY: 1, directN: 2, ...}
+            var voteSummary = {}; // {Y: 10, N: 5, appointedY: 1, directN: 2, APercent: 57, ...}
             bill.deputyVotes.forEach(deputyVote => {
                 var deputy = deputiesDict[deputyVote.deputyId];
                 var key = deputy.electedMethod + deputyVote.vote;
@@ -107,6 +107,12 @@ router.get('/bills/:id/:slug', function(req, res, next){
             voteSummary.total = bill.deputyVotes.length;
             voteSummary.relativeMax = Math.max(voteSummary.Y, voteSummary.N, voteSummary.A, voteSummary.P)
 
+            // more voteSummary (percent)
+            voteSummary.YPercent = Math.round((voteSummary.Y || 0) / voteSummary.total * 100);
+            voteSummary.NPercent = Math.round((voteSummary.N || 0) / voteSummary.total * 100);
+            voteSummary.PPercent = Math.round((voteSummary.P || 0) / voteSummary.total * 100);
+            voteSummary.APercent = Math.round((voteSummary.A || 0) / voteSummary.total * 100);
+            
             // group deputies by vote and then sort each group in dir->indir->app
             var deputiesGrouped = _.chain(bill.deputyVotes)
                 .groupBy('vote')

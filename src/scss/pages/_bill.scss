@@ -76,6 +76,8 @@
 
 .bill-votes-summary__table {
     text-align: center;
+    width: calc( 100% - 21px ); // compensate for the legend
+    margin-left: 21px;
 
     tr {
         &:last-child {
@@ -94,6 +96,24 @@
         white-space: nowrap;
     }
 
+    thead {
+        .legend {
+            margin-right: 5px;
+        }
+    }
+
+    tbody {
+        td {
+            position: relative;
+        }
+
+        .legend {
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            left: -21px;
+        }
+    }
     .bar {
         width: calc( 100% - 4.2em );
         vertical-align: middle;
