@@ -2,6 +2,7 @@
     h4 {
         font-size: rem(15px);
         line-height: rem(18px);
+        font-weight: bold;
     }
 }
 
@@ -10,7 +11,25 @@
     margin-top: 30px;
 }
 
-.bill-meta-result {
+.bill-meta-proposer,
+.bill-meta-voting-date {
+    position: relative;
+    top: 2px;
+}
+
+.bill-meta-proposer__inner {
+    margin-top: 8px;
+
+    a {
+        margin-left: 8px;
+    }
+}
+
+.bill-meta-voting-date__inner {
+    margin-top: 12px;
+}
+
+.bill-meta-result__inner {
     float: right;
     height: 60px;
     width: 100%;
@@ -20,12 +39,13 @@
     line-height: 60px;
     text-align: center;
     border-radius: 4px;
+    font-weight: bold;
 
-    &.bill-meta-result--y {
+    &.bill-meta-result__inner--y {
         background-color: $theme-green;
     }
 
-    &.bill-meta-result--n {
+    &.bill-meta-result__inner--n {
         background-color: $theme-orange;
     }
 }
@@ -112,16 +132,18 @@
                 margin-top: 10px;
             }
 
-            img {
-                vertical-align: middle;
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
+            a {
+                display: table;
+            }
+
+            img,
+            span {
+                display: table-cell;
             }
 
             span {
-                vertical-align: middle;
-                margin-left: 10px;
+                line-height: (18 / 15);
+                padding-left: 10px;
             }
         }
 

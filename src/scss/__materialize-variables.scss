@@ -3,7 +3,7 @@
 }
 
 // 1. Colors
-$link-color: #323232;
+$link-color: inherit;
 
 // 12. Global
 // Media Query Ranges
@@ -31,5 +31,6 @@ $h1-fontsize: rem(44px);
 $h4-fontsize: rem(22px);
 
 // 22. Footer
+$footer-bg-color: transparent;
 $footer-copyright-font-color: #9b9b9b;
 $footer-copyright-bg-color: #ffffff;

@@ -14,13 +14,19 @@
         <section class="row bill-meta">
             {% set proposer = deputiesDict[bill.proposerDeputyId] %}
             <div class="col s4 bill-meta-proposer">
-                {{__('BILL_PROPOSER')}}{{__(': ')}}<a href="{{mklink('deputy', proposer)}}">{{proposer.name[locale]}}</a> ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})
+                <h4>{{__('BILL_PROPOSER')}}</h4>
+                <div class="bill-meta-proposer__inner">
+                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposer.id + '.jpg')}}"><a href="{{mklink('deputy', proposer)}}">{{proposer.name[locale]}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</a>
+                </div>
             </div>
             <div class="col s4 bill-meta-voting-date">
-                {{__('BILL_VOTING_DATE')}}{{__(': ')}}{{bill.date | dateFormat}}
+                <h4>{{__('BILL_VOTING_DATE')}}</h4>
+                <div class="bill-meta-voting-date__inner">
+                    {{bill.date | dateFormat}}
+                </div>
             </div>
-            <div class="col s4">
-                <div class="bill-meta-result bill-meta-result--{{bill.result | lower}}">
+            <div class="col s4 bill-meta-result">
+                <div class="bill-meta-result__inner bill-meta-result__inner--{{bill.result | lower}}">
                     {{__('BILL_RESULT_' + bill.result)}}
                 </div>
             </div>
@@ -131,34 +137,34 @@
                 {% for deputy in deputiesList %}
                     <li>
                         <a href="{{mklink('deputy', deputy)}}">
-                            <img src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}"><span>{{deputy.name[locale]}}</span>
+                            <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}"><span>{{deputy.name[locale]}}</span>
                         </a>
                     </li>
                 {% endfor %}
             {% endmacro %}
             <div class="row">
-                <div class="col s12 l3">
+                <div class="col s12 m6 xl3">
                     <div class="content-highlight content-highlight--y {{'content-highlight--y-strong' if voteSummary.relativeMax == voteSummary.Y}}">
                         <h5>{{__('VOTE_Y')}}</h5>
                         <span class="summary">{{voteSummary.Y}} {{__('NOUN_VOTES')}} · {{voteYPercent}}%</span>
                         <ul>{{renderBillVoteDetailColumn(deputiesGrouped.Y)}}</ul>
                     </div>
                 </div>
-                <div class="col s12 l3">
+                <div class="col s12 m6 xl3">
                     <div class="content-highlight content-highlight--n {{'content-highlight--n-strong' if voteSummary.relativeMax == voteSummary.N}}">
                         <h5>{{__('VOTE_N')}}</h5>
                         <span class="summary">{{voteSummary.N}} {{__('NOUN_VOTES')}} · {{voteNPercent}}%</span>
                         <ul>{{renderBillVoteDetailColumn(deputiesGrouped.N)}}</ul>
                     </div>
                 </div>
-                <div class="col s12 l3">
+                <div class="col s12 m6 xl3">
                     <div class="content-highlight content-highlight--p">
                         <h5>{{__('VOTE_P')}}</h5>
                         <span class="summary">{{voteSummary.P}} {{__('NOUN_VOTES')}} · {{votePPercent}}%</span>
                         <ul>{{renderBillVoteDetailColumn(deputiesGrouped.A)}}</ul>
                     </div>
                 </div>
-                <div class="col s12 l3">
+                <div class="col s12 m6 xl3">
                     <div class="content-highlight content-highlight--a">
                         <h5>{{__('VOTE_A')}}</h5>
                         <span class="summary">{{voteSummary.A}} {{__('NOUN_VOTES')}} · {{voteAPercent}}%</span>

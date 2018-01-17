@@ -7,7 +7,8 @@
 }
 
 body {
-    font-family: -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif;
+    // font-family: -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif;
+    font-family: 'San Francisco', Helvetica, Arial, -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif;
 }
 
 body > .container {
@@ -128,5 +129,22 @@ h4 {
     &.content-highlight--a {
         background-color: $color-vote-a-bg;
         border-color: $theme-border-grey; // yes intended
+    }
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    &.avatar--30 {
+        width: 30px;
+        height: 30px;
+    }
+
+    & ~ span,
+    & ~ a {
+        vertical-align: middle;
     }
 }
