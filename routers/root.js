@@ -105,7 +105,7 @@ router.get('/bills/:id/:slug', function(req, res, next){
                 voteSummary[deputyVote.vote] = (voteSummary[deputyVote.vote] || 0) + 1; // per vote
             });
             voteSummary.total = bill.deputyVotes.length;
-            voteSummary.relativeMax = Math.max(voteSummary.Y, voteSummary.N, voteSummary.A, voteSummary.P)
+            voteSummary.relativeMax = Math.max(voteSummary.Y || 0, voteSummary.N || 0, voteSummary.A || 0, voteSummary.P || 0);
 
             // more voteSummary (percent)
             voteSummary.YPercent = Math.round((voteSummary.Y || 0) / voteSummary.total * 100);
