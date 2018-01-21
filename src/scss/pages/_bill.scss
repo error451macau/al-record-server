@@ -18,10 +18,16 @@
 }
 
 .bill-meta-proposer__inner {
+    display: table;
     margin-top: 8px;
 
-    a {
-        margin-left: 8px;
+    img {
+        display: table-cell;
+    }
+
+    span {
+        display: table-cell;
+        padding-left: 8px;
     }
 }
 
@@ -191,9 +197,11 @@
 .bill-documents {
     margin-top: 40px;
 
-    // remove margin and padding for ul
+    .content-highlight {
+        margin-top: 12px;
+    }
+    
     ul.content-highlight {
-        margin: 12px 0 0;
         padding: 0;
     }
 }

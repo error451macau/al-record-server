@@ -3,10 +3,10 @@
 {% block title %}{{bill.title[locale]}}{% endblock %}
 
 {# the value is X as in X% #}
-{% set voteYPercent = (voteSummary.Y / voteSummary.total * 100) | round %}
-{% set voteNPercent = (voteSummary.N / voteSummary.total * 100) | round %}
-{% set votePPercent = (voteSummary.P / voteSummary.total * 100) | round %}
-{% set voteAPercent = (voteSummary.A / voteSummary.total * 100) | round %}
+{% set voteYPercent = ((voteSummary.Y or 0) / voteSummary.total * 100) | round %}
+{% set voteNPercent = ((voteSummary.N or 0) / voteSummary.total * 100) | round %}
+{% set votePPercent = ((voteSummary.P or 0) / voteSummary.total * 100) | round %}
+{% set voteAPercent = ((voteSummary.A or 0) / voteSummary.total * 100) | round %}
 
 {% block body %}
     <div class="bill container clear-margin">
@@ -15,9 +15,9 @@
             {% set proposer = deputiesDict[bill.proposerDeputyId] %}
             <div class="col s4 bill-meta-proposer">
                 <h4>{{__('BILL_PROPOSER')}}</h4>
-                <div class="bill-meta-proposer__inner">
-                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposer.id + '.jpg')}}"><a href="{{mklink('deputy', proposer)}}">{{proposer.name[locale]}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</a>
-                </div>
+                <a class="bill-meta-proposer__inner" href="{{mklink('deputy', proposer)}}">
+                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposer.id + '.jpg')}}"><span>{{proposer.name[locale]}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>
+                </a>
             </div>
             <div class="col s4 bill-meta-voting-date">
                 <h4>{{__('BILL_VOTING_DATE')}}</h4>
