@@ -16,7 +16,7 @@
             <div class="col s4 bill-meta-proposer">
                 <h4>{{__('BILL_PROPOSER')}}</h4>
                 <a class="bill-meta-proposer__inner avatar-table at--mid-8" href="{{mklink('deputy', proposer)}}">
-                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposer.id + '.jpg')}}">
+                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposer.id + '.jpg')}}" alt="{{proposer.name[locale]}}">
                     <span>{{proposer.name[locale]}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>
                 </a>
             </div>
@@ -106,7 +106,7 @@
                 {% for deputy in deputiesList %}
                     <li>
                         <a class="avatar-table at--mid-12" href="{{mklink('deputy', deputy)}}">
-                            <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
+                            <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}" alt="{{deputy.name[locale]}}">
                             <span>{{deputy.name[locale]}}</span>
                         </a>
                     </li>
