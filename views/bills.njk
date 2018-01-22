@@ -20,8 +20,9 @@
                         <td><a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a></td>
                         <td class="col-proposer">
                             {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
-                            <a href="{{mklink('deputy', proposerDeputy)}}">
-                                <img src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}"><span>{{proposerDeputy.name[locale]}}</span>
+                            <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">
+                                <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}">
+                                <span>{{proposerDeputy.name[locale]}}</span>
                             </a>
                         </td>
                         <td>{{bill.date | dateFormat}}</td>

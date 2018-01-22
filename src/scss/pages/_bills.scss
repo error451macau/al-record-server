@@ -11,24 +11,11 @@
 
     .col-proposer {
         white-space: nowrap;
+        padding-top: 15px;
+        padding-bottom: 15px;
         
         a {
             position: relative;
-        }
-
-        img {
-            position: absolute;
-            vertical-align: middle;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            left: 0;
-            top: 50%;
-            transform: translate(0, -50%);
-        }
-
-        span {
-            margin-left: (30px + 8px);
         }
     }
 

@@ -15,8 +15,9 @@
             {% set proposer = deputiesDict[bill.proposerDeputyId] %}
             <div class="col s4 bill-meta-proposer">
                 <h4>{{__('BILL_PROPOSER')}}</h4>
-                <a class="bill-meta-proposer__inner" href="{{mklink('deputy', proposer)}}">
-                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposer.id + '.jpg')}}"><span>{{proposer.name[locale]}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>
+                <a class="bill-meta-proposer__inner avatar-table at--mid-8" href="{{mklink('deputy', proposer)}}">
+                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposer.id + '.jpg')}}">
+                    <span>{{proposer.name[locale]}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>
                 </a>
             </div>
             <div class="col s4 bill-meta-voting-date">
@@ -104,8 +105,9 @@
             {% macro renderBillVoteDetailColumn(deputiesList) %}
                 {% for deputy in deputiesList %}
                     <li>
-                        <a href="{{mklink('deputy', deputy)}}">
-                            <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}"><span>{{deputy.name[locale]}}</span>
+                        <a class="avatar-table at--mid-12" href="{{mklink('deputy', deputy)}}">
+                            <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}">
+                            <span>{{deputy.name[locale]}}</span>
                         </a>
                     </li>
                 {% endfor %}

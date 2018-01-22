@@ -1,40 +1,25 @@
 .deputy-card {
-    padding: 11px;
     border: 1px solid $theme-border-grey;
-    transition: border-color 0.1s linear;
-    color: $off-black;
-    cursor: pointer;
+    transition: border-color 0.1s linear, box-shadow 0.1s linear;
     border-radius: 4px;
 
-    &:hover {
-        padding: 10px;
-        border-width: 2px;
-    }
-
-    img {
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        margin-right: 12px;
-        vertical-align: middle;
-    }
-
-    .deputy-card__name {
-        display: inline-block;
-        vertical-align: middle;
-        max-width: calc( 100% - 60px ); // 44px image + 12px margin-righjt + 4px of space
-        line-height: (18px / 15px);
+    .avatar-table {
+        padding: 11px;
+        width: 100%;
     }
 
     &.deputy-card--direct:hover {
+        box-shadow: 0 0 0 1px $color-method-d inset;
         border-color: $color-method-d;
     }
 
     &.deputy-card--indirect:hover {
+        box-shadow: 0 0 0 1px $color-method-i inset;
         border-color: $color-method-i;
     }
 
     &.deputy-card--appointed:hover {
+        box-shadow: 0 0 0 1px $color-method-a inset;
         border-color: $color-method-a;
     }
 }

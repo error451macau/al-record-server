@@ -18,17 +18,7 @@
 }
 
 .bill-meta-proposer__inner {
-    display: table;
     margin-top: 8px;
-
-    img {
-        display: table-cell;
-    }
-
-    span {
-        display: table-cell;
-        padding-left: 8px;
-    }
 }
 
 .bill-meta-voting-date__inner {
@@ -168,18 +158,8 @@
                 margin-top: 10px;
             }
 
-            a {
-                display: table;
-            }
-
-            img,
-            span {
-                display: table-cell;
-            }
-
             span {
                 line-height: (18px / 15px);
-                padding-left: 10px;
             }
         }
 
