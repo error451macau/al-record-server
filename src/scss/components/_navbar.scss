@@ -10,6 +10,19 @@ nav {
             vertical-align: middle;
         }
     }
+
+    ul {
+        li.active,
+        a:hover {
+            background-color: transparent;
+        }
+
+        li.active a,
+        a:hover {
+            transition: color 0.1s linear;
+            color: $theme-light-purple;
+        }
+    }
 }
 
 @media #{$large-and-up} {
