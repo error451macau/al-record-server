@@ -17,7 +17,7 @@
             <tbody>
                 {% for bill in bills %}
                     <tr>
-                        <td><a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a></td>
+                        <td class="col-title"><a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a></td>
                         <td class="col-proposer">
                             {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
                             <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">

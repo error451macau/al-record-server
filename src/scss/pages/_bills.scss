@@ -8,6 +8,10 @@
         border-left: 1px solid $theme-border-grey;
         border-right: 1px solid $theme-border-grey;
     }
+    
+    .col-title {
+        width: 50%;
+    }
 
     .col-proposer {
         white-space: nowrap;
