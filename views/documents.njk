@@ -30,7 +30,7 @@
                         <td>{{document.date | dateFormat}}</td>
                         <td class="col-download">
                             {% if document.originalUrl %}<a class="button button--green" target="_blank" href="{{document.originalUrl}}">{{__('DOWNLOAD_LINKS_ORIGINAL')}}</a>{% endif %}
-                            {%- if document.files[0].filename %}<a class="button button--purple" target="_blank" href="{{mklink('uploads', document.files[0].filename)}}">{{__('DOWNLOAD_LINKS_BACKUP')}}</a>{% endif %}
+                            {%- if document.files[0].filename %}<a class="button button--light-purple" target="_blank" href="{{mklink('uploads', document.files[0].filename)}}">{{__('DOWNLOAD_LINKS_BACKUP')}}</a>{% endif %}
                         </td>
                     </tr>
                 {% endfor %}
