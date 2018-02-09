@@ -110,9 +110,27 @@
             left: -21px;
         }
     }
+
+    .col-vote {
+        width: 20%;
+    }
+
+    .col-bar {
+        width: 50%;
+    }
+
+    .col-count {
+        width: 10%;
+        text-align: center;
+    }
+
     .bar {
         width: calc( 100% - 4.2em );
         vertical-align: middle;
+    }
+
+    .bar__segment {
+        height: 12px;
     }
 
     .percentage {
