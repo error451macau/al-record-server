@@ -113,12 +113,24 @@
 
     .title {
         display: inline-block;
-        width: 76%;
-        vertical-align: top;
+        width: 80%; // average
     }
 
     .vote {
-        margin-left: 12%;
-        vertical-align: top;
+        float: right;
+    }
+}
+
+@media #{$medium-and-down} {
+    .deputy-voted {
+        margin-top: 30px;
+    }
+}
+
+@media #{$large-and-up} {
+    .deputy-voted {
+        .collection-item {
+            padding-right: 20px;
+        }
     }
 }
