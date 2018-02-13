@@ -5,31 +5,33 @@
 {% block body %}
     <div class="bills container">
         <h1 class="center-align">{{__('BILLS_PAGE_TITLE')}}</h1>
-        <table class="highlight striped bordered">
-            <thead>
-                <tr>
-                    <th>{{__('BILL_TITLE')}}</th>
-                    <th>{{__('BILL_PROPOSER')}}</th>
-                    <th class="col-voting-date">{{__('BILL_VOTING_DATE')}}</th>
-                    <th class="col-result">{{__('BILL_RESULT')}}</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="table">
+            <div class="thead">
+                <div class="tr">
+                    <div class="th col-title">{{__('SIXTH_LEGCO')}}</div>
+                    <div class="th col-proposer">{{__('BILL_PROPOSER')}}</div>
+                    <div class="th col-voting-date">{{__('BILL_VOTING_DATE')}}</div>
+                    <div class="th col-result">{{__('BILL_RESULT')}}</div>
+                </div>
+            </div>
+            <div class="tbody">
                 {% for bill in bills %}
-                    <tr>
-                        <td class="col-title"><a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a></td>
-                        <td class="col-proposer">
+                    <div class="tr">
+                        <div class="td col-title"><a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a></div>
+                        <div class="td col-proposer">
                             {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
-                            <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">
-                                <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}" alt="{{proposerDeputy.name[locale]}}">
-                                <span>{{proposerDeputy.name[locale]}}</span>
-                            </a>
-                        </td>
-                        <td>{{bill.date | dateFormat}}</td>
-                        <td class="result-{{bill.result | lower}}">{{__('BILL_RESULT_' + bill.result)}}</td>
-                    </tr>
+                            {% if proposerDeputy %}
+                                <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">
+                                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}" alt="{{proposerDeputy.name[locale]}}">
+                                    <span>{{proposerDeputy.name[locale]}}</span>
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="td col-voting-date">{{bill.date | dateFormat}}</div>
+                        <div class="td col-result result-{{bill.result | lower}}">{{__('BILL_RESULT_' + bill.result)}}</div>
+                    </div>
                 {% endfor %}
-            </tbody>
-        </table>
+            </div>
+        </div>
     </div>
 {% endblock %}

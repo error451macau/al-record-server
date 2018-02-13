@@ -1,33 +1,74 @@
 .bills {
-    table {
+    .table {
         line-height: (22px / 15px);
         margin-top: 36px;
     }
+}
 
-    tbody {
-        border-left: 1px solid $theme-border-grey;
-        border-right: 1px solid $theme-border-grey;
-    }
-    
-    .col-title {
-        width: 50%;
-    }
-
-    .col-proposer {
-        white-space: nowrap;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        
-        a {
-            position: relative;
+@media #{$ml-and-up} {
+    .bills {
+        .table {
+            width: 100%;
         }
-    }
 
-    .col-voting-date {
-        width: 10em;
-    }
+        .tbody {
+            border: 1px solid $theme-border-grey;
+            border-radius: 4px;
+        }
 
-    .col-result {
-        width: 7.5em;
+        .tr {
+            @include clearFloat;
+        }
+
+        .th {
+            float: left;
+            vertical-align: middle;
+            padding: 10px 15px;
+            font-weight: bold;
+        }
+
+        .td {
+            float: left;
+            vertical-align: top;
+            padding: 19px 15px;
+        }
+
+        .tbody {
+            .tr {
+                &:nth-child(odd) {
+                    background-color: $table-striped-color;
+                }
+
+                &:not(:first-child) {
+                    border-top: 1px solid $theme-border-grey;
+                }
+            }
+        }
+
+        .col-title {
+            width: 50%;
+        }
+
+        .col-proposer {
+            width: calc(50% - 17.5em);
+        }
+
+        .col-voting-date {
+            width: 10em;
+        }
+
+        .col-result {
+            width: 7.5em;
+        }
+
+        .td.col-proposer {
+            white-space: nowrap;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            
+            a {
+                position: relative;
+            }
+        }
     }
 }
