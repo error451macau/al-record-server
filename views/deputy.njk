@@ -3,87 +3,91 @@
 {% block title %}{{deputy.name[locale]}}{% endblock %}
 
 {% block body %}
-    <div class="container row deputy">
-        <div class="col xs12">
-            <div class="deputy-head">
-                <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}" alt="{{deputy.name[locale]}}">
-                <div>
-                    <h1>{{deputy.name[locale]}}</h1>
-                    <span>{{__('DEPUTY_METHOD_LONG_' + deputy.electedMethod)}}</span>
+    <div class="container deputy">
+        <div class="row">
+            <div class="col xs12">
+                <div class="deputy-head">
+                    <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.id + '.jpg')}}" alt="{{deputy.name[locale]}}">
+                    <div>
+                        <h1>{{deputy.name[locale]}}</h1>
+                        <span>{{__('DEPUTY_METHOD_LONG_' + deputy.electedMethod)}}</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col xs12 ml6 l4">
-            <div class="deputy-info__block deputy-info__block--top">
-                <dl>
-                    <dt>{{__('DEPUTY_QUALIFICATION')}}</dt>
-                    <dd>{{deputy.qualifications[locale]}}</dd>
-                    <dt>{{__('DEPUTY_JOB')}}</dt>
-                    <dd>{{deputy.job[locale]}}</dd>
-                </dl>
-            </div>
-            <div class="deputy-info__block deputy-info__block--properties">
-                <h4>{{__('DEPUTY_PROPERTY')}}</h4>
-                <ul>
-                    <li>
-                        <span>{{__('DEPUTY_PROPERTY_RESIDENTIAL')}}</span>
-                        <span class="right">{{deputy.property.residentialCount}}</span>
-                    </li>
-                    <li>
-                        <span>{{__('DEPUTY_PROPERTY_BUSINESS')}}</span>
-                        <span class="right">{{deputy.property.businessCount}}</span>
-                    </li>
-                    <li>
-                        <span>{{__('DEPUTY_PROPERTY_PARKINGSLOT')}}</span>
-                        <span class="right">{{deputy.property.parkingSlotCount}}</span>
-                    </li>
-                    <li>
-                        <span>{{__('DEPUTY_PROPERTY_LAND')}}</span>
-                        <span class="right">{{deputy.property.landCount}}</span>
-                    </li>
-                    <li>
-                        <span>{{__('DEPUTY_PROPERTY_COMPANY')}}</span>
-                        <span class="right">{{deputy.property.companyCount}}</span>
-                    </li>
-                    <li>
-                        <span>{{__('DEPUTY_PROPERTY_NGO')}}</span>
-                        <span class="right">{{deputy.property.ngoCount}}</span>
-                    </li>
-                <ul>
-            </div>
-            <div class="deputy-info__block deputy-info__block--office">
-                <h4>{{__('DEPUTY_PROPERTY')}}</h4>
-                <dl>
-                    {% if deputy.contact.address %}
-                        <dt>{{__('DEPUTY_CONTACT_ADDRESS')}}</dt>
-                        <dd>{{deputy.contact.address[locale]}}</dd>
-                    {% endif %}
-                    {% if deputy.contact.phone %}
-                        <dt>{{__('DEPUTY_CONTACT_PHONE')}}</dt>
-                        <dd>{{deputy.contact.phone}}</dd>
-                    {% endif %}
-                    {% if deputy.contact.wesite %}
-                        <dt>{{__('DEPUTY_CONTACT_WEBSITE')}}</dt>
-                        <dd><a href="{{deputy.contact.wesite}}" target="_blank">{{deputy.contact.wesite}}</a></dd>
-                    {% endif %}
-                    {% if deputy.contact.email %}
-                        <dt>{{__('DEPUTY_CONTACT_EMAIL')}}</dt>
-                        <dd><a href="mailto:{{deputy.contact.email}}">{{deputy.contact.email}}</a></dd>
-                    {% endif %}
-                </dl>
-            </div>
-        </div>
-        <div class="col xs12 ml6 l8">
-            <div class="deputy-voted">
-                <h4>{{__('DEPUTY_VOTED')}}</h4>
-                <ul class="collection">
-                    {% for bill in latestBills %}
-                        <li class="collection-item">
-                            <a class="title" href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a>
-                            <a class="vote vote-{{bill.theirVote | lower}}">{{__('VOTE_' + bill.theirVote)}}</a>
+        <div class="row">
+            <div class="col xs12 ml6 l4">
+                <div class="deputy-info__block deputy-info__block--top">
+                    <dl>
+                        <dt>{{__('DEPUTY_QUALIFICATION')}}</dt>
+                        <dd>{{deputy.qualifications[locale]}}</dd>
+                        <dt>{{__('DEPUTY_JOB')}}</dt>
+                        <dd>{{deputy.job[locale]}}</dd>
+                    </dl>
+                </div>
+                <div class="deputy-info__block deputy-info__block--properties">
+                    <h4>{{__('DEPUTY_PROPERTY')}}</h4>
+                    <ul>
+                        <li>
+                            <span>{{__('DEPUTY_PROPERTY_RESIDENTIAL')}}</span>
+                            <span class="right">{{deputy.property.residentialCount}}</span>
                         </li>
-                    {% endfor %}
-                </ul>
+                        <li>
+                            <span>{{__('DEPUTY_PROPERTY_BUSINESS')}}</span>
+                            <span class="right">{{deputy.property.businessCount}}</span>
+                        </li>
+                        <li>
+                            <span>{{__('DEPUTY_PROPERTY_PARKINGSLOT')}}</span>
+                            <span class="right">{{deputy.property.parkingSlotCount}}</span>
+                        </li>
+                        <li>
+                            <span>{{__('DEPUTY_PROPERTY_LAND')}}</span>
+                            <span class="right">{{deputy.property.landCount}}</span>
+                        </li>
+                        <li>
+                            <span>{{__('DEPUTY_PROPERTY_COMPANY')}}</span>
+                            <span class="right">{{deputy.property.companyCount}}</span>
+                        </li>
+                        <li>
+                            <span>{{__('DEPUTY_PROPERTY_NGO')}}</span>
+                            <span class="right">{{deputy.property.ngoCount}}</span>
+                        </li>
+                    <ul>
+                </div>
+                <div class="deputy-info__block deputy-info__block--office">
+                    <h4>{{__('DEPUTY_PROPERTY')}}</h4>
+                    <dl>
+                        {% if deputy.contact.address %}
+                            <dt>{{__('DEPUTY_CONTACT_ADDRESS')}}</dt>
+                            <dd>{{deputy.contact.address[locale]}}</dd>
+                        {% endif %}
+                        {% if deputy.contact.phone %}
+                            <dt>{{__('DEPUTY_CONTACT_PHONE')}}</dt>
+                            <dd>{{deputy.contact.phone}}</dd>
+                        {% endif %}
+                        {% if deputy.contact.wesite %}
+                            <dt>{{__('DEPUTY_CONTACT_WEBSITE')}}</dt>
+                            <dd><a href="{{deputy.contact.wesite}}" target="_blank">{{deputy.contact.wesite}}</a></dd>
+                        {% endif %}
+                        {% if deputy.contact.email %}
+                            <dt>{{__('DEPUTY_CONTACT_EMAIL')}}</dt>
+                            <dd><a href="mailto:{{deputy.contact.email}}">{{deputy.contact.email}}</a></dd>
+                        {% endif %}
+                    </dl>
+                </div>
+            </div>
+            <div class="col xs12 ml6 l8">
+                <div class="deputy-voted">
+                    <h4>{{__('DEPUTY_VOTED')}}</h4>
+                    <ul class="collection">
+                        {% for bill in latestBills %}
+                            <li class="collection-item">
+                                <a class="title" href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a>
+                                <a class="vote vote-{{bill.theirVote | lower}}">{{__('VOTE_' + bill.theirVote)}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
