@@ -32,9 +32,8 @@
                         <td class="col-voting-date" data-title="{{__('BILL_VOTING_DATE')}}">
                             <span>{{bill.date | dateFormat}}</span>
                         </td>
-                        <td class="col-result result-{{bill.result | lower}}" data-title="{{__('BILL_RESULT')}}">
-                            <span class="normal">{{__('BILL_RESULT_' + bill.result)}}</span>
-                            <span class="short">{{__('BILL_RESULT_' + bill.result + '_SHORT')}}</span>
+                        <td class="col-result result-{{bill.result | lower}}" data-title="{{__('BILL_RESULT')}}" data-trans-ml="{{__('BILL_RESULT_' + bill.result + '_SHORT')}}">
+                            <span>{{__('BILL_RESULT_' + bill.result)}}</span>
                         </td>
                     </tr>
                 {% endfor %}

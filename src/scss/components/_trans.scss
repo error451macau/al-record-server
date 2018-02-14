@@ -1,0 +1,83 @@
+@media #{$xs-only} {
+    [data-trans-xs] {
+        &::after {
+            content: attr(data-trans-xs);
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+@media #{$small-only} {
+    [data-trans-s] {
+        &::after {
+            content: attr(data-trans-s);
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+@media #{$medium-only} {
+    [data-trans-m] {
+        &::after {
+            content: attr(data-trans-m);
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+@media #{$ml-only} {
+    [data-trans-ml] {
+        &::after {
+            content: attr(data-trans-ml);
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+@media #{$large-only} {
+    [data-trans-l] {
+        &::after {
+            content: attr(data-trans-l);
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+@media #{$extra-large-only} {
+    [data-trans-xl] {
+        &::after {
+            content: attr(data-trans-xl);
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+@media #{$xxl-only} {
+    [data-trans-xxl] {
+        &::after {
+            content: attr(data-trans-xxl);
+        }
+
+        span {
+            display: none;
+        }
+    }
+}

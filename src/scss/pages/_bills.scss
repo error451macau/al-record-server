@@ -14,12 +14,6 @@
     th.col-result {
         display: none;
     }
-
-    td.col-result {
-        .short {
-            display: none;
-        }
-    }
 }
 
 // table-ize
@@ -68,14 +62,6 @@
     .bills {
         td.col-result {
             text-align: right;
-
-            .short {
-                display: inline;
-            }
-
-            .normal {
-                display: none;
-            }
         }
     }
 }
