@@ -5,20 +5,22 @@
 {% block body %}
     <div class="bills container">
         <h1 class="center-align">{{__('BILLS_PAGE_TITLE')}}</h1>
-        <div class="table">
-            <div class="thead">
-                <div class="tr">
-                    <div class="th col-title">{{__('SIXTH_LEGCO')}}</div>
-                    <div class="th col-proposer">{{__('BILL_PROPOSER')}}</div>
-                    <div class="th col-voting-date">{{__('BILL_VOTING_DATE')}}</div>
-                    <div class="th col-result">{{__('BILL_RESULT')}}</div>
-                </div>
-            </div>
-            <div class="tbody">
+        <table class="highlight striped bordered">
+            <thead>
+                <tr>
+                    <th class="col-title">{{__('SIXTH_LEGCO')}}</th>
+                    <th class="col-proposer">{{__('BILL_PROPOSER')}}</th>
+                    <th class="col-voting-date">{{__('BILL_VOTING_DATE')}}</th>
+                    <th class="col-result">{{__('BILL_RESULT')}}</th>
+                </tr>
+            </thead>
+            <tbody>
                 {% for bill in bills %}
-                    <div class="tr">
-                        <div class="td col-title"><a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a></div>
-                        <div class="td col-proposer">
+                    <tr>
+                        <td class="col-title">
+                            <a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a>
+                        </td>
+                        <td class="col-proposer" data-title="{{__('BILL_PROPOSER')}}">
                             {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
                             {% if proposerDeputy %}
                                 <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">
@@ -26,12 +28,17 @@
                                     <span>{{proposerDeputy.name[locale]}}</span>
                                 </a>
                             {% endif %}
-                        </div>
-                        <div class="td col-voting-date">{{bill.date | dateFormat}}</div>
-                        <div class="td col-result result-{{bill.result | lower}}">{{__('BILL_RESULT_' + bill.result)}}</div>
-                    </div>
+                        </td>
+                        <td class="col-voting-date" data-title="{{__('BILL_VOTING_DATE')}}">
+                            <span>{{bill.date | dateFormat}}</span>
+                        </td>
+                        <td class="col-result result-{{bill.result | lower}}" data-title="{{__('BILL_RESULT')}}">
+                            <span class="normal">{{__('BILL_RESULT_' + bill.result)}}</span>
+                            <span class="short">{{__('BILL_RESULT_' + bill.result + '_SHORT')}}</span>
+                        </td>
+                    </tr>
                 {% endfor %}
-            </div>
-        </div>
+            </tbody>
+        </table>
     </div>
 {% endblock %}

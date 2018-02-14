@@ -1,73 +1,176 @@
 .bills {
-    .table {
+    table {
         line-height: (22px / 15px);
         margin-top: 36px;
     }
+
+    tbody {	
+        border-left: 1px solid $theme-border-grey;
+        border-right: 1px solid $theme-border-grey;
+    }
+
+    th.col-proposer,
+    th.col-voting-date,
+    th.col-result {
+        display: none;
+    }
+
+    td.col-result {
+        .short {
+            display: none;
+        }
+    }
 }
 
+// table-ize
 @media #{$ml-and-up} {
     .bills {
-        .table {
-            width: 100%;
+        th {
+            padding: 10px 0;
         }
-
-        .tbody {
-            border: 1px solid $theme-border-grey;
-            border-radius: 4px;
-        }
-
-        .tr {
-            @include clearFloat;
-        }
-
-        .th {
-            float: left;
-            vertical-align: middle;
-            padding: 10px 15px;
-            font-weight: bold;
-        }
-
-        .td {
-            float: left;
-            vertical-align: top;
-            padding: 19px 15px;
-        }
-
-        .tbody {
-            .tr {
-                &:nth-child(odd) {
-                    background-color: $table-striped-color;
-                }
-
-                &:not(:first-child) {
-                    border-top: 1px solid $theme-border-grey;
-                }
-            }
+        
+        td {
+            padding: 19px 0;
         }
 
         .col-title {
             width: 50%;
+            padding-left: 15px;
         }
 
         .col-proposer {
-            width: calc(50% - 17.5em);
+            width: 26%;
         }
 
         .col-voting-date {
-            width: 10em;
+            width: 14%;
         }
 
         .col-result {
-            width: 7.5em;
+            width: 10%;
+            padding-right: 15px;
         }
 
-        .td.col-proposer {
+        td.col-proposer {
             white-space: nowrap;
             padding-top: 15px;
             padding-bottom: 15px;
             
             a {
                 position: relative;
+            }
+        }
+    }
+}
+
+// table variance
+@media #{$ml-only} {
+    .bills {
+        td.col-result {
+            text-align: right;
+
+            .short {
+                display: inline;
+            }
+
+            .normal {
+                display: none;
+            }
+        }
+    }
+}
+
+// table variance
+@media #{$large-and-up} {
+    .bills {
+        th.col-proposer,
+        th.col-voting-date,
+        th.col-result {
+            display: table-cell;
+        }
+    }
+}
+
+@media #{$medium-and-down} {
+    .bills {
+        // basic table style override
+        table,
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+            display: block;
+        }
+
+        thead,
+        thead tr {
+            border-bottom: 0 !important;
+        }
+        
+        tbody {
+            border: 1px solid $theme-border-grey;
+            border-radius: 4px;
+
+            tr:first-child {
+                border-radius: 4px 4px 0 0;
+            }
+
+            tr:last-child {
+                border-bottom: 0 !important;
+                border-radius: 0 0 4px 4px;
+            }
+        }
+
+        // actual style
+        tbody tr {
+            padding: 19px 15px;
+        }
+
+        td.col-title,
+        td.col-proposer,
+        td.col-voting-date,
+        td.col-result {
+            padding: 0;
+        }
+
+        td.col-proposer,
+        td.col-voting-date,
+        td.col-result {
+            &::before {
+                content: attr(data-title);
+                color: $theme-black-text;
+                display: inline-block;
+                font-weight: bold;
+                width: 92px; // design is 86px
+            }
+        }
+
+        td.col-proposer {
+            position: relative;
+            margin-top: 22px;
+        }
+
+        td.col-voting-date,
+        td.col-result {
+            margin-top: 5px;
+        }
+
+        .avatar-table {
+            display: inline-block;
+
+            img {
+                display: block;
+                position: absolute;
+                right: 13px;
+                top: 50%;
+                transform: translate(0, -50%);
+            }
+
+            span {
+                display: inline;
+                padding-left: 0;
+                vertical-align: baseline;
             }
         }
     }
