@@ -38,11 +38,19 @@
     font-weight: bold;
 
     &.bill-meta-result__inner--y {
-        background-color: $theme-green;
+        background-color: $color-result-y;
     }
 
     &.bill-meta-result__inner--n {
-        background-color: $theme-orange;
+        background-color: $color-result-n;
+    }
+
+    &.bill-meta-result__inner--p {
+        background-color: $color-result-p;
+    }
+
+    &.bill-meta-result__inner--w {
+        background-color: $color-result-w;
     }
 }
 
