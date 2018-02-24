@@ -14,6 +14,12 @@
     th.col-result {
         display: none;
     }
+
+    td.col-proposer {
+        .avatar-table:not(:first-child) {
+            margin-top: 5px;
+        }
+    }
 }
 
 // table-ize
@@ -123,6 +129,9 @@
         td.col-proposer,
         td.col-voting-date,
         td.col-result {
+            display: flex;
+            width: 100%;
+
             &::before {
                 content: attr(data-title);
                 color: $theme-black-text;
@@ -130,10 +139,14 @@
                 font-weight: bold;
                 width: 92px; // design is 86px
             }
+
+            & > span {
+                position: relative;
+                flex-grow: 1;
+            }
         }
 
         td.col-proposer {
-            position: relative;
             margin-top: 22px;
         }
 
@@ -143,20 +156,46 @@
         }
 
         .avatar-table {
-            display: inline-block;
+            display: block;
 
             img {
                 display: block;
                 position: absolute;
-                right: 13px;
-                top: 50%;
-                transform: translate(0, -50%);
+                right: 0
             }
 
             span {
                 display: inline;
                 padding-left: 0;
                 vertical-align: baseline;
+            }
+
+            // 6 proposer should be always sufficient
+            // each is 35px apart top-to-top
+            // (30px img height + 5px margin)
+
+            &:nth-child(1) img {
+                top: -5px;
+            }
+
+            &:nth-child(2) img {
+                top: 30px;
+            }
+
+            &:nth-child(3) img {
+                top: 65px;
+            }
+
+            &:nth-child(4) img {
+                top: 100px;
+            }
+
+            &:nth-child(5) img {
+                top: 135px;
+            }
+
+            &:nth-child(6) img {
+                top: 170px;
             }
         }
     }

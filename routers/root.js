@@ -63,9 +63,9 @@ router.get('/bills', function(req, res, next){
     dal.getBills((err, bills) => {
         if(err) return next(err);
 
-        var proposerDeputyIds = _.pluck(bills, 'proposerDeputyId');
+        var proposerDeputiesIds = _.chain(bills).pluck('proposerDeputiesId').flatten(true).uniq().value();
 
-        dal.getDeputiesByIds(proposerDeputyIds, function(err, deputies){
+        dal.getDeputiesByIds(proposerDeputiesIds, function(err, deputies){
             if(err) return next(err);
             
             res.render('bills.njk', {

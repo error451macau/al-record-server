@@ -21,13 +21,22 @@
                             <a href="{{mklink('bill', bill)}}">{{bill.title[locale]}}</a>
                         </td>
                         <td class="col-proposer" data-title="{{__('BILL_PROPOSER')}}">
-                            {% set proposerDeputy = deputiesDict[bill.proposerDeputyId] %}
-                            {% if proposerDeputy %}
-                                <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">
-                                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}" alt="{{proposerDeputy.name[locale]}}">
-                                    <span>{{proposerDeputy.name[locale]}}</span>
-                                </a>
-                            {% endif %}
+                            <span>
+                                {% if bill.proposedByGovernment %}
+                                    <a class="avatar-table at--mid-8">
+                                        <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/government.jpg')}}" alt="">
+                                        <span>{{__('GOVERNMENT')}}</span>
+                                    </a>
+                                {% elif bill.proposerDeputiesId %}
+                                    {% for proposerDeputyId in bill.proposerDeputiesId %}
+                                        {% set proposerDeputy = deputiesDict[proposerDeputyId] %}
+                                        <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">
+                                            <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}" alt="{{proposerDeputy.name[locale]}}">
+                                            <span>{{proposerDeputy.name[locale]}}</span>
+                                        </a>
+                                    {% endfor %}
+                                {% endif %}
+                            </span>
                         </td>
                         <td class="col-voting-date" data-title="{{__('BILL_VOTING_DATE')}}">
                             <span>{{bill.date | dateFormat}}</span>
