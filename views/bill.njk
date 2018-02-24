@@ -12,13 +12,24 @@
     <div class="bill container clear-margin">
         <h1>{{bill.title[locale]}}{{a}}</h1>
         <section class="row bill-meta">
-            {% set proposer = deputiesDict[bill.proposerDeputyId] %}
             <div class="col s4 bill-meta-proposer">
                 <h4>{{__('BILL_PROPOSER')}}</h4>
-                <a class="bill-meta-proposer__inner avatar-table at--mid-8" href="{{mklink('deputy', proposer)}}">
-                    <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposer.id + '.jpg')}}" alt="{{proposer.name[locale]}}">
-                    <span>{{proposer.name[locale]}} ({{__('DEPUTY_METHOD_SHORT_' + proposer.electedMethod)}})</span>
-                </a>
+                <div class="bill-meta-proposer__inner">
+                    {% if bill.proposedByGovernment %}
+                        <a class="avatar-table at--mid-8">
+                            <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/government.jpg')}}" alt="">
+                            <span>{{__('GOVERNMENT')}}</span>
+                        </a>
+                    {% elif bill.proposerDeputiesId %}
+                        {% for proposerDeputyId in bill.proposerDeputiesId %}
+                            {% set proposerDeputy = deputiesDict[proposerDeputyId] %}
+                            <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">
+                                <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}" alt="{{proposerDeputy.name[locale]}}">
+                                <span>{{proposerDeputy.name[locale]}}</span>
+                            </a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
             <div class="col s4 bill-meta-voting-date">
                 <h4>{{__('BILL_VOTING_DATE')}}</h4>

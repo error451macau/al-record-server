@@ -81,7 +81,10 @@ router.get('/bills/:id/:slug', function(req, res, next){
         if(err) return next(err);
         if(!bill) return res.status(404).end();
         
-        var relatedDeputyIds = _.pluck(bill.deputyVotes, 'deputyId').concat(bill.proposerDeputyId);
+        var relatedDeputyIds = _.union(
+            _.pluck(bill.deputyVotes, 'deputyId'),
+            bill.proposerDeputiesId
+        );
 
         async.parallel({
             deputies: callback => {
