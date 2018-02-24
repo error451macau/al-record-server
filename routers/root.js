@@ -97,7 +97,7 @@ router.get('/bills/:id/:slug', function(req, res, next){
             if(err) return next(err);
 
             var deputiesDict  = _.indexBy(results.deputies, 'id');
-            var documentsDict = _.indexBy(results.documents, 'id');
+            var documents     = results.documents;
 
             // generate voteSummary / statistics
             var voteSummary = {}; // {Y: 10, N: 5, appointedY: 1, directN: 2, APercent: 57, ...}
@@ -141,7 +141,7 @@ router.get('/bills/:id/:slug', function(req, res, next){
                 voteSummary,
                 deputiesDict,
                 deputiesGrouped,
-                documentsDict,
+                documents,
             });
         });
     })

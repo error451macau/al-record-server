@@ -191,14 +191,35 @@
 }
 
 .bill-documents {
-    margin-top: 40px;
+    position: relative;
+    margin-top: 50px;
+    padding-top: 35px;
 
-    .content-highlight {
-        margin-top: 12px;
+    &::before { // backdrop
+        content: '';
+        width: 20000px;
+        height: calc(100% + 100px); // container margin-bottom
+        top: 0;
+        left: -10000px;
+        position: absolute;
+        background-color: $theme-bg-grey;
+        z-index: -1;
     }
 
-    ul.content-highlight {
-        padding: 0;
+    h2 {
+        font-size: rem(25px);
+    }
+
+    .documents-table {
+        margin-top: 35px;
+
+        thead {
+            display: none;
+        }
+
+        tbody {
+            border-top: 1px solid $theme-border-grey;
+        }
     }
 }
 

@@ -9,6 +9,7 @@
 body {
     // font-family: -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif;
     font-family: 'San Francisco', Helvetica, Arial, -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif;
+    overflow-x: hidden;
 }
 
 body > .container {
@@ -52,13 +53,11 @@ td {
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    line-height: 1.35; // based on h1 60/44 and h4 33/25
 }
-h1 {
-    line-height: (60px / 44px);
+h1,
+h2 {
     font-family: 'Playfair Display', serif;
-}
-h4 {
-    line-height: (26px / 22px);
 }
 
 .bigger {

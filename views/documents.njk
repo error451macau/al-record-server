@@ -4,39 +4,7 @@
 
 {% block body %}
     <div class="documents container">
-        {# <div class="clear-margin">
-            <h2 class="center-align">{{__('DOCUMENTS_PAGE_TITLE')}}</h2>
-        </div>
-        <ul class="collection">
-            {% for document in documents %}
-                <li class="collection-item">
-                    {% include "partials/document-desc.njk" %}
-                </li>
-            {% endfor %}
-        </ul> #}
         <h1 class="center-align">{{__('DOCUMENTS_PAGE_TITLE')}}</h1>
-        <table class="highlight striped bordered">
-            <thead>
-                <tr>
-                    <th class="col-title">{{__('NOUN_DOCUMENTS')}}</th>
-                    <th class="col-date" data-trans-ml="{{__('DOCUMENT_DATE_SHORT')}}" data-trans-l="{{__('DOCUMENT_DATE_SHORT')}}"><span>{{__('DOCUMENT_DATE')}}</span></th>
-                    <th class="col-download">{{__('VERB_DOWNLOAD')}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for document in documents %}
-                    <tr>
-                        <td class="col-title">{{document.title[locale]}}</td>
-                        <td class="col-date" data-title="{{__('DOCUMENT_DATE')}}">{{document.date | dateFormat}}</td>
-                        <td class="col-download" data-title="{{__('VERB_DOWNLOAD')}}">
-                            {{-''}}<div>
-                                {% if document.originalUrl %}<a class="button button--green" target="_blank" href="{{document.originalUrl}}">{{__('DOWNLOAD_LINKS_ORIGINAL')}}</a>{% endif %}
-                                {%- if document.files[0].filename %}<a class="button button--light-purple" target="_blank" href="{{mklink('uploads', document.files[0].filename)}}">{{__('DOWNLOAD_LINKS_BACKUP')}}</a>{% endif %}
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% include "partials/documents-table.njk" %}
     </div>
 {% endblock %}

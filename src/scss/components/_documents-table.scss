@@ -1,0 +1,147 @@
+.documents-table {
+    line-height: (22px / 15px);
+
+    tbody {
+        border-left: 1px solid $theme-border-grey;
+        border-right: 1px solid $theme-border-grey;
+    }
+}
+
+// table-ize
+@media #{$ml-and-up} {
+    .documents-table {
+        th {
+            padding: 10px 0;
+        }
+
+        td {
+            padding: 19px 0;
+        }
+
+        .col-title {
+            padding-left: 15px;
+            padding-right: 39px;
+        }
+
+        .col-date {
+            width: 7.2em;
+        }
+    
+        .col-download {
+            width: 250px;
+            padding-right: 15px;
+        }
+
+        td.col-download {
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+            .button:not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+// table variance
+@media #{$large-and-up} {
+    .documents-table {
+        .col-title {
+            padding-right: 55px;
+        }
+    }
+}
+
+// table variance
+@media #{$extra-large-and-up} {
+    .documents-table {
+        .col-title {
+            padding-right: 95px;
+        }
+
+        .col-date {
+            width: 11em;
+        }
+    }
+}
+
+// mobile list layout
+@media #{$medium-and-down} {
+    .documents-table {
+        // basic table style override
+        &,
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+            display: block;
+        }
+
+        thead {
+            display: none;
+        }
+        
+        tbody {
+            border: 1px solid $theme-border-grey;
+            border-radius: 4px;
+
+            tr:first-child {
+                border-radius: 4px 4px 0 0;
+            }
+
+            tr:last-child {
+                border-bottom: 0 !important;
+                border-radius: 0 0 4px 4px;
+            }
+        }
+        
+        tbody tr {
+            padding: 19px 15px;
+        }
+
+        td.col-title,
+        td.col-date,
+        td.col-download {
+            padding: 0;
+        }
+
+        td.col-date,
+        td.col-download {
+            &::before {
+                content: attr(data-title);
+                color: $theme-black-text;
+                display: inline-block;
+                font-weight: bold;
+                width: 50%;
+            }
+        }
+
+        td.col-date {
+            margin-top: 18px;
+
+            &:empty {
+                display: none;
+            }
+        }
+
+        td.col-download {
+            margin-top: 5px;
+
+            div {
+                vertical-align: top;
+                display: inline-block;
+                width: 50%;
+                padding-right: 5px;
+            }
+
+            .button {
+                display: block;
+
+                &:not(:first-child) {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

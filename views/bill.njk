@@ -155,16 +155,9 @@
             </div>
         </section>
         <section class="bill-documents">
-            <h4>{{__('BILL_DOCUMENTS')}}</h4>
+            <h2>{{__('BILL_DOCUMENTS')}}</h2>
             {% if bill.documentIds.length > 0 %}
-                <ul class="content-highlight collection">
-                    {% for documentId in bill.documentIds %}
-                        {% set document = documentsDict[documentId] %}
-                        <li class="collection-item">
-                            {% include "partials/document-desc.njk" %}
-                        </li>
-                    {% endfor %}
-                </ul>
+                {% include "partials/documents-table.njk" %}
             {% else %}
                 <div class="content-highlight">
                     {{__('NONE')}}
