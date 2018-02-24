@@ -24,14 +24,14 @@
                             <span>
                                 {% if bill.proposedByGovernment %}
                                     <a class="avatar-table at--mid-8">
-                                        <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/government.jpg')}}" alt="">
+                                        <img class="avatar avatar--30" src="{{mklink('abs', 'img/government.jpg')}}" alt="">
                                         <span>{{__('GOVERNMENT')}}</span>
                                     </a>
                                 {% elif bill.proposerDeputiesId %}
                                     {% for proposerDeputyId in bill.proposerDeputiesId %}
                                         {% set proposerDeputy = deputiesDict[proposerDeputyId] %}
                                         <a class="avatar-table at--mid-8" href="{{mklink('deputy', proposerDeputy)}}">
-                                            <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposerDeputy.id + '.jpg')}}" alt="{{proposerDeputy.name[locale]}}">
+                                            <img class="avatar avatar--30" src="{{mklink('abs', 'img/deputies/' + proposerDeputy.slug + '-color.jpg')}}" alt="{{proposerDeputy.name[locale]}}">
                                             <span>{{proposerDeputy.name[locale]}}</span>
                                         </a>
                                     {% endfor %}
