@@ -113,13 +113,21 @@
         </section>
         <section class="bill-votes-detail">
             <h4>{{__('BILL_VOTES')}}</h4>
-            {% macro renderBillVoteDetailColumn(deputiesList) %}
+            {% macro renderBillVoteDetailColumn(deputiesList, useWhiteIcon = false) %}
                 {% for deputy in deputiesList %}
                     <li>
-                        <a class="avatar-table at--mid-12" href="{{mklink('deputy', deputy)}}">
-                            <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.slug + '-color.jpg')}}" alt="{{deputy.name[locale]}}">
-                            <span>{{deputy.name[locale]}}</span>
-                        </a>
+                        <div class="avatar-table-wrapper">
+                            <a class="avatar-table at--mid-12" href="{{mklink('deputy', deputy)}}">
+                                <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.slug + '-color.jpg')}}" alt="{{deputy.name[locale]}}">
+                                <span>{{deputy.name[locale]}}</span>
+                            </a>
+                        </div>
+                        {% if deputy.comment[locale] %}
+                            <a class="comment">
+                                <img src="{{mklink('abs', 'img/comment-' + ('white' if useWhiteIcon else 'black') + '.svg')}}" alt="{{__('COMMENT')}}">
+                                <div class="comment-tooltip">{{deputy.comment[locale]}}</div>
+                            </a>
+                        {% endif %}
                     </li>
                 {% endfor %}
             {% endmacro %}
@@ -128,14 +136,14 @@
                     <div class="content-highlight content-highlight--y {{'content-highlight--y-strong' if voteSummary.relativeMax == voteSummary.Y}}">
                         <h5>{{__('VOTE_Y')}}</h5>
                         <span class="summary">{{voteSummary.Y}} {{__('NOUN_VOTES')}} · {{voteYPercent}}%</span>
-                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.Y)}}</ul>
+                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.Y, voteSummary.relativeMax == voteSummary.Y)}}</ul>
                     </div>
                 </div>
                 <div class="col s12 m6 xl3">
                     <div class="content-highlight content-highlight--n {{'content-highlight--n-strong' if voteSummary.relativeMax == voteSummary.N}}">
                         <h5>{{__('VOTE_N')}}</h5>
                         <span class="summary">{{voteSummary.N}} {{__('NOUN_VOTES')}} · {{voteNPercent}}%</span>
-                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.N)}}</ul>
+                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.N, voteSummary.relativeMax == voteSummary.N)}}</ul>
                     </div>
                 </div>
                 <div class="col s12 m6 xl3">

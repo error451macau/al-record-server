@@ -122,7 +122,8 @@ router.get('/bills/:id/:slug', function(req, res, next){
                 .mapObject(function(deputyVotesEntries, vote){ // deputyVotesEntries = [{deputyId: 3, vote: 'Y'}, {deputyId, vote}, ...]
                     return _.chain(deputyVotesEntries)
                         .map(function(deputyVotesEntry){ // {deputyId: 3, vote: 'Y'}
-                            return deputiesDict[deputyVotesEntry.deputyId];
+                            // also attach the original deputyVotesEntry which includes comment
+                            return Object.assign({}, deputiesDict[deputyVotesEntry.deputyId], deputyVotesEntry);
                         })
                         // .tap(console.log) // expect: [{deputy Object}, ...] (NOT SORTED)
                         .sortBy(function(deputy){

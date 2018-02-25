@@ -180,15 +180,38 @@
         }
 
         li {
+            display: table;
+            position: relative;
+            
             &:not(:first-child) {
                 margin-top: 10px;
             }
+        }
 
+        .avatar-table-wrapper {
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+        }
+
+        .avatar-table {
             span {
                 line-height: (18px / 15px);
             }
         }
 
+        .avatar-table-wrapper:hover ~ .comment {
+            .comment-tooltip {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+        .comment {
+            display: table-cell;
+            vertical-align: middle;
+            width: 30px;
+        }
+        
         &.content-highlight--y,
         &.content-highlight--n {
             .summary {
