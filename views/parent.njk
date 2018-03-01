@@ -19,22 +19,26 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
+    <input type="checkbox" id="sidebar-toggler" class="sidebar-toggler" style="display: none" />
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
                 <a href="/{{locale}}/" class="brand-logo"><img src="{{mklink('abs', 'img/logo.' + locale + '.svg')}}" alt="{{__('NAVBAR_TITLE')}}"></a>
+                <label for="sidebar-toggler" class="right hamburger-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
                 <ul class="right">
+                    <li><a href="/{{locale}}/deputies">{{__('NAVBAR_DEPUTIES')}}</a></li>
+                    <li><a href="/{{locale}}/bills">{{__('NAVBAR_BILLS')}}</a></li>
+                    <li><a href="/{{locale}}/documents">{{__('NAVBAR_DOCS')}}</a></li>
                     {% if locale != 'zh' %}
                         <li><a href="/zh{{url}}">{{__('NAVBAR_CHINESE')}}</a></li>
                     {% endif %}
                     {% if locale != 'en' %}
                         <li><a href="/en{{url}}">{{__('NAVBAR_ENGLISH')}}</a></li>
                     {% endif %}
-                </ul>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="/{{locale}}/deputies">{{__('NAVBAR_DEPUTIES')}}</a></li>
-                    <li><a href="/{{locale}}/bills">{{__('NAVBAR_BILLS')}}</a></li>
-                    <li><a href="/{{locale}}/documents">{{__('NAVBAR_DOCS')}}</a></li>
                 </ul>
             </div>
         </nav>
