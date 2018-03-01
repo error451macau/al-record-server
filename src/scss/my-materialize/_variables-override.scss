@@ -39,6 +39,9 @@ $xxl-only: "only screen and (min-width : #{$xl-screen-up})";
 
 // 14. Navigation Bar
 $navbar-height: 70px;
+$navbar-line-height: 70px;
+$navbar-height-mobile: 60px;
+$navbar-line-height-mobile: 60px;
 $navbar-font-color: #323232;
 $navbar-brand-font-size: rem(25px);
 

@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
-@import './materialize';
 @import './_local-variables';
+@import './materialize';
 
 @import './common';
 
-@import './components/navbar';
 @import './components/bar';
 @import './components/legend';
 @import './components/deputy-card';
