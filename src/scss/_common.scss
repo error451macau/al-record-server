@@ -12,6 +12,14 @@ body {
     overflow-x: hidden;
 }
 
+.sans-serif {
+    font-family: 'San Francisco', Helvetica, Arial, -apple-system, 微軟正黑體, "Microsoft JhengHei", 蘋果儷中黑, "Apple LiGothic Medium", "儷黑 Pro", "LiHei Pro Medium", sans-serif !important;
+}
+
+.serif {
+    font-family: 'Playfair Display', serif !important;
+}
+
 body > .container {
     margin-top: 40px;
     margin-bottom: 100px;
