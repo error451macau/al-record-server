@@ -79,7 +79,7 @@ nav {
     span {
       position: absolute;
       width: 100%;
-      background: black;
+      background-color: #000;
       height: 2px;
       right: 0;
       transition: all .2s linear;
@@ -140,6 +140,12 @@ nav {
     ul {
       a {
         color: #fff;
+      }
+    }
+
+    .hamburger-button {
+      span {
+        background-color: #fff;
       }
     }
   }
