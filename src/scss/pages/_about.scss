@@ -1,5 +1,35 @@
 .about {
     .hero-image {
-        height: 100%;
+        position: relative;
+        min-height: 90vh;
+        background-image: url(/img/about-hero.jpg);
+        background-size: cover;
+        background-position: center center;
+        color: #fff;
+        text-align: center;
+
+        .aspect-ratio {
+            content: '';
+            display: block;
+            width: 100%;
+            padding-top: 850px / 1740px * 100%;
+        }
+
+        .inner {
+            position: absolute;
+            top: (106px / 850px * 100%);
+            left: 0;
+            right: 0;
+        }
+        
+        .container {
+            max-width: 520px;
+
+            div {
+                font-size: rem(18px);
+                line-height: 32px / 18px;
+                margin-top: 46px;
+            }
+        }
     }
 }
