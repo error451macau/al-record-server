@@ -16,6 +16,18 @@
         height: 14px;
         top: 1px;
     }
+
+    ul {
+        margin: 0;
+    }
+
+    li {
+        float: left;
+
+        &:not(:first-child) {
+            margin-left: 30px;
+        }
+    }
 }
 
 // hamburgur menu appears
