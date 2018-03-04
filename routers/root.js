@@ -155,4 +155,8 @@ router.get('/documents', function(req, res, next){
     });
 });
 
+router.get('/about', function(req, res, next){
+    res.render('about.njk');
+});
+
 module.exports = router;

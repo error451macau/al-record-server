@@ -1,0 +1,16 @@
+{% extends "parent.njk" %}
+
+{% block title %}{{__('DOCUMENTS_PAGE_TITLE')}}{% endblock %}
+
+{% block body %}
+    <div class="about">
+        <div class="hero-image">
+            <img src="https://casper.ghost.org/v1.0.0/images/blog-cover.jpg">
+        </div>
+    </div>
+    <script>
+        document.querySelector('.navbar-fixed').classList.add('navbar-fixed-0');
+        document.querySelector('.navbar-fixed').classList.add('navbar-transparent');
+        document.querySelector('.navbar-fixed').classList.add('navbar-inverted');
+    </script>
+{% endblock %}
