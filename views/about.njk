@@ -1,6 +1,6 @@
 {% extends "parent.njk" %}
 
-{% block title %}{{__('DOCUMENTS_PAGE_TITLE')}}{% endblock %}
+{% block title %}{{__('ABOUT_PAGE_TITLE')}}{% endblock %}
 
 {% block body %}
     <div class="about">
@@ -36,8 +36,21 @@
         </div>
     </div>
     <script>
-        document.querySelector('.navbar-fixed').classList.add('navbar-fixed-0');
-        document.querySelector('.navbar-fixed').classList.add('navbar-transparent');
-        document.querySelector('.navbar-fixed').classList.add('navbar-inverted');
+        var nwcl = document.querySelector('.navbar-wrapper').classList;
+        nwcl.add('navbar-fixed-0');
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+
+        function handleScroll(){
+            var heroImageHeight = document.querySelector('.about .hero-image').clientHeight;
+
+            if(window.pageYOffset > heroImageHeight - 50) {
+                nwcl.remove('navbar-transparent');
+                nwcl.remove('navbar-inverted');
+            } else {
+                nwcl.add('navbar-transparent');
+                nwcl.add('navbar-inverted');
+            }
+        }
     </script>
 {% endblock %}
