@@ -1,6 +1,6 @@
 .about {
-    font-size: rem(18px);
-    line-height: (32px / 18px);
+    font-size: mrem(16px);
+    line-height: (26px / 16px);
 
     .hero-image {
         position: relative;
@@ -20,7 +20,7 @@
 
         .inner {
             position: absolute;
-            top: (106px / 850px * 100%);
+            top: (99px / 667px * 100%);
             left: 0;
             right: 0;
         }
@@ -29,41 +29,46 @@
             max-width: 520px;
         }
 
+        h1 {
+            font-size: mrem(33px);
+            line-height: (40px / 33px);
+        }
+
         .about-al {
-            margin-top: 46px;
+            margin-top: 21px;
         }
     }
 
     .body {
-        margin-top: 60px;
+        margin-top: 40px;
         max-width: 560px;
         
         h1 {
             text-align: center;
+            font-size: rem(33px);
+            line-height: (44px / 33px);
         }
 
         .about-451 {
             text-align: center;
-            margin: 53px auto 0;
-            max-width: 520px;
+            margin: 37px auto 0;
         }
 
         .conversation {
-            margin: 60px 0 0;
+            margin: 40px 0 0;
             
-            li{
+            li {
                 @include clearFloat;
 
                 &:not(:first-child) {
-                    margin-top: 40px;
+                    margin-top: 20px;
                 }
             }
 
             .question,
             .answer {
-                padding: 19px 30px;
-                border-radius: 35px;
-                max-width: (460px / 520px * 100%);
+                padding: 17px 25px;
+                border-radius: 30px;
             }
 
             .question {
@@ -75,19 +80,93 @@
                 background-color: #c1f6d9;
                 clear: left;
                 float: right;
-                margin-top: 40px;
+                margin-top: 20px;
             }
         }
     }
 
     .fire {
-        margin: 80px auto 95px;
+        margin: 20px auto;
         line-height: 0;
         text-align: center;
-        max-width: 600px;
 
         img {
             width: 100%;
+        }
+    }
+}
+
+@media #{$medium-and-up} {
+    .about {
+        font-size: rem(18px);
+        line-height: (32px / 18px);
+
+        .hero-image {
+            .inner {
+                top: (106px / 850px * 100%);
+            }
+
+            h1 {
+                font-size: rem(44px);
+                line-height: (60px / 44px);
+            }
+            
+            .about-al {
+                margin-top: 48px;
+            }
+        }
+
+        .body {
+            margin-top: 60px;
+            
+            .about-451 {
+                text-align: center;
+                margin-top: 53px;
+                max-width: 520px;
+            }
+
+            .conversation {
+                margin-top: 60px;
+
+                li {
+                    &:not(:first-child) {
+                        margin-top: 40px;
+                    }
+                }
+
+                .question,
+                .answer {
+                    padding: 19px 30px;
+                    border-radius: 35px;
+                    max-width: (460px / 520px * 100%);
+                }
+
+                .answer {
+                    margin-top: 40px;
+                }
+            }
+        }
+
+        .fire {
+            max-width: 600px;
+        }
+    }
+}
+
+@media #{$medium-and-up} {
+    .about {
+        .fire {
+            max-width: 720px;
+        }
+    }
+}
+
+@media #{$xs-only} {
+    .about {
+        .hero-image {
+            .aspect-ratio {
+                padding-top: 667px;
+            }
         }
     }
 }
