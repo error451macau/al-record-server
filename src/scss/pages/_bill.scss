@@ -8,28 +8,46 @@
 
 .bill-meta {
     @include clearFloat();
-    margin-top: 30px;
+    margin-top: 21px;
 }
 
 .bill-meta-proposer,
 .bill-meta-voting-date {
-    position: relative;
-    top: 2px;
+    display: flex;
+
+    h4 {
+        width: 109px;
+        margin: auto 0;
+    }
 }
 
-.bill-meta-proposer__inner {
-    margin-top: 8px;
+.bill-meta-voting-date {
+    margin-top: 4px;
 }
 
+.bill-meta-proposer__inner,
 .bill-meta-voting-date__inner {
-    margin-top: 12px;
+    flex-grow: 1;
+
+    .avatar-table {
+        img {
+            order: 2;
+        }
+
+        span {
+            padding-left: 0;
+        }
+    }
+}
+
+.bill-meta-result {
+    margin-top: 25px;
 }
 
 .bill-meta-result__inner {
     float: right;
     height: 60px;
     width: 100%;
-    max-width: 260px;
     color: #ffffff;
     font-size: rem(22px);
     line-height: 60px;
@@ -55,16 +73,15 @@
 }
 
 .bill-synopsis {
-    margin-top: 52px;
+    margin-top: 30px;
 
     .content-highlight {
         margin-top: 12px;
-        padding-right: 125px;
     }
 }
 
 .bill-votes-summary {
-    margin-top: 40px;
+    margin-top: 30px;
     
     .content-highlight {
         margin-top: 12px;
@@ -148,7 +165,7 @@
 }
 
 .bill-votes-detail {
-    margin-top: 40px;
+    margin-top: 30px;
 
     .row {
         margin-top: 12px;
@@ -259,5 +276,71 @@
         .col:nth-child(2n + 1) {
             clear: left;
         }
+    }
+}
+
+@media #{$medium-and-up} {
+    .bill-meta {
+        margin-top: 26px;
+    }
+
+    .bill-meta-proposer__inner,
+    .bill-meta-voting-date__inner {
+        flex-grow: 0;
+        margin-right: auto;
+    }
+    
+    .bill-meta-result {
+        margin-top: 30px;
+    }
+
+    .bill-synopsis,
+    .bill-votes-summary,
+    .bill-votes-detail {
+        margin-top: 38px;
+    }
+}
+
+@media #{$ml-and-up} {
+    .bill-meta {
+        margin-top: 30px;
+    }
+
+    .bill-meta-result {
+        margin-top: 0;
+    }
+
+    .bill-synopsis {
+        margin-top: 52px;
+    }
+}
+
+@media #{$large-and-up} {
+    .bill-meta-proposer,
+    .bill-meta-voting-date {
+        flex-direction: column;
+        margin-top: 2px;
+    }
+    
+    .bill-meta-proposer__inner {
+        margin-top: 8px;
+
+        .avatar-table {
+            img {
+                order: 0;
+            }
+    
+            span {
+                padding-left: 8px;
+            }
+        }
+    }
+
+    .bill-meta-voting-date__inner {
+        margin-top: 12px;
+    }
+
+    .bill-meta-result__inner {
+        max-width: 260px;
     }
 }

@@ -1,13 +1,13 @@
 .avatar-table { // expects <a>
-    display: table;
+    display: flex;
 
     img {
-        display: table-cell;
+        margin: auto;
     }
 
     span {
-        display: table-cell;
-        width: 100%;
+        margin: auto;
+        flex-grow: 1;
     }
 
     &.at--mid-8 {
