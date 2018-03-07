@@ -4,23 +4,24 @@
 
     .hero-image {
         position: relative;
-        min-height: 90vh;
+        min-height: 80vh;
         background-image: url(/img/about-hero.jpg);
         background-size: cover;
         background-position: center center;
         color: #fff;
         text-align: center;
+        // z-index: 50000; // higher than navbar
 
         .aspect-ratio {
             content: '';
             display: block;
             width: 100%;
-            padding-top: 850px / 1740px * 100%;
+            padding-top: 790px / 1740px * 100%; // 850px / 1740px * 100%;
         }
 
         .inner {
             position: absolute;
-            top: (99px / 667px * 100%);
+            top: (39px / 607px * 100%); // (99px / 667px * 100%);
             left: 0;
             right: 0;
         }
@@ -103,7 +104,7 @@
 
         .hero-image {
             .inner {
-                top: (106px / 850px * 100%);
+                top: (36px / 780px * 100%); // (106px / 850px * 100%);
             }
 
             h1 {
@@ -165,7 +166,7 @@
     .about {
         .hero-image {
             .aspect-ratio {
-                padding-top: 667px;
+                padding-top: 597px; // 667px;
             }
         }
     }

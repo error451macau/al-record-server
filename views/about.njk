@@ -37,20 +37,81 @@
     </div>
     <script>
         var nwcl = document.querySelector('.navbar-wrapper').classList;
-        nwcl.add('navbar-fixed-0');
+        var ns   = document.querySelector('.navbar-wrapper nav').style;
+
+        var currentState = calcState();
+        switch(currentState){
+            case 'A':
+                handleStateChange('B', 'A');
+                break;
+            case 'B':
+                handleStateChange('A', 'B');
+                break;
+            case 'C':
+                handleStateChange('A', 'B');
+                handleStateChange('B', 'C');
+                break;
+        }
+
         handleScroll();
         window.addEventListener('scroll', handleScroll);
 
         function handleScroll(){
-            var heroImageHeight = document.querySelector('.about .hero-image').clientHeight;
+            var nextState = calcState();
+            if(nextState == currentState) return;
+            handleStateChange(currentState, nextState);
+        }
 
-            if(window.pageYOffset > heroImageHeight - 50) {
-                nwcl.remove('navbar-transparent');
-                nwcl.remove('navbar-inverted');
+        function calcState(){
+            var bound1 = 200;
+            var bound2 = document.querySelector('.about .hero-image').clientHeight;
+
+            if(window.pageYOffset < bound1){
+                return 'A';
+            } else if(window.pageYOffset >= bound2) {
+                return 'C'
             } else {
-                nwcl.add('navbar-transparent');
-                nwcl.add('navbar-inverted');
+                return 'B';
             }
+        }
+
+        {# 
+            B is like a buffer zone
+            transition between A<->B does not have animation
+         #}
+        function handleStateChange(prevState, nextState) {
+            switch(prevState + nextState) {
+                case 'AB':
+                    ns.position = 'fixed';
+                    ns.backgroundColor = '';
+                    ns.transition = '';
+                    ns.opacity = 0;
+                    nwcl.remove('navbar-transparent');
+                    nwcl.remove('navbar-inverted');
+                    setTimeout(function(){
+                        ns.transition = 'opacity .2s linear';
+                    });
+                    break;
+                case 'BA':
+                    ns.position = 'relative';
+                    ns.backgroundColor = '#2f1166';
+                    ns.transition = '';
+                    ns.opacity = 1;
+                    nwcl.add('navbar-transparent');
+                    nwcl.add('navbar-inverted');
+                    setTimeout(function(){
+                        ns.transition = 'opacity .2s linear';
+                    });
+                    break;
+                case 'BC':
+                    ns.opacity = 1;
+                    break;
+                case 'CB':
+                    ns.opacity = 0;
+                    break;
+            }
+
+            currentState = nextState;
         }
     </script>
 {% endblock %}
