@@ -1,4 +1,8 @@
 .bill {
+    &.container { // compete with .body > .container
+        margin-bottom: 50px;
+    }
+
     h4 {
         font-size: rem(15px);
         line-height: (18px / 15px);
@@ -238,21 +242,13 @@
     }
 }
 
-.bill-documents {
-    position: relative;
-    margin-top: 50px;
-    padding-top: 35px;
+.bill-documents-wrapper {
+    background-color: $theme-bg-grey;
+}
 
-    &::before { // backdrop
-        content: '';
-        width: 20000px;
-        height: calc(100% + 100px); // container margin-bottom
-        top: 0;
-        left: -10000px;
-        position: absolute;
-        background-color: $theme-bg-grey;
-        z-index: -1;
-    }
+.bill-documents {
+    margin-top: 35px;
+    margin-bottom: 100px;
 
     h2 {
         font-size: rem(25px);

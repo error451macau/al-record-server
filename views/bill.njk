@@ -166,7 +166,9 @@
                 </div>
             </div>
         </section>
-        <section class="bill-documents">
+    </div>
+    <div class="bill-documents-wrapper clear-margin">
+        <section class="bill-documents container">
             <h2>{{__('BILL_DOCUMENTS')}}</h2>
             {% if bill.documentIds.length > 0 %}
                 {% include "partials/documents-table.njk" %}
