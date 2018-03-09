@@ -203,6 +203,7 @@
         li {
             display: table;
             position: relative;
+            width: 100%;
             
             &:not(:first-child) {
                 margin-top: 10px;
@@ -212,7 +213,7 @@
         .avatar-table-wrapper {
             display: table-cell;
             vertical-align: middle;
-            width: 100%;
+            width: calc( 100% - 30px );
         }
 
         .avatar-table {
@@ -231,6 +232,7 @@
             display: table-cell;
             vertical-align: middle;
             width: 30px;
+            text-align: right;
         }
         
         &.content-highlight--y,
