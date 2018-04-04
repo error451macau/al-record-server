@@ -112,7 +112,7 @@
     }
 
     .title {
-        @include fwMedium;
+        font-weight: bold;
         display: inline-block;
         width: 80%; // average
     }
