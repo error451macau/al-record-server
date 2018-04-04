@@ -48,6 +48,11 @@
 	"BILL_RESULT_N": "不通過",
 	"BILL_RESULT_P": "待表決",
 	"BILL_RESULT_W": "撒回",
+	"BILL_RESULT_undefined_SHORT": "",
+	"BILL_RESULT_Y_SHORT": "通過",
+	"BILL_RESULT_N_SHORT": "不通過",
+	"BILL_RESULT_P_SHORT": "待表決",
+	"BILL_RESULT_W_SHORT": "撒回",
 	"BILL_SYNOPSIS": "議案摘要",
 	"BILL_VOTES": "各議員投票意向",
 	"BILL_DOCUMENTS": "相關文件",
@@ -55,6 +60,7 @@
 	"BILL_VOTES_SUMMARY_TOTAL": "總數",
 	"DOCUMENTS_PAGE_TITLE": "文件存檔",
 	"DOCUMENT_DATE": "發佈日期",
+	"DOCUMENT_DATE_SHORT": "發佈日期",
 	"NONE": "沒有",
 	"DOWNLOAD_LINKS": "下載連結",
 	"DOWNLOAD_LINKS_ORIGINAL": "官方載點",
@@ -65,5 +71,7 @@
 	"VERB_DOWNLOAD": "下載",
 	"HOME_PAGE_TITLE": "首頁",
 	"SIXTH_LEGCO": "第六屆立法會 (2017-2021)",
+	"GOVERNMENT": "澳門特區政府",
+	"DEPUTY_COMMENT_ON_BILL": "評論",
 	"ABOUT_PAGE_TITLE": "關於"
 }

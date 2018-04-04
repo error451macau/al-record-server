@@ -128,7 +128,7 @@
                         </div>
                         {% if deputy.comment[locale] %}
                             <a class="comment">
-                                <img src="{{mklink('abs', 'img/comment-' + ('white' if useWhiteIcon else 'black') + '.svg')}}" alt="{{__('COMMENT')}}">
+                                <img src="{{mklink('abs', 'img/comment-' + ('white' if useWhiteIcon else 'black') + '.svg')}}" alt="{{__('DEPUTY_COMMENT_ON_BILL')}}">
                                 <div class="comment-tooltip">{{deputy.comment[locale]}}</div>
                             </a>
                         {% endif %}
@@ -154,14 +154,14 @@
                     <div class="content-highlight content-highlight--p">
                         <h5>{{__('VOTE_P')}}</h5>
                         <span class="summary">{{voteSummary.P}} {{__('NOUN_VOTES')}} · {{votePPercent}}%</span>
-                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.A)}}</ul>
+                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.P)}}</ul>
                     </div>
                 </div>
                 <div class="col xs12 m6 xl3">
                     <div class="content-highlight content-highlight--a">
                         <h5>{{__('VOTE_A')}}</h5>
                         <span class="summary">{{voteSummary.A}} {{__('NOUN_VOTES')}} · {{voteAPercent}}%</span>
-                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.P)}}</ul>
+                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.A)}}</ul>
                     </div>
                 </div>
             </div>
