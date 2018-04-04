@@ -117,6 +117,7 @@ nav {
   height: 0 !important;
 }
 
+// when hamburger is closed ~ activate transparency
 // .navbar-transparent is not effective if hamburger menu is opened
 .sidebar-toggler:not(:checked) ~ .navbar-transparent {
   nav {
@@ -128,6 +129,7 @@ nav {
   }
 }
 
+// when hamburger is closed ~ activate inversion
 // .navbar-inverted is not effective if hamburger menu is opened
 .sidebar-toggler:not(:checked) ~ .navbar-inverted {
   nav {
@@ -196,6 +198,8 @@ nav {
 @media #{$medium-and-down} {
   .sidebar-toggler:checked ~ .navbar-fixed {
     nav {
+      background-color: #fff !important; // when hamburger is opened, force white background
+
       ul {
         display: block;
       }
