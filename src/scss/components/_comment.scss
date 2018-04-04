@@ -1,20 +1,24 @@
 // Expects the appropiate parent will have position: relative
 
+/** Visibiliy Toggler START **/
+// NOT using .comment:hover because it causes problem on mobile (iOS in particular)
+// current approach is use a checkbox toggler
+// for the hover-display effect, use onmouseenter and onmouseleave to toggle checkbox
+
 .comment-tooltip {
     visibility: hidden;
     opacity: 0;
-
 }
 
-.comment:hover,
-.comment:focus,
-.comment:active {
-    .comment-tooltip {
+.comment {
+    input:checked ~ .comment-tooltip {
         visibility: visible;
         opacity: 1;
     }
 }
+/** Visibiliy Toggler END **/
 
+.comment-wrapper,
 .comment {
     cursor: pointer;
 }
