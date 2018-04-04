@@ -112,6 +112,7 @@
     }
 
     .title {
+        @include fwMedium;
         display: inline-block;
         width: 80%; // average
     }

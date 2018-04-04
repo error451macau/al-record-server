@@ -51,6 +51,7 @@ nav {
       }
     }
     a {
+      @include fwMedium;
       transition: color .2s linear;
       font-size: $navbar-font-size;
       color: $navbar-font-color;

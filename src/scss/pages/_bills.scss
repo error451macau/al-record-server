@@ -9,6 +9,10 @@
         border-right: 1px solid $theme-border-grey;
     }
 
+    td.col-title {
+        @include fwMedium;
+    }
+
     th.col-proposer,
     th.col-voting-date,
     th.col-result {

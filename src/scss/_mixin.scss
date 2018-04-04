@@ -1,0 +1,11 @@
+@mixin clearFloat(){
+    &::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin fwMedium(){
+    -webkit-text-stroke: 0.02em;
+}
