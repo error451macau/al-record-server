@@ -141,6 +141,10 @@
             <div class="row">
                 <div class="col xs12 m6 xl3">
                     <div class="content-highlight content-highlight--y {{'content-highlight--y-strong' if voteSummary.relativeMax == voteSummary.Y}}">
+                        {% if voteSummary.Y > 0 %}
+                            <input type="checkbox" id="toggler-y-voters" style="display:none">
+                            <label class="toggler" for="toggler-y-voters"></label>
+                        {% endif %}
                         <h5>{{__('VOTE_Y')}}</h5>
                         <span class="summary">{{voteSummary.Y or 0}} {{__('NOUN_VOTES')}} · {{voteYPercent}}%</span>
                         <ul>{{renderBillVoteDetailColumn(deputiesGrouped.Y, voteSummary.relativeMax == voteSummary.Y)}}</ul>
@@ -148,6 +152,10 @@
                 </div>
                 <div class="col xs12 m6 xl3">
                     <div class="content-highlight content-highlight--n {{'content-highlight--n-strong' if voteSummary.relativeMax == voteSummary.N}}">
+                        {% if voteSummary.N > 0 %}
+                            <input type="checkbox" id="toggler-n-voters" style="display:none">
+                            <label class="toggler" for="toggler-n-voters"></label>
+                        {% endif %}
                         <h5>{{__('VOTE_N')}}</h5>
                         <span class="summary">{{voteSummary.N or 0}} {{__('NOUN_VOTES')}} · {{voteNPercent}}%</span>
                         <ul>{{renderBillVoteDetailColumn(deputiesGrouped.N, voteSummary.relativeMax == voteSummary.N)}}</ul>
@@ -155,6 +163,10 @@
                 </div>
                 <div class="col xs12 m6 xl3">
                     <div class="content-highlight content-highlight--p">
+                        {% if voteSummary.P > 0 %}
+                            <input type="checkbox" id="toggler-p-voters" style="display:none">
+                            <label class="toggler" for="toggler-p-voters"></label>
+                        {% endif %}
                         <h5>{{__('VOTE_P')}}</h5>
                         <span class="summary">{{voteSummary.P or 0}} {{__('NOUN_VOTES')}} · {{votePPercent}}%</span>
                         <ul>{{renderBillVoteDetailColumn(deputiesGrouped.P)}}</ul>
@@ -162,6 +174,10 @@
                 </div>
                 <div class="col xs12 m6 xl3">
                     <div class="content-highlight content-highlight--a">
+                        {% if voteSummary.A > 0 %}
+                            <input type="checkbox" id="toggler-a-voters" style="display:none">
+                            <label class="toggler" for="toggler-a-voters"></label>
+                        {% endif %}
                         <h5>{{__('VOTE_A')}}</h5>
                         <span class="summary">{{voteSummary.A or 0}} {{__('NOUN_VOTES')}} · {{voteAPercent}}%</span>
                         <ul>{{renderBillVoteDetailColumn(deputiesGrouped.A)}}</ul>

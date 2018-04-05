@@ -181,7 +181,12 @@
     }
 
     .content-highlight {
+        position: relative;
         padding: 12px 15px 15px;
+
+        .toggler {
+            display: none;
+        }
 
         h5 {
             font-size: rem(22px);
@@ -192,6 +197,7 @@
             display: block;
             line-height: (20px / 15px);
             margin-top: 5px;
+            margin-bottom: 4px;
             opacity: 0.4;
         }
 
@@ -334,5 +340,63 @@
 
     .bill-meta-result__inner {
         max-width: 260px;
+    }
+}
+
+@media #{$small-and-down} {
+    /** Deputy vote detail open/close effect **/
+    .bill-votes-detail {
+        .content-highlight {
+            .toggler {
+                position: absolute;
+                display: block;
+                cursor: pointer;
+                top: 10px;
+                right: 10px;
+                width: 32px;
+                height: 32px;
+
+                &::before,
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    background-color: $theme-black-text;
+                }
+
+                // horizontal bar -- of +
+                &::before {
+                    top: 15px;
+                    left: 10px;
+                    height: 2px;
+                    width: 12px;
+                }
+
+                // vertical pipe | of +
+                &::after {
+                    top: 10px;
+                    left: 15px;
+                    height: 12px;
+                    width: 2px;
+                }
+            }
+
+            // default hide list
+            ul {
+                display: none;
+            }
+
+            // effects when the toggler is on (display list)
+            input:checked ~ {
+                // make + become -
+                .toggler::after {
+                    display: none;
+                }
+
+                ul {
+                    display: block;
+                }
+            }
+        }
     }
 }
