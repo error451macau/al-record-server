@@ -69,7 +69,7 @@ router.get('/bills', function(req, res, next){
             if(err) return next(err);
             
             res.render('bills.njk', {
-                bills,
+                bills: _.sortBy(bills, 'date').reverse(),
                 deputiesDict: _.indexBy(deputies, 'id'),
             });
         });
