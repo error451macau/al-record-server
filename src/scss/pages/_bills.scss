@@ -26,6 +26,14 @@
     }
 }
 
+@media #{$small-and-down} {
+    .bills {
+        h1 {
+            line-height: (60px / 33px);
+        }
+    }
+}
+
 // table-ize
 @media #{$ml-and-up} {
     .bills {

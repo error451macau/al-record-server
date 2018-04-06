@@ -19,3 +19,11 @@
     margin-bottom: -20px; // compensate for .deputy-card margin-bottom
     clear: left;
 }
+
+@media #{$small-and-down} {
+    .deputies-body {
+        h1 {
+            line-height: (60px / 33px);
+        }
+    }
+}

@@ -344,6 +344,13 @@
 }
 
 @media #{$small-and-down} {
+    .bill {
+        & > h1 {
+            font-size: mrem(25px);
+            line-height: (33px / 25px);
+        }
+    }
+
     /** Deputy vote detail open/close effect **/
     .bill-votes-detail {
         .content-highlight {

@@ -4,6 +4,14 @@
     }
 }
 
+@media #{$small-and-down} {
+    .documents {
+        h1 {
+            line-height: (60px / 33px);
+        }
+    }
+}
+
 @media #{$medium-and-down} {
     .documents {
         .documents-table {

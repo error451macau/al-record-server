@@ -35,9 +35,17 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     line-height: 1.35; // based on h1 60/44 and h4 33/25
 }
+
 h1,
 h2 {
     font-family: 'Playfair Display', serif;
+}
+
+@media #{$small-and-down} {
+    h1 {
+        font-size: mrem(33px);
+        line-height: (40px / 33px);
+    }
 }
 
 .bigger {
