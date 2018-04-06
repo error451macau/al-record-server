@@ -162,3 +162,12 @@ h2 {
         color: #fff;
     }
 }
+
+@media #{$medium-and-down} {
+    .page-footer {
+        .footer-copyright {
+            font-size: 12px;
+            line-height: 16px; // design is 14px, but need vertical align with FB icon
+        }
+    }
+}
