@@ -20,9 +20,9 @@
                 <div class="deputy-info__block deputy-info__block--top">
                     <dl>
                         <dt>{{__('DEPUTY_QUALIFICATION')}}</dt>
-                        <dd>{{deputy.qualifications[locale]}}</dd>
+                        <dd>{{deputy.qualifications[locale] | striptags(true) | escape | nl2br}}</dd>
                         <dt>{{__('DEPUTY_JOB')}}</dt>
-                        <dd>{{deputy.job[locale]}}</dd>
+                        <dd>{{deputy.job[locale] | striptags(true) | escape | nl2br}}</dd>
                     </dl>
                 </div>
                 <div class="deputy-info__block deputy-info__block--properties">

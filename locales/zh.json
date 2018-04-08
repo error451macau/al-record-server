@@ -38,6 +38,7 @@
 	"VOTE_A": "缺席",
 	"VOTE_P": "棄權",
 	"VOTE_NA": "不適用",
+	"VOTE_undefined": "不適用",
 	"BILLS_PAGE_TITLE": "重大決議",
 	"BILL_TITLE": "議案名稱",
 	"BILL_PROPOSER": "動議人",

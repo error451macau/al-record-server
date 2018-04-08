@@ -38,6 +38,7 @@
 	"VOTE_A": "Absent",
 	"VOTE_P": "Abstain",
 	"VOTE_NA": "NA",
+	"VOTE_undefined": "NA",
 	"BILLS_PAGE_TITLE": "Major Bills",
 	"BILL_TITLE": "Bill Title",
 	"BILL_RESULT": "Result",
