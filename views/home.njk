@@ -9,30 +9,32 @@
                 <span>{{__('HOME_FEATURED_BILL_TITLE')}}</span><br>
                 <span>Legal Regime for Guarantees of the Rights and Interests of Elderly</span>
             </h1>
-            <img alt="PIE">
-            <div>
-                <a>{{__('HOME_BILL_DETAIL')}}</a>
+            <div class="pie-wrapper">
+                <img alt="PIE" src="/img/deputies/chui-sai-cheong-color.jpg">
+            </div>
+            <div class="control">
+                <a>{{__('HOME_BILL_DETAIL')}}{% include 'inline-files/arrow.svg' %}</a>
                 <a class="right">{{__('HOME_MORE_BILLS')}}</a>
             </div>
         </div>
         <div class="home__deputy">
-            <div class="home__deputy__left">
+            <div class="home__deputy__quote">
                 <h2>{{__('HOME_FEATURED_DEPUTY_TITLE')}}</h2>
                 <p>There is an old saying in Chinese: Love well, whip well. Domestic violence is the heart of love!</p>
             </div>
-            <div class="home__deputy__mid">
-
-            </div>
-            <div class="home__deputy__right">
-                <img alt="DEPUTY">
-                <span>Ho Iat Seng</span>
-                <span>Indirectly Elected Deputy</span>
-                <a>{{__('HOME_ALL_DEPUTIES')}}</a>
+            <div class="home__deputy__deputy">
+                <img alt="" src="/img/deputies/chui-sai-cheong-color.jpg">
+                <div class="desc">
+                    <span>Ho Iat Seng</span><br>
+                    <span>Indirectly Elected Deputy</span>
+                    <a>{{__('HOME_ALL_DEPUTIES')}}{% include 'inline-files/arrow.svg' %}</a>
+                </div>
             </div>
         </div>
         <div class="home__about">
-            <p>{{__('HOME_ABOUT_SENTENCE')}}</p>
-            <a>{{__('HOME_ABOUT_US')}}</a>
+            <div class="background"></div>
+            <h3>{{__('HOME_ABOUT_SENTENCE')}}</h3>
+            <a>{{__('HOME_ABOUT_US')}}{% include 'inline-files/arrow.svg' %}</a>
         </div>
     </div>
 {% endblock %}
