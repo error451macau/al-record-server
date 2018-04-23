@@ -3,4 +3,36 @@
 {% block title %}{{__('HOME_PAGE_TITLE')}}{% endblock %}
 
 {% block body %}
+    <div class="home">
+        <div class="home__bill">
+            <h1>
+                <span>{{__('HOME_FEATURED_BILL_TITLE')}}</span><br>
+                <span>Legal Regime for Guarantees of the Rights and Interests of Elderly</span>
+            </h1>
+            <img alt="PIE">
+            <div>
+                <a>{{__('HOME_BILL_DETAIL')}}</a>
+                <a class="right">{{__('HOME_MORE_BILLS')}}</a>
+            </div>
+        </div>
+        <div class="home__deputy">
+            <div class="home__deputy__left">
+                <h2>{{__('HOME_FEATURED_DEPUTY_TITLE')}}</h2>
+                <p>There is an old saying in Chinese: Love well, whip well. Domestic violence is the heart of love!</p>
+            </div>
+            <div class="home__deputy__mid">
+
+            </div>
+            <div class="home__deputy__right">
+                <img alt="DEPUTY">
+                <span>Ho Iat Seng</span>
+                <span>Indirectly Elected Deputy</span>
+                <a>{{__('HOME_ALL_DEPUTIES')}}</a>
+            </div>
+        </div>
+        <div class="home__about">
+            <p>{{__('HOME_ABOUT_SENTENCE')}}</p>
+            <a>{{__('HOME_ABOUT_US')}}</a>
+        </div>
+    </div>
 {% endblock %}

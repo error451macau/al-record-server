@@ -29,8 +29,7 @@ router.use(function(req, res, next){
 });
 
 router.get('/', function(req, res, next){
-    // res.render('home.njk');
-    res.redirect('bills');
+    res.render('home.njk');
 });
 
 router.get('/deputies', function(req, res, next){
