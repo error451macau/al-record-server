@@ -256,9 +256,10 @@
     }
 }
 
-@media #{$large-and-up} {
+// desktop layout, only applicable if viewport is "wider" than 16:10
+@media #{$large-and-up} and (min-aspect-ratio: 12/10) {
     .home {
-        height: calc( 100vh - #{$navbar-height} );
+        height: calc( 100% - #{$navbar-height} );
     }
 
     .home__bill {
