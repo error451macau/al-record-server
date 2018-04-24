@@ -116,6 +116,13 @@
     height: 340px;
     position: relative;
 
+    &:hover {
+        .background {
+            opacity: 1;
+            filter: none;
+        }
+    }
+
     .background {
         position: absolute;
         top: 0;
@@ -126,6 +133,7 @@
         background-image: url(/img/about-hero.jpg);
         background-size: auto 226%; // experimental value on 320px layout
         background-position: center 48.4%;
+        transition: filter .2s, opacity .2s;
         filter: saturate(0);
     }
 
@@ -256,16 +264,33 @@
     }
 }
 
-// desktop layout, only applicable if viewport is "wider" than 16:10
+// desktop layout, only applicable if viewport is "wider" than 12:10 (experimental)
 @media #{$large-and-up} and (min-aspect-ratio: 12/10) {
     .home {
         height: calc( 100% - #{$navbar-height} );
+        min-height: 700px; // prevents collapse
     }
 
     .home__bill {
         width: 50%;
         height: 100%;
         float: left;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        h1 {
+            flex-grow: 1;
+        }
+
+        .pie-wrapper {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            top: 57.5%;
+            transform: translate(0, -50%);
+            margin-top: 0;
+        }
 
         .control {
             margin-top: 28px;

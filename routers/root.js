@@ -14,6 +14,8 @@ router.use(function(req, res, next){
         switch(type){
             case 'abs':
                 return `/${object}`;
+            case 'localized':
+                return `/${res.locals.locale}/${object}`;
             case 'bill':
                 return `/${res.locals.locale}/bills/${object.id}/${object.slug}`;
             case 'deputy':

@@ -14,7 +14,7 @@
             </div>
             <div class="control">
                 <a>{{__('HOME_BILL_DETAIL')}}{% include 'inline-files/arrow.svg' %}</a>
-                <a class="right">{{__('HOME_MORE_BILLS')}}</a>
+                <a class="right" href="{{mklink('localized', 'bills')}}">{{__('HOME_MORE_BILLS')}}</a>
             </div>
         </div>
         <div class="home__deputy">
@@ -28,14 +28,14 @@
                 <div class="desc">
                     <span>Ho Iat Seng</span><br>
                     <span>Indirectly Elected Deputy</span>
-                    <a>{{__('HOME_ALL_DEPUTIES')}}{% include 'inline-files/arrow.svg' %}</a>
+                    <a href="{{mklink('localized', 'deputies')}}">{{__('HOME_ALL_DEPUTIES')}}{% include 'inline-files/arrow.svg' %}</a>
                 </div>
             </div>
         </div>
         <div class="home__about">
             <div class="background"></div>
             <h3>{{__('HOME_ABOUT_SENTENCE')}}</h3>
-            <a>{{__('HOME_ABOUT_US')}}{% include 'inline-files/arrow.svg' %}</a>
+            <a href="{{mklink('localized', 'about')}}">{{__('HOME_ABOUT_US')}}{% include 'inline-files/arrow.svg' %}</a>
         </div>
     </div>
 {% endblock %}
