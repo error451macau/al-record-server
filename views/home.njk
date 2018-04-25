@@ -4,13 +4,35 @@
 
 {% block body %}
     <div class="home">
-        <div class="home__bill">
+        <div class="home__bill" id="home__bill">
             <h1>
                 <span>{{__('HOME_FEATURED_BILL_TITLE')}}</span><br>
                 <span>Legal Regime for Guarantees of the Rights and Interests of Elderly</span>
             </h1>
-            <div class="pie-wrapper">
-                <img alt="PIE" src="/img/deputies/chui-sai-cheong-color.jpg">
+            <div class="pie-wrapper" id="home__bill__pie-wrapper">
+                {% set pieData = [{
+                    values: [44,25,13,19],
+                    labels: [__('VOTE_Y'), __('VOTE_N'), __('VOTE_P'), __('VOTE_A')],
+                    text: [
+                        '44%',
+                        '25%',
+                        '13%',
+                        '19%'
+                    ],
+                    type: 'pie',
+                    sort: false,
+                    direction: 'clockwise',
+                    hoverinfo: 'skip',
+                    textinfo: 'text+label',
+                    marker: {
+                        colors: ['#51ee97', '#958cfe', '#4a4a4a', '#e6e6e6']
+                    },
+                    textfont: {
+                        size: 15,
+                        color: '#323232'
+                    }
+                }] %}
+                <div id="home__bill__pie" class="pie" data-pie-data='{{pieData | dump}}'></div>
             </div>
             <div class="control">
                 <a>{{__('HOME_BILL_DETAIL')}}{% include 'inline-files/arrow.svg' %}</a>

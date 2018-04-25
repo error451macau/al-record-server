@@ -19,12 +19,21 @@
     .pie-wrapper {
         text-align: center;
         margin-top: 20px;
+        width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-        img {
-            border-radius: 50%;
-            width: 280px;
-            max-width: 100%;
-            vertical-align: top;
+    .pie {
+        position: relative;
+        border-radius: 50%;
+        max-width: 100%;
+        vertical-align: top;
+        display: inline-block;
+        
+        // force abstain text grey
+        .pielayer .slice:nth-child(3) .slicetext text {
+            fill: #ebebeb !important;
         }
     }
 
@@ -196,9 +205,7 @@
         padding: 25px 30px 32px;
 
         .pie-wrapper {
-            img {
-                width: 412px;
-            }
+            width: 412px;
         }
 
         .control {
@@ -264,7 +271,7 @@
     }
 }
 
-// desktop layout, only applicable if viewport is "wider" than 12:10 (experimental)
+// desktop layout, only applicable if viewport is "wider" than 12:10 (experimental value)
 @media #{$large-and-up} and (min-aspect-ratio: 12/10) {
     .home {
         height: calc( 100% - #{$navbar-height} );
@@ -279,21 +286,10 @@
         flex-direction: column;
         position: relative;
 
-        h1 {
-            flex-grow: 1;
-        }
-
         .pie-wrapper {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            top: 57.5%;
-            transform: translate(0, -50%);
-            margin-top: 0;
-        }
-
-        .control {
-            margin-top: 28px;
+            margin: 30px;
+            width: auto;
+            flex-grow: 1;
         }
     }
 
