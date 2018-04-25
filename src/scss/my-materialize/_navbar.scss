@@ -49,6 +49,10 @@ nav {
           color: $theme-light-purple !important;
         }
       }
+
+      &:last-child {
+        margin-right: 15px;
+      }
     }
     a {
       @include fwMedium;
@@ -56,7 +60,7 @@ nav {
       font-size: $navbar-font-size;
       color: $navbar-font-color;
       display: block;
-      padding: 0 15px;
+      padding: 0 10px;
       cursor: pointer;
 
       &:hover {
@@ -99,6 +103,20 @@ nav {
         top: 15px;
       }
     }
+  }
+
+  .website-svg {
+      position: relative;
+      width: 15px;
+      height: 15px;
+      top: 1px;
+  }
+
+  .facebook-svg {
+      position: relative;
+      width: 7px;
+      height: 14px;
+      top: 1px;
   }
 }
 
@@ -190,6 +208,31 @@ nav {
 
     ul {
       display: block;
+    }
+  }
+}
+
+// increase button width when screen is "okay wide"
+@media #{$large-and-up} {
+  nav {
+    ul {
+      a {
+        padding: 0 15px;
+      }
+
+      // special class to reduce spacing for icon button
+      .narrow-first a {
+        padding-right: 10px;
+      }
+
+      .narrow-mid a {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .narrow-last a {
+        padding-left: 10px;
+      }
     }
   }
 }

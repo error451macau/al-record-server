@@ -2,12 +2,26 @@
     padding-top: 0;
     border-top: 1px solid $theme-border-grey;
 
+    .footer-copyright {
+        justify-content: space-between;
+        padding-left: 30px;
+        padding-right: 30px;
+        min-height: 70px;
+    }
+
     a {
         color: inherit;
 
         &:not(:last-child) {
             margin-left: 30px;
         }
+    }
+
+    .website-svg {
+        position: relative;
+        width: 15px;
+        height: 15px;
+        top: 2px;
     }
 
     .facebook-svg {
@@ -24,8 +38,8 @@
     li {
         float: left;
 
-        &:not(:first-child) {
-            margin-left: 30px;
+        &:not(:last-child) {
+            margin-right: 30px;
         }
     }
 }
@@ -34,6 +48,34 @@
 @media #{$medium-and-down} {
     .page-footer {
         display: none;
+
+        .footer-copyright {
+            padding: 30px;
+            flex-direction: column-reverse;
+            align-items: left;
+        }
+
+        .links {
+            float: left;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        li:not(:last-child) {
+            margin-right: 25px;
+        }
+
+        .website-svg {
+            width: 23px;
+            height: 23px;
+            top: 1px;
+        }
+
+        .facebook-svg {
+            width: 11px;
+            height: 23px;
+            top: 0;
+        }
     }
 
     .sidebar-toggler:checked ~ .page-footer {
@@ -44,5 +86,17 @@
         left: 0;
         width: 100%;
         border-top: 0;
+    }
+}
+
+@media #{$small-and-down} { // reduce spacing when screen is small
+    .page-footer {
+        .footer-copyright {
+            padding: 25px 20px;
+        }
+
+        .links {
+            margin-bottom: 25px;
+        }
     }
 }

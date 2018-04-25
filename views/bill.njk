@@ -103,12 +103,8 @@
                                 
                                 {{ renderBillVotesSummaryRow('Y') }}
                                 {{ renderBillVotesSummaryRow('N') }}
-                                {% if(voteSummary.P > 0) %}
-                                    {{ renderBillVotesSummaryRow('P') }}
-                                {% endif %}
-                                {% if(voteSummary.A > 0) %}
-                                    {{ renderBillVotesSummaryRow('A') }}
-                                {% endif %}
+                                {{ renderBillVotesSummaryRow('P') }}
+                                {{ renderBillVotesSummaryRow('A') }}
                             </tbody>
                         </table>
                     </div>
