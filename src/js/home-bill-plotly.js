@@ -13,22 +13,24 @@ Plotly.register([
 
 var data = JSON.parse(pieElem.dataset.pieData);
 
-var layout = {
-    height: calcSideLength(),
-    width:  calcSideLength(),
-    showlegend: false,
-    margin: {
-        l: 0,
-        r: 0,
-        b: 0,
-        t: 0,
-    }
-};
+(function(){
+    var sideLength = calcSideLength();
 
-Plotly.newPlot('home__bill__pie', data, layout, {staticPlot: true});
-setTimeout(function(){
-    window.dispatchEvent(new Event('resize')); // trigger size calculation
-}, 0);
+    var layout = {
+        height: sideLength,
+        width:  sideLength,
+        showlegend: false,
+        margin: {
+            l: 0,
+            r: 0,
+            b: 0,
+            t: 0,
+        }
+    };
+
+    pieElem.style.top = ((wrapperElem.clientHeight - sideLength) / 2) + 'px';
+    Plotly.newPlot('home__bill__pie', data, layout, {staticPlot: true});
+})();
 
 window.addEventListener('resize', debounce(function(){
     var sideLength = calcSideLength();
