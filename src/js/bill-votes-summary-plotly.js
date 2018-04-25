@@ -11,8 +11,8 @@ Plotly.register([
 var data = JSON.parse(elem.dataset.pieData);
 
 var layout = {
-    height: document.getElementsByClassName('bill-votes-summary__table')[0].clientHeight,
-    width:  document.getElementsByClassName('bill-votes-summary__table')[0].clientHeight,
+    height: 190,
+    width:  190,
     showlegend: false,
     margin: {
         l: 0,

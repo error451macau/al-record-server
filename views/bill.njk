@@ -54,60 +54,71 @@
         <section class="bill-votes-summary">
             <h4>{{__('BILL_VOTES_SUMMARY')}}</h4>
             <div class="content-highlight">
-                <div class="row">
-                    <div class="col xs12 l4">
-                        {# todo: un-hardcode color #}
-                        {% set pieData = [{
-                            values: [voteSummary.Y, voteSummary.N, voteSummary.P, voteSummary.A],
-                            labels: [__('VOTE_Y'), __('VOTE_N'), __('VOTE_P'), __('VOTE_A')],
-                            type: 'pie',
-                            sort: false,
-                            direction: 'clockwise',
-                            marker: {
-                                colors: ['#5cd693', '#ff775b', '#4a4a4a', '#e6e6e6']
-                            }
-                        }] %}
-                        <div id="bill-votes-summary__pie" class="bill-votes-summary__pie" data-pie-data="{{pieData | dump}}"></div>
-                    </div>
-                    <div class="col xs12 l8">
-                        <table class="bordered bill-votes-summary__table">
-                            <thead>
+                <div class="bill-votes-summary__pie-wrapper">
+                    {% set pieData = [{
+                        values: [voteSummary.Y, voteSummary.N, voteSummary.P, voteSummary.A],
+                        labels: [__('VOTE_Y'), __('VOTE_N'), __('VOTE_P'), __('VOTE_A')],
+                        text: [
+                            voteSummary.YPercent + '%',
+                            voteSummary.NPercent + '%',
+                            voteSummary.APercent + '%',
+                            voteSummary.PPercent + '%'
+                        ],
+                        type: 'pie',
+                        sort: false,
+                        direction: 'clockwise',
+                        hoverinfo: 'skip',
+                        textinfo: 'text',
+                        marker: {
+                            colors: ['#5cd693', '#ff775b', '#4a4a4a', '#e6e6e6']
+                        },
+                        textfont: {
+                            size: 15,
+                            color: '#323232'
+                        }
+                    }] %}
+                    <div id="bill-votes-summary__pie" class="bill-votes-summary__pie" data-pie-data="{{pieData | dump}}"></div>
+                </div>
+                <div class="bill-votes-summary__table-wrapper">
+                    <table class="bordered bill-votes-summary__table">
+                        <thead>
+                            <tr>
+                                <th class="col-legend">&nbsp;</th>
+                                <th class="col-vote">{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
+                                <th class="col-bar">&nbsp;</th>
+                                <th class="col-count"><span class="legend legend--circle legend--direct"   ></span><span>{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
+                                <th class="col-count"><span class="legend legend--circle legend--indirect" ></span><span>{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
+                                <th class="col-count"><span class="legend legend--circle legend--appointed"></span><span>{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% macro renderBillVotesSummaryRow(vote) %}
+                                {% set votesFromDirect    = voteSummary['direct' + vote] or 0    %}
+                                {% set votesFromIndirect  = voteSummary['indirect' + vote] or 0  %}
+                                {% set votesFromAppointed = voteSummary['appointed' + vote] or 0 %}
                                 <tr>
-                                    <th class="col-vote">{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
-                                    <th class="col-bar">&nbsp;</th>
-                                    <th class="col-count"><span class="legend legend--circle legend--direct"   ></span><span>{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
-                                    <th class="col-count"><span class="legend legend--circle legend--indirect" ></span><span>{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
-                                    <th class="col-count"><span class="legend legend--circle legend--appointed"></span><span>{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
+                                    <td class="col-legend"><span class="legend legend--vote-{{vote | lower}}"></span></td>
+                                    <td><span>{{__('VOTE_' + vote)}}</span></td>
+                                    <td class="col-bar">
+                                        <div class="bar">
+                                            <div class="bar__segment bar__segment--direct"    style="width:{{votesFromDirect    / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--indirect"  style="width:{{votesFromIndirect  / voteSummary.relativeMax * 100}}%"></div>
+                                            <div class="bar__segment bar__segment--appointed" style="width:{{votesFromAppointed / voteSummary.relativeMax * 100}}%"></div>
+                                        </div>{{''-}}
+                                        <span class="percentage">{{voteSummary[vote + 'Percent']}}%</span>
+                                    </td>
+                                    <td class="center-align">{{votesFromDirect or 0}}</td>
+                                    <td class="center-align">{{votesFromIndirect or 0}}</td>
+                                    <td class="center-align">{{votesFromAppointed or 0}}</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {% macro renderBillVotesSummaryRow(vote) %}
-                                    {% set votesFromDirect    = voteSummary['direct' + vote] or 0    %}
-                                    {% set votesFromIndirect  = voteSummary['indirect' + vote] or 0  %}
-                                    {% set votesFromAppointed = voteSummary['appointed' + vote] or 0 %}
-                                    <tr>
-                                        <td><span class="legend legend--vote-{{vote | lower}}"></span><span>{{__('VOTE_' + vote)}}</span></td>
-                                        <td>
-                                            <div class="bar">
-                                                <div class="bar__segment bar__segment--direct"    style="width:{{votesFromDirect    / voteSummary.relativeMax * 100}}%"></div>
-                                                <div class="bar__segment bar__segment--indirect"  style="width:{{votesFromIndirect  / voteSummary.relativeMax * 100}}%"></div>
-                                                <div class="bar__segment bar__segment--appointed" style="width:{{votesFromAppointed / voteSummary.relativeMax * 100}}%"></div>
-                                            </div>{{''-}}
-                                            <span class="percentage">{{voteSummary[vote + 'Percent']}}%</span>
-                                        </td>
-                                        <td class="center-align">{{votesFromDirect or 0}}</td>
-                                        <td class="center-align">{{votesFromIndirect or 0}}</td>
-                                        <td class="center-align">{{votesFromAppointed or 0}}</td>
-                                    </tr>
-                                {% endmacro %}
-                                
-                                {{ renderBillVotesSummaryRow('Y') }}
-                                {{ renderBillVotesSummaryRow('N') }}
-                                {{ renderBillVotesSummaryRow('P') }}
-                                {{ renderBillVotesSummaryRow('A') }}
-                            </tbody>
-                        </table>
-                    </div>
+                            {% endmacro %}
+                            
+                            {{ renderBillVotesSummaryRow('Y') }}
+                            {{ renderBillVotesSummaryRow('N') }}
+                            {{ renderBillVotesSummaryRow('P') }}
+                            {{ renderBillVotesSummaryRow('A') }}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>

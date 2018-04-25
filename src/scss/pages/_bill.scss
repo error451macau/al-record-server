@@ -89,73 +89,74 @@
     
     .content-highlight {
         margin-top: 12px;
-        padding: 25px;
+        padding: 25px 15px 20px;
     }
+}
+
+.bill-votes-summary__table-wrapper {
+    margin-top: 25px;
 }
 
 .bill-votes-summary__pie {
     .svg-container {
         margin: auto !important;
     }
+
+    // force abstain slide white text color
+    .pielayer .slice:nth-child(3) .slicetext text {
+        fill: #ebebeb !important;
+    }
 }
 
 .bill-votes-summary__table {
     text-align: center;
-    width: calc( 100% - 21px ); // compensate for the legend
-    margin-left: 21px;
+    margin: -8px 0 -11px; // compensate for the top and bottom row's td padding
 
     tr {
         &:last-child {
             border-bottom: none;
         }
-
-        th:first-child,
-        td:first-child {
-            padding-left: 0;
-        }
     }
 
     th,
     td {
-        padding: 5px;
+        padding: 8px 4px 11px;
         white-space: nowrap;
     }
 
     thead {
         .legend {
-            margin-right: 5px;
+            display: none;
         }
     }
 
-    tbody {
-        td {
-            position: relative;
-        }
-
-        .legend {
-            position: absolute;
-            top: 50%;
-            transform: translate(0, -50%);
-            left: -21px;
-        }
+    .col-legend {
+        font-size: 0;
+        vertical-align: middle;
+        width: 21px;
+        padding-left: 0;
     }
 
     .col-vote {
-        width: 20%;
+        width: auto;
+        padding-left: 0;
     }
 
     .col-bar {
-        width: 50%;
+        width: 24%;
+        text-align: center;
     }
 
     .col-count {
-        width: 10%;
+        width: 18%;
         text-align: center;
     }
 
     .bar {
         width: calc( 100% - 4.2em );
         vertical-align: middle;
+        margin-right: 1.2em;
+        display: none;
     }
 
     .bar__segment {
@@ -163,7 +164,6 @@
     }
 
     .percentage {
-        margin-left: 1.2em;
         vertical-align: middle;
     }
 }
@@ -273,6 +273,19 @@
     }
 }
 
+// enable vote summary header legend
+@media (min-width: 375px) {
+    .bill-votes-summary__table {
+        thead {
+            .legend {
+                display: inline-block;
+                margin-right: 3px;
+            }
+        }
+    }
+}
+
+// enable clear:left in 2-col mode
 @media (min-width: $small-screen-up) and (max-width: $large-screen) {
     .bill-votes-detail {
         .col:nth-child(2n + 1) {
@@ -296,6 +309,20 @@
         margin-top: 30px;
     }
 
+    .bill-votes-summary {
+        .content-highlight {
+            padding: 25px 30px 34px;
+        }
+    }
+
+    .bill-votes-summary__table {
+        thead {
+            .legend {
+                margin-right: 5px;
+            }
+        }
+    }
+
     .bill-synopsis,
     .bill-votes-summary,
     .bill-votes-detail {
@@ -314,6 +341,30 @@
 
     .bill-synopsis {
         margin-top: 52px;
+    }
+
+    .bill-votes-summary {
+        .content-highlight {
+            @include clearFloat();
+            padding: 25px 40px 25px 35px;
+        }
+    }
+
+    .bill-votes-summary__pie-wrapper {
+        width: 190px;
+        float: left;
+    }
+
+    .bill-votes-summary__table-wrapper {
+        margin-top: 0;
+        width: calc( 100% - 190px - 34px ); // 34px is the gap between chart and table
+        float: right;
+    }
+
+    .bill-votes-summary__table {
+        .col-legend {
+            border-bottom: 1px solid transparent;
+        }
     }
 }
 
@@ -344,6 +395,46 @@
 
     .bill-meta-result__inner {
         max-width: 260px;
+    }
+
+    .bill-votes-summary__table { // show the bar itself and adjust column width
+        .col-bar {
+            width: 52%;
+        }
+
+        .col-count {
+            width: 10%;
+        }
+
+        .bar {
+            display: inline-block;
+        }
+    }
+}
+
+// adjust vote summary chart/table spacing
+@media #{$extra-large-and-up} {
+    .bill-votes-summary {
+        .content-highlight {
+            padding: 25px 40px 25px 100px;
+        }
+    }
+
+    .bill-votes-summary__table-wrapper {
+        width: calc( 100% - 190px - 100px ); // 100px is the gap between chart and table
+    }
+}
+
+// adjust vote summary chart/table spacing
+@media #{$extra-xl-and-up} {
+    .bill-votes-summary {
+        .content-highlight {
+            padding: 25px 40px 25px 180px;
+        }
+    }
+
+    .bill-votes-summary__table-wrapper {
+        width: calc( 100% - 190px - 180px ); // 100px is the gap between chart and table
     }
 }
 
