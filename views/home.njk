@@ -5,7 +5,7 @@
 {% block body %}
     <div class="home">
         <div class="home__bill" id="home__bill">
-            <h1>
+            <h1 class="sans-serif-on-zh">
                 <span>{{__('HOME_FEATURED_BILL_TITLE')}}</span><br>
                 <span>{{featuredBill.title[locale]}}</span>
             </h1>
@@ -26,10 +26,6 @@
                     textinfo: 'text+label',
                     marker: {
                         colors: ['#51ee97', '#958cfe', '#4a4a4a', '#e6e6e6']
-                    },
-                    textfont: {
-                        size: 15,
-                        color: '#323232'
                     }
                 }] %}
                 <div id="home__bill__pie" class="pie" data-pie-data='{{pieData | dump}}'></div>
@@ -41,7 +37,7 @@
         </div>
         <div class="home__deputy">
             <div class="home__deputy__quote">
-                <h2>{{__('HOME_FEATURED_DEPUTY_TITLE')}}</h2>
+                <h2 class="sans-serif-on-zh">{{__('HOME_FEATURED_DEPUTY_TITLE')}}</h2>
                 <p>{{featuredDeputySpeech[locale]}}</p>
             </div>
             <div class="home__deputy__bracket"></div>

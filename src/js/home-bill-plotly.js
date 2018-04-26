@@ -25,6 +25,11 @@ var data = JSON.parse(pieElem.dataset.pieData);
             r: 0,
             b: 0,
             t: 0,
+        },
+        font: {
+            family: getComputedStyle(pieElem)['font-family'],
+            size: 15,
+            color: '#232323'
         }
     };
 

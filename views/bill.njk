@@ -61,8 +61,8 @@
                         text: [
                             voteSummary.YPercent + '%',
                             voteSummary.NPercent + '%',
-                            voteSummary.APercent + '%',
-                            voteSummary.PPercent + '%'
+                            voteSummary.PPercent + '%',
+                            voteSummary.APercent + '%'
                         ],
                         type: 'pie',
                         sort: false,
@@ -71,10 +71,6 @@
                         textinfo: 'text',
                         marker: {
                             colors: ['#5cd693', '#ff775b', '#4a4a4a', '#e6e6e6']
-                        },
-                        textfont: {
-                            size: 15,
-                            color: '#323232'
                         }
                     }] %}
                     <div id="bill-votes-summary__pie" class="bill-votes-summary__pie" data-pie-data="{{pieData | dump}}"></div>

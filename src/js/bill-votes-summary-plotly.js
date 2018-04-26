@@ -19,6 +19,11 @@ var layout = {
         r: 0,
         b: 0,
         t: 0,
+    },
+    font: {
+        family: getComputedStyle(elem)['font-family'],
+        size: 15,
+        color: '#232323'
     }
 };
 
