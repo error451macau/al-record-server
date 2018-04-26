@@ -31,7 +31,41 @@ router.use(function(req, res, next){
 });
 
 router.get('/', function(req, res, next){
-    res.render('home.njk');
+    dal.getHomesActive(function(err, homes){
+        if(err) return next(err);
+        if(homes.length == 0) return res.status(500).end();
+
+        var home = _.sample(homes);
+        
+        async.parallel({
+            bill: callback => {
+                dal.getBillById(home.featuredBillId, callback);
+            },
+            deputies: callback => {
+                dal.getDeputiesByIds([home.featuredDeputyId], callback);
+            },
+        }, function(err, results){
+            if(err) return next(err);
+
+            // generate voteSummary (of featuredBill)
+            var voteSummary = {}; // {Y: 10, N: 5, ...}
+            results.bill.deputyVotes.forEach(deputyVote => {
+                voteSummary[deputyVote.vote] = (voteSummary[deputyVote.vote] || 0) + 1; // per vote
+            });
+            voteSummary.total = results.bill.deputyVotes.length;
+            voteSummary.YPercent = Math.round((voteSummary.Y || 0) / voteSummary.total * 100);
+            voteSummary.NPercent = Math.round((voteSummary.N || 0) / voteSummary.total * 100);
+            voteSummary.PPercent = Math.round((voteSummary.P || 0) / voteSummary.total * 100);
+            voteSummary.APercent = Math.round((voteSummary.A || 0) / voteSummary.total * 100);
+
+            res.render('home.njk', {
+                featuredBill: results.bill,
+                featuredDeputy: results.deputies[0],
+                featuredDeputySpeech: home.featuredDeputySpeech,
+                voteSummary: voteSummary,
+            });
+        });
+    })
 });
 
 router.get('/deputies', function(req, res, next){

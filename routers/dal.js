@@ -69,6 +69,18 @@ dal.getBillsLatest = function(limit, callback = () => {}){
     });
 }
 
+dal.getBillById = function(id, callback = () => {}){
+    request({
+        uri: '/bills',
+        qs: {id},
+        json: true,
+    }, function(err, response, body){
+        if(err) return callback(err);
+        if(body.length == 0) return callback(null, null); // return null if no match
+        callback(err, body[0]);
+    })
+}
+
 dal.getBillBySlug = function(slug, callback = () => {}){
     request({
         uri: '/bills',
@@ -99,4 +111,15 @@ dal.getDocumentsByIds = function(ids, callback = () => {}){
     }, function(err, response, body){
         callback(err, body);
     })
+}
+
+dal.getHomesActive = function(callback = () => {}){
+    request({
+        uri: '/homes',
+        qs: {active: true},
+        json: true,
+    }, function(err, response, body){
+        console.log(body);
+        callback(err, body);
+    });
 }

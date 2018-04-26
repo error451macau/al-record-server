@@ -7,17 +7,17 @@
         <div class="home__bill" id="home__bill">
             <h1>
                 <span>{{__('HOME_FEATURED_BILL_TITLE')}}</span><br>
-                <span>Legal Regime for Guarantees of the Rights and Interests of Elderly</span>
+                <span>{{featuredBill.title[locale]}}</span>
             </h1>
             <div class="pie-wrapper" id="home__bill__pie-wrapper">
                 {% set pieData = [{
-                    values: [44,25,13,19],
+                    values: [voteSummary.Y, voteSummary.N, voteSummary.P, voteSummary.A],
                     labels: [__('VOTE_Y'), __('VOTE_N'), __('VOTE_P'), __('VOTE_A')],
                     text: [
-                        '44%',
-                        '25%',
-                        '13%',
-                        '19%'
+                        voteSummary.YPercent + '%',
+                        voteSummary.NPercent + '%',
+                        voteSummary.PPercent + '%',
+                        voteSummary.APercent + '%'
                     ],
                     type: 'pie',
                     sort: false,
@@ -35,22 +35,26 @@
                 <div id="home__bill__pie" class="pie" data-pie-data='{{pieData | dump}}'></div>
             </div>
             <div class="control">
-                <a>{{__('HOME_BILL_DETAIL')}}{% include 'inline-files/arrow.svg' %}</a>
+                <a href="{{mklink('bill', featuredBill)}}">{{__('HOME_BILL_DETAIL')}}{% include 'inline-files/arrow.svg' %}</a>
                 <a class="right" href="{{mklink('localized', 'bills')}}">{{__('HOME_MORE_BILLS')}}</a>
             </div>
         </div>
         <div class="home__deputy">
             <div class="home__deputy__quote">
                 <h2>{{__('HOME_FEATURED_DEPUTY_TITLE')}}</h2>
-                <p>There is an old saying in Chinese: Love well, whip well. Domestic violence is the heart of love!</p>
+                <p>{{featuredDeputySpeech[locale]}}</p>
             </div>
             <div class="home__deputy__bracket"></div>
             <div class="home__deputy__deputy">
-                <img alt="" src="/img/deputies/chui-sai-cheong-color.jpg">
+                <a href="{{mklink('deputy', featuredDeputy)}}">
+                    <img src="{{mklink('abs', 'img/deputies/' + featuredDeputy.slug + '-color.jpg')}}" alt="{{featuredDeputy.name[locale]}}">
+                </a>
                 <div class="desc">
-                    <span>Ho Iat Seng</span><br>
-                    <span>Indirectly Elected Deputy</span>
-                    <a href="{{mklink('localized', 'deputies')}}">{{__('HOME_ALL_DEPUTIES')}}{% include 'inline-files/arrow.svg' %}</a>
+                    <a href="{{mklink('deputy', featuredDeputy)}}">
+                        <span>{{featuredDeputy.name[locale]}}</span><br>
+                        <span>{{__('DEPUTY_METHOD_LONG_' + featuredDeputy.electedMethod)}}</span>
+                    </a>
+                    <a class="bottom" href="{{mklink('localized', 'deputies')}}">{{__('HOME_ALL_DEPUTIES')}}{% include 'inline-files/arrow.svg' %}</a>
                 </div>
             </div>
         </div>
