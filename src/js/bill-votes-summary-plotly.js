@@ -10,6 +10,8 @@ Plotly.register([
 
 var data = JSON.parse(elem.dataset.pieData);
 
+require('./_abstain-sector-coloring')(elem, data[0]);
+
 var layout = {
     height: 190,
     width:  190,

@@ -30,11 +30,6 @@
         max-width: 100%;
         vertical-align: top;
         display: inline-block;
-        
-        // force abstain text grey
-        .pielayer .slice:nth-child(3) .slicetext text {
-            fill: #ebebeb !important;
-        }
     }
 
     .control {

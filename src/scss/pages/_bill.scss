@@ -101,11 +101,6 @@
     .svg-container {
         margin: auto !important;
     }
-
-    // force abstain slide white text color
-    .pielayer .slice:nth-child(3) .slicetext text {
-        fill: #ebebeb !important;
-    }
 }
 
 .bill-votes-summary__table {

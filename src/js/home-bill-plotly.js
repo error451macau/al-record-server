@@ -13,6 +13,8 @@ Plotly.register([
 
 var data = JSON.parse(pieElem.dataset.pieData);
 
+require('./_abstain-sector-coloring')(pieElem, data[0]);
+
 (function(){
     var sideLength = calcSideLength();
 
@@ -33,7 +35,14 @@ var data = JSON.parse(pieElem.dataset.pieData);
         }
     };
 
-    pieElem.style.top = ((wrapperElem.clientHeight - sideLength) / 2) + 'px';
+    // first render on mobile has wrapperElem.clientHeight shorter than sideLength,
+    //   in this case top is set to 0px
+    if(wrapperElem.clientHeight < sideLength){
+        pieElem.style.top = '0px';
+    } else {
+        pieElem.style.top = ((wrapperElem.clientHeight - sideLength) / 2) + 'px';
+    }
+
     Plotly.newPlot('home__bill__pie', data, layout, {staticPlot: true});
 })();
 
