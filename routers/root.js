@@ -152,24 +152,26 @@ router.get('/bills/:id/:slug', function(req, res, next){
             voteSummary.PPercent = Math.round((voteSummary.P || 0) / voteSummary.total * 100);
             voteSummary.APercent = Math.round((voteSummary.A || 0) / voteSummary.total * 100);
             
-            // group deputies by vote and then sort each group in dir->indir->app
+            // group deputies by vote
+            // then group by specialStatus
+            // and then sort each group in dir->indir->app
             var deputiesGrouped = _.chain(bill.deputyVotes)
                 .groupBy('vote')
                 .mapObject(function(deputyVotesEntries, vote){ // deputyVotesEntries = [{deputyId: 3, vote: 'Y'}, {deputyId, vote}, ...]
                     return _.chain(deputyVotesEntries)
-                        .map(function(deputyVotesEntry){ // {deputyId: 3, vote: 'Y'}
-                            // also attach the original deputyVotesEntry which includes comment
-                            return Object.assign({}, deputiesDict[deputyVotesEntry.deputyId], deputyVotesEntry);
+                        .groupBy(s => s.specialStatus || '')
+                        .mapObject(function(deputyVotesEntriesInner, status){ // same structure as above
+                            return _.sortBy(deputyVotesEntriesInner, function(deputyVote){
+                                const deputy = deputiesDict[deputyVote.deputyId];
+
+                                return {
+                                    'direct':    1,
+                                    'indirect':  2,
+                                    'appointed': 3,
+                                }[deputy.electedMethod];
+                            })
                         })
-                        // .tap(console.log) // expect: [{deputy Object}, ...] (NOT SORTED)
-                        .sortBy(function(deputy){
-                            return {
-                                'direct':    1,
-                                'indirect':  2,
-                                'appointed': 3,
-                            }[deputy.electedMethod];
-                        })
-                        .value()
+                        .value();
                 })
                 .value();
 

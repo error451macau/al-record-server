@@ -121,26 +121,36 @@
         </section>
         <section class="bill-votes-detail">
             <h4>{{__('BILL_VOTES')}}</h4>
-            {% macro renderBillVoteDetailColumn(deputiesList, useWhiteIcon = false) %}
-                {% for deputy in deputiesList %}
-                    <li>
-                        <div class="avatar-table-wrapper">
-                            <a class="avatar-table at--mid-12" href="{{mklink('deputy', deputy)}}">
-                                <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.slug + '-color.jpg')}}" alt="{{deputy.name[locale]}}">
-                                <span>{{deputy.name[locale]}}</span>
-                            </a>
-                        </div>
-                        {% if deputy.comment[locale] %}
-                            <div class="comment-wrapper">
-                                <label class="comment">
-                                    <input type="checkbox" style="display:none">
-                                    <img src="{{mklink('abs', 'img/comment-' + ('white' if useWhiteIcon else 'black') + '.svg')}}" alt="{{__('DEPUTY_COMMENT_ON_BILL')}}">
-                                    <div class="comment-tooltip">{{deputy.comment[locale]}}</div>
-                                </label>
+            {% macro renderBillVoteDetailColumn(specialStatusObjects, useWhiteIcon = false) %}
+                {{renderBillVoteDetailColumnSegment(specialStatusObjects[""], useWhiteIcon)}}
+                {% if specialStatusObjects.S %}
+                    <h6>{{__('VOTE_SPECIAL_STATUS_S')}}</h6>
+                    {{renderBillVoteDetailColumnSegment(specialStatusObjects.S, useWhiteIcon)}}
+                {% endif %}
+            {% endmacro %}
+            {% macro renderBillVoteDetailColumnSegment(deputiesList, useWhiteIcon = false) %}
+                <ul>
+                    {% for deputyVote in deputiesList %}
+                        {% set deputy = deputiesDict[deputyVote.deputyId] %}
+                        <li>
+                            <div class="avatar-table-wrapper">
+                                <a class="avatar-table at--mid-12" href="{{mklink('deputy', deputy)}}">
+                                    <img class="avatar" src="{{mklink('abs', 'img/deputies/' + deputy.slug + '-color.jpg')}}" alt="{{deputy.name[locale]}}">
+                                    <span>{{deputy.name[locale]}}</span>
+                                </a>
                             </div>
-                        {% endif %}
-                    </li>
-                {% endfor %}
+                            {% if deputy.comment[locale] %}
+                                <div class="comment-wrapper">
+                                    <label class="comment">
+                                        <input type="checkbox" style="display:none">
+                                        <img src="{{mklink('abs', 'img/comment-' + ('white' if useWhiteIcon else 'black') + '.svg')}}" alt="{{__('DEPUTY_COMMENT_ON_BILL')}}">
+                                        <div class="comment-tooltip">{{deputy.comment[locale]}}</div>
+                                    </label>
+                                </div>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
             {% endmacro %}
             <div class="row">
                 <div class="col xs12 m6 xl3">
@@ -151,7 +161,7 @@
                         {% endif %}
                         <h5>{{__('VOTE_Y')}}</h5>
                         <span class="summary">{{voteSummary.Y or 0}} {{__('NOUN_VOTES')}} · {{voteYPercent}}%</span>
-                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.Y, voteSummary.relativeMax == voteSummary.Y)}}</ul>
+                        {{renderBillVoteDetailColumn(deputiesGrouped.Y, voteSummary.relativeMax == voteSummary.Y)}}
                     </div>
                 </div>
                 <div class="col xs12 m6 xl3">
@@ -162,7 +172,7 @@
                         {% endif %}
                         <h5>{{__('VOTE_N')}}</h5>
                         <span class="summary">{{voteSummary.N or 0}} {{__('NOUN_VOTES')}} · {{voteNPercent}}%</span>
-                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.N, voteSummary.relativeMax == voteSummary.N)}}</ul>
+                        {{renderBillVoteDetailColumn(deputiesGrouped.N, voteSummary.relativeMax == voteSummary.N)}}
                     </div>
                 </div>
                 <div class="col xs12 m6 xl3">
@@ -173,7 +183,7 @@
                         {% endif %}
                         <h5>{{__('VOTE_P')}}</h5>
                         <span class="summary">{{voteSummary.P or 0}} {{__('NOUN_VOTES')}} · {{votePPercent}}%</span>
-                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.P)}}</ul>
+                        {{renderBillVoteDetailColumn(deputiesGrouped.P)}}
                     </div>
                 </div>
                 <div class="col xs12 m6 xl3">
@@ -184,7 +194,7 @@
                         {% endif %}
                         <h5>{{__('VOTE_A')}}</h5>
                         <span class="summary">{{voteSummary.A or 0}} {{__('NOUN_VOTES')}} · {{voteAPercent}}%</span>
-                        <ul>{{renderBillVoteDetailColumn(deputiesGrouped.A)}}</ul>
+                        {{renderBillVoteDetailColumn(deputiesGrouped.A)}}
                     </div>
                 </div>
             </div>

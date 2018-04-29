@@ -197,7 +197,8 @@
             line-height: (26px / 22px);
         }
 
-        .summary {
+        .summary,
+        h6 {
             display: block;
             line-height: (20px / 15px);
             margin-top: 5px;
@@ -208,6 +209,15 @@
         ul {
             margin-top: 27px;
             margin-bottom: 0;
+        }
+
+        h6 {
+            margin-top: 20px;
+            margin-bottom: 0;
+
+            & + ul {
+                margin-top: 10px;
+            }
         }
 
         li {
@@ -241,7 +251,8 @@
         
         &.content-highlight--y,
         &.content-highlight--n {
-            .summary {
+            .summary,
+            h6 {
                 opacity: 0.75;
             }
         }
