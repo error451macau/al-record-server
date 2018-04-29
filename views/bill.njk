@@ -83,9 +83,9 @@
                                 <th class="col-legend">&nbsp;</th>
                                 <th class="col-vote">{{__('BILL_VOTES_SUMMARY_TOTAL')}}</th>
                                 <th class="col-bar">&nbsp;</th>
-                                <th class="col-count"><span class="legend legend--circle legend--direct"   ></span><span>{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
-                                <th class="col-count"><span class="legend legend--circle legend--indirect" ></span><span>{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
-                                <th class="col-count"><span class="legend legend--circle legend--appointed"></span><span>{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
+                                <th class="col-count"><span class="legend legend--circle legend--direct"   ></span><span class="number">{{__('DEPUTY_METHOD_SHORT_direct')}}</span></th>
+                                <th class="col-count"><span class="legend legend--circle legend--indirect" ></span><span class="number">{{__('DEPUTY_METHOD_SHORT_indirect')}}</span></th>
+                                <th class="col-count"><span class="legend legend--circle legend--appointed"></span><span class="number">{{__('DEPUTY_METHOD_SHORT_appointed')}}</span></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,9 +104,9 @@
                                         </div>{{''-}}
                                         <span class="percentage">{{voteSummary[vote + 'Percent']}}%</span>
                                     </td>
-                                    <td class="center-align">{{votesFromDirect or 0}}</td>
-                                    <td class="center-align">{{votesFromIndirect or 0}}</td>
-                                    <td class="center-align">{{votesFromAppointed or 0}}</td>
+                                    <td class="col-count"><span class="legend"></span><span class="number">{{votesFromDirect or 0}}</span></td>
+                                    <td class="col-count"><span class="legend"></span><span class="number">{{votesFromIndirect or 0}}</span></td>
+                                    <td class="col-count"><span class="legend"></span><span class="number">{{votesFromAppointed or 0}}</span></td>
                                 </tr>
                             {% endmacro %}
                             

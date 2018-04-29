@@ -119,7 +119,7 @@
         white-space: nowrap;
     }
 
-    thead {
+    .col-count {
         .legend {
             display: none;
         }
@@ -148,7 +148,7 @@
     }
 
     .bar {
-        width: calc( 100% - 4.2em );
+        width: calc( 100% - 6em ); // 4.2em is just right, but leave some inner margin looks better
         vertical-align: middle;
         margin-right: 1.2em;
         display: none;
@@ -160,6 +160,15 @@
 
     .percentage {
         vertical-align: middle;
+        display: inline-block;
+        width: (32px / 15px * 1em);
+        text-align: right;
+    }
+
+    .number {
+        display: inline-block;
+        width: 2em;
+        text-align: left;
     }
 }
 
@@ -271,7 +280,7 @@
 // enable vote summary header legend
 @media (min-width: 375px) {
     .bill-votes-summary__table {
-        thead {
+        .col-count {
             .legend {
                 display: inline-block;
                 margin-right: 3px;
@@ -311,7 +320,7 @@
     }
 
     .bill-votes-summary__table {
-        thead {
+        .col-count {
             .legend {
                 margin-right: 5px;
             }
@@ -394,7 +403,7 @@
 
     .bill-votes-summary__table { // show the bar itself and adjust column width
         .col-bar {
-            width: 52%;
+            width: 54%;
         }
 
         .col-count {
