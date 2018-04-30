@@ -52,7 +52,12 @@
                             <span>{{__('DEPUTY_PROPERTY_NGO')}}</span>
                             <span class="right">{{deputy.property.ngoCount}}</span>
                         </li>
-                    <ul>
+                    </ul>
+                    {% if deputy.property.declarationDocumentId %}
+                        <a class="declaration" target="_blank" href="{{mklink('document', deputy.property.declarationDocumentId)}}">
+                            <span>{{__('DEPUTY_PROPERTY_DECLARATION_DOC')}}</span>{% include 'inline-files/document.svg' %}
+                        </a>
+                    {% endif %}
                 </div>
                 <div class="deputy-info__block deputy-info__block--office">
                     <h4>{{__('DEPUTY_CONTACT')}}</h4>

@@ -35,7 +35,6 @@
         text-transform: uppercase;
         padding-top: 15px;
         padding-bottom: 12px;
-        border-bottom: 1px solid $theme-border-grey;
     }
 
     dl,
@@ -76,9 +75,23 @@
     &.deputy-info__block--properties {
         li {
             padding: 10px 0;
+            border-top: 1px solid $theme-border-grey;
+        }
 
-            &:not(:first-child) {
-                border-top: 1px solid $theme-border-grey;
+        .declaration {
+            display: block;
+            font-weight: bold;
+            padding: 10px 0 13px;
+            color: $theme-light-purple;
+            border-top: 1px solid $theme-border-grey;
+
+            span,
+            svg {
+                vertical-align: middle;
+            }
+
+            svg {
+                margin-left: 7px;
             }
         }
     }
@@ -87,10 +100,7 @@
         dt {
             font-weight: bold;
             padding-top: 10px;
-
-            &:not(:first-child) {
-                border-top: 1px solid $theme-border-grey;
-            }
+            border-top: 1px solid $theme-border-grey;
         }
 
         dd {

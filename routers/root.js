@@ -20,8 +20,8 @@ router.use(function(req, res, next){
                 return `/${res.locals.locale}/bills/${object.id}/${object.slug}`;
             case 'deputy':
                 return `/${res.locals.locale}/deputies/${object.id}/${object.slug}`;
-            case 'document':
-                return `/${res.locals.locale}/documents/${object.id}/${object.slug}`;
+            case 'document': // object is the documentId
+                return `/${res.locals.locale}/documents#docid-${object}`;
             case 'uploads':
                 return `/uploads/${object}`;
         }

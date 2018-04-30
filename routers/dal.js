@@ -119,7 +119,6 @@ dal.getHomesActive = function(callback = () => {}){
         qs: {active: true},
         json: true,
     }, function(err, response, body){
-        console.log(body);
         callback(err, body);
     });
 }

@@ -9,7 +9,7 @@
     </thead>
     <tbody>
         {% for document in documents %}
-            <tr>
+            <tr id="docid-{{document.id}}">
                 <td class="col-title">{{document.title[locale]}}</td>
                 <td class="col-date" data-title="{{__('DOCUMENT_DATE')}}">{{document.date | dateFormat}}</td>
                 <td class="col-download" data-title="{{__('VERB_DOWNLOAD')}}">
