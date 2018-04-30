@@ -47,6 +47,9 @@ require('./_abstain-sector-coloring')(pieElem, data[0]);
 })();
 
 window.addEventListener('resize', debounce(function(){
+    // so that its own height does not affect wrapperElem height
+    pieElem.style.height = 0;
+
     var sideLength = calcSideLength();
 
     Plotly.relayout('home__bill__pie', {
@@ -54,7 +57,8 @@ window.addEventListener('resize', debounce(function(){
         width: sideLength,
     });
 
-    pieElem.style.top = ((wrapperElem.clientHeight - sideLength) / 2) + 'px';
+    pieElem.style.top = Math.max(0, (wrapperElem.clientHeight - sideLength) / 2) + 'px';
+    pieElem.style.height = 'auto'; // revert height = 0 above
 
     console.log('Plotly.relayout');
 }, 40));

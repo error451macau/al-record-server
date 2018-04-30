@@ -248,6 +248,27 @@
 }
 
 @media #{$ml-and-up} {
+    .home {
+        display: flex;
+        flex-direction: column;
+        height: calc( 100% - #{$navbar-height} );
+    }
+
+    .home__bill {
+        flex-grow: 1;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .pie-wrapper {
+            margin: 30px;
+            width: auto;
+            flex-grow: 1;
+            min-height: 412px;
+        }
+    }
+
     .home__deputy {
         width: 50%;
         min-height: 480px;
@@ -266,30 +287,21 @@
     }
 }
 
-// desktop layout, only applicable if viewport is "wider" than 12:10 (experimental value)
-@media #{$large-and-up} and (min-aspect-ratio: 12/10) {
+// desktop layout, only applicable if viewport is square or portrait
+@media #{$large-and-up} and (min-aspect-ratio: 1/1) {
     .home {
-        height: calc( 100% - #{$navbar-height} );
         min-height: 700px; // prevents collapse
+        flex-direction: row;
     }
 
-    .home__bill {
+    .home__bill,
+    .home__side-wrapper {
         width: 50%;
-        height: 100%;
-        float: left;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-
-        .pie-wrapper {
-            margin: 30px;
-            width: auto;
-            flex-grow: 1;
-        }
     }
 
     .home__deputy {
         min-height: 50%;
+        width: 100%;
         flex-direction: row;
     }
 
@@ -321,6 +333,7 @@
     }
 
     .home__about {
+        width: 100%;
         height: 50%;
 
         .background {

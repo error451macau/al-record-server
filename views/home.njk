@@ -36,29 +36,31 @@
                 <a class="right" href="{{mklink('localized', 'bills')}}">{{__('HOME_MORE_BILLS')}}</a>
             </div>
         </div>
-        <div class="home__deputy">
-            <div class="home__deputy__quote">
-                <h2 class="sans-serif-on-zh">{{__('HOME_FEATURED_DEPUTY_TITLE')}}</h2>
-                <p>{{featuredDeputySpeech[locale]}}</p>
-            </div>
-            <div class="home__deputy__bracket"></div>
-            <div class="home__deputy__deputy">
-                <a href="{{mklink('deputy', featuredDeputy)}}">
-                    <img src="{{mklink('abs', 'img/deputies/' + featuredDeputy.slug + '-color.jpg')}}" alt="{{featuredDeputy.name[locale]}}">
-                </a>
-                <div class="desc">
+        <div class="home__side-wrapper">
+            <div class="home__deputy">
+                <div class="home__deputy__quote">
+                    <h2 class="sans-serif-on-zh">{{__('HOME_FEATURED_DEPUTY_TITLE')}}</h2>
+                    <p>{{featuredDeputySpeech[locale]}}</p>
+                </div>
+                <div class="home__deputy__bracket"></div>
+                <div class="home__deputy__deputy">
                     <a href="{{mklink('deputy', featuredDeputy)}}">
-                        <span>{{featuredDeputy.name[locale]}}</span><br>
-                        <span>{{__('DEPUTY_METHOD_LONG_' + featuredDeputy.electedMethod)}}</span>
+                        <img src="{{mklink('abs', 'img/deputies/' + featuredDeputy.slug + '-color.jpg')}}" alt="{{featuredDeputy.name[locale]}}">
                     </a>
-                    <a class="bottom" href="{{mklink('localized', 'deputies')}}">{{__('HOME_ALL_DEPUTIES')}}{% include 'inline-files/arrow.svg' %}</a>
+                    <div class="desc">
+                        <a href="{{mklink('deputy', featuredDeputy)}}">
+                            <span>{{featuredDeputy.name[locale]}}</span><br>
+                            <span>{{__('DEPUTY_METHOD_LONG_' + featuredDeputy.electedMethod)}}</span>
+                        </a>
+                        <a class="bottom" href="{{mklink('localized', 'deputies')}}">{{__('HOME_ALL_DEPUTIES')}}{% include 'inline-files/arrow.svg' %}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="home__about">
-            <div class="background"></div>
-            <h3>{{__('HOME_ABOUT_SENTENCE')}}</h3>
-            <a href="{{mklink('localized', 'about')}}">{{__('HOME_ABOUT_US')}}{% include 'inline-files/arrow.svg' %}</a>
+            <div class="home__about">
+                <div class="background"></div>
+                <h3>{{__('HOME_ABOUT_SENTENCE')}}</h3>
+                <a href="{{mklink('localized', 'about')}}">{{__('HOME_ABOUT_US')}}{% include 'inline-files/arrow.svg' %}</a>
+            </div>
         </div>
     </div>
 {% endblock %}
