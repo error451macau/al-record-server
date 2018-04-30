@@ -46,15 +46,17 @@ if(process.env.NODE_ENV == 'development'){
     // console.log('proxy_pass-ing /api to 127.0.0.1:%s', apiPort);
 }
 
-app.use('/:lang(en|zh)', require('./routers/root.js'));
+// app.use('/:lang(en|zh)', require('./routers/root.js'));
+app.use('/:lang(zh)', require('./routers/root.js'));
 
 app.get('/', function(req, res, next){
-	var lang = req.acceptsLanguages('zh');
-	if(lang){
-		res.redirect('/zh/');
-	} else {
-		res.redirect('/en/');
-	}
+	// var lang = req.acceptsLanguages('zh');
+	// if(lang){
+	// 	res.redirect('/zh/');
+	// } else {
+	// 	res.redirect('/en/');
+	// }
+	res.redirect('/zh/');
 });
 
 var port = process.env.PORT || 7770;
