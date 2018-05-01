@@ -167,8 +167,14 @@
             margin-top: 5px;
         }
 
+        .col-title {
+            a {
+                display: block;
+            }
+        }
+
         .avatar-table {
-            display: block;
+            display: inline-block; // convert the link to inline-block to reduce unwanted click area
 
             img {
                 display: block;
