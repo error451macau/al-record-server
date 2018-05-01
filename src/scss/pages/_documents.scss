@@ -1,14 +1,6 @@
 .documents {
     .documents-table {
         margin-top: 36px;
-
-        tr {
-            transition: background-color .2s linear;
-        }
-
-        tr:target {
-            background-color: $theme-shadow-purple;
-        }
     }
 }
 

@@ -5,6 +5,14 @@
         border-left: 1px solid $theme-border-grey;
         border-right: 1px solid $theme-border-grey;
     }
+
+    tr {
+        transition: background-color .2s linear;
+
+        &.hll {
+            background-color: $theme-shadow-purple !important;
+        }
+    }
 }
 
 // table-ize
