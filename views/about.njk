@@ -38,6 +38,7 @@
     <script>
         var nwcl = document.querySelector('.navbar-wrapper').classList;
         var ns   = document.querySelector('.navbar-wrapper nav').style;
+        var sbt  = document.getElementById('sidebar-toggler');
 
         var currentState = calcState();
         switch(currentState){
@@ -55,6 +56,7 @@
 
         handleScroll();
         window.addEventListener('scroll', handleScroll);
+        sbt.addEventListener('change', handleScroll);
 
         function handleScroll(){
             var nextState = calcState();
@@ -66,7 +68,9 @@
             var bound1 = 200;
             var bound2 = document.querySelector('.about .hero-image').clientHeight;
 
-            if(window.pageYOffset < bound1){
+            if(sbt.checked) { // when sidebar is on, the display effect should be the same as in zone C
+                return 'C';
+            } else if(window.pageYOffset < bound1){
                 return 'A';
             } else if(window.pageYOffset >= bound2) {
                 return 'C'
@@ -108,6 +112,14 @@
                     break;
                 case 'CB':
                     ns.opacity = 0;
+                    break;
+                case 'AC':
+                    handleStateChange('A', 'B');
+                    handleStateChange('B', 'C');
+                    break;
+                case 'CA':
+                    handleStateChange('C', 'B');
+                    handleStateChange('B', 'A');
                     break;
             }
 
