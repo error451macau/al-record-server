@@ -5,7 +5,8 @@
 {% block body %}
     <div class="deputies-body container">
         <h1 class="center-align">{{__('DEPUTIES_PAGE_TITLE')}}</h1>
-        {% for method, deputies in deputies | groupby('electedMethod') %}
+        
+        {% macro renderGroup(method, deputies) %}
             <div>
                 <h4>{{__('DEPUTY_METHOD_' + method)}}</h4>
                 <ul class="row deputies-group">
@@ -21,6 +22,10 @@
                     {% endfor %}
                 </ul>
             </div>
-        {% endfor %}
+        {% endmacro %}
+
+        {{renderGroup('direct', deputiesGroupped.direct)}}
+        {{renderGroup('indirect', deputiesGroupped.indirect)}}
+        {{renderGroup('appointed', deputiesGroupped.appointed)}}
     </div>
 {% endblock %}

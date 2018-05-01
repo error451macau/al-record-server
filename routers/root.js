@@ -71,7 +71,9 @@ router.get('/', function(req, res, next){
 router.get('/deputies', function(req, res, next){
     dal.getDeputies((err, deputies) => {
         if(err) return next(err);
-        res.render('deputies.njk', {deputies});
+        res.render('deputies.njk', {
+            deputiesGroupped: _.groupBy(deputies, 'electedMethod'),
+        });
     });
 });
 
@@ -155,7 +157,7 @@ router.get('/bills/:id/:slug', function(req, res, next){
             // group deputies by vote
             // then group by specialStatus
             // and then sort each group in dir->indir->app
-            var deputiesGrouped = _.chain(bill.deputyVotes)
+            var deputiesGroupped = _.chain(bill.deputyVotes)
                 .groupBy('vote')
                 .mapObject(function(deputyVotesEntries, vote){ // deputyVotesEntries = [{deputyId: 3, vote: 'Y'}, {deputyId, vote}, ...]
                     return _.chain(deputyVotesEntries)
@@ -179,7 +181,7 @@ router.get('/bills/:id/:slug', function(req, res, next){
                 bill,
                 voteSummary,
                 deputiesDict,
-                deputiesGrouped,
+                deputiesGroupped,
                 documents,
             });
         });

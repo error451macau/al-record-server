@@ -161,7 +161,7 @@
                         {% endif %}
                         <h5>{{__('VOTE_Y')}}</h5>
                         <span class="summary">{{voteSummary.Y or 0}} {{__('NOUN_VOTES')}} · {{voteYPercent}}%</span>
-                        {{renderBillVoteDetailColumn(deputiesGrouped.Y, voteSummary.relativeMax == voteSummary.Y)}}
+                        {{renderBillVoteDetailColumn(deputiesGroupped.Y, voteSummary.relativeMax == voteSummary.Y)}}
                     </div>
                 </div>
                 <div class="col xs12 m6 xl3">
@@ -172,7 +172,7 @@
                         {% endif %}
                         <h5>{{__('VOTE_N')}}</h5>
                         <span class="summary">{{voteSummary.N or 0}} {{__('NOUN_VOTES')}} · {{voteNPercent}}%</span>
-                        {{renderBillVoteDetailColumn(deputiesGrouped.N, voteSummary.relativeMax == voteSummary.N)}}
+                        {{renderBillVoteDetailColumn(deputiesGroupped.N, voteSummary.relativeMax == voteSummary.N)}}
                     </div>
                 </div>
                 <div class="col xs12 m6 xl3">
@@ -183,7 +183,7 @@
                         {% endif %}
                         <h5>{{__('VOTE_P')}}</h5>
                         <span class="summary">{{voteSummary.P or 0}} {{__('NOUN_VOTES')}} · {{votePPercent}}%</span>
-                        {{renderBillVoteDetailColumn(deputiesGrouped.P)}}
+                        {{renderBillVoteDetailColumn(deputiesGroupped.P)}}
                     </div>
                 </div>
                 <div class="col xs12 m6 xl3">
@@ -194,7 +194,7 @@
                         {% endif %}
                         <h5>{{__('VOTE_A')}}</h5>
                         <span class="summary">{{voteSummary.A or 0}} {{__('NOUN_VOTES')}} · {{voteAPercent}}%</span>
-                        {{renderBillVoteDetailColumn(deputiesGrouped.A)}}
+                        {{renderBillVoteDetailColumn(deputiesGroupped.A)}}
                     </div>
                 </div>
             </div>
