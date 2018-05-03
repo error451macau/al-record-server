@@ -58,6 +58,7 @@ router.get('/', function(req, res, next){
             voteSummary.PPercent = Math.round((voteSummary.P || 0) / voteSummary.total * 100);
             voteSummary.APercent = Math.round((voteSummary.A || 0) / voteSummary.total * 100);
 
+            res.locals.canonicalPath = '/';
             res.render('home.njk', {
                 featuredBill: results.bill,
                 featuredDeputy: results.deputies[0],
@@ -71,6 +72,8 @@ router.get('/', function(req, res, next){
 router.get('/deputies', function(req, res, next){
     dal.getDeputies((err, deputies) => {
         if(err) return next(err);
+        
+        res.locals.canonicalPath = '/deputies';
         res.render('deputies.njk', {
             deputiesGroupped: _.groupBy(deputies, 'electedMethod'),
         });
@@ -92,6 +95,7 @@ router.get('/deputies/:id/:slug', function(req, res, next){
 
             });
 
+            res.locals.canonicalPath = `/deputies/${deputy.id}/${deputy.slug}`;
             res.render('deputy.njk', {deputy, latestBills});
         })
     })
@@ -106,6 +110,7 @@ router.get('/bills', function(req, res, next){
         dal.getDeputiesByIds(proposerDeputiesIds, function(err, deputies){
             if(err) return next(err);
             
+            res.locals.canonicalPath = '/bills';
             res.render('bills.njk', {
                 bills: _.sortBy(bills, 'date').reverse(),
                 deputiesDict: _.indexBy(deputies, 'id'),
@@ -177,6 +182,7 @@ router.get('/bills/:id/:slug', function(req, res, next){
                 })
                 .value();
 
+            res.locals.canonicalPath = `/bills/${bill.id}/${bill.slug}`;
             res.render('bill.njk', {
                 bill,
                 voteSummary,
@@ -191,11 +197,13 @@ router.get('/bills/:id/:slug', function(req, res, next){
 router.get('/documents', function(req, res, next){
     dal.getDocuments((err, documents) => {
         if(err) return next(err);
+        res.locals.canonicalPath = '/documents';
         res.render('documents.njk', {documents});
     });
 });
 
 router.get('/about', function(req, res, next){
+    res.locals.canonicalPath = '/about';
     res.render('about.njk');
 });
 

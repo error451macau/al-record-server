@@ -1,6 +1,23 @@
 {% extends "parent.njk" %}
 
-{% block title %}{{bill.title[locale]}}{% endblock %}
+{% if bill.proposedByGovernment %}
+    {% set proposersCSV = __('GOVERNMENT') %}
+{% else %}
+    {% set proposersCSV = '' %}
+    {% set proposerJoiner = joiner() %}
+    {% for proposerDeputyId in bill.proposerDeputiesId %}
+        {% set proposerDeputy = deputiesDict[proposerDeputyId] %}
+        {% set proposersCSV = proposersCSV + proposerJoiner() + proposerDeputy.name[locale] %}
+    {% endfor %}
+{% endif %}
+
+{% set pageTitle = bill.title[locale] %}
+{% set pageDescription %}
+    {{__('BILL_PROPOSER')}}: {{proposersCSV}}{{-' / '-}}
+    {{__('BILL_VOTING_DATE')}}: {{bill.date | dateFormat}}{{-' / '-}}
+    {{__('BILL_RESULT')}}: {{__('BILL_RESULT_' + bill.result)}}{{-' / '-}}
+    {{__('BILL_SYNOPSIS')}}: {{bill.synopsis[locale] | truncate(280)}}
+{% endset %}
 
 {# the value is X as in X% #}
 {% set voteYPercent = ((voteSummary.Y or 0) / voteSummary.total * 100) | round %}

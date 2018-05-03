@@ -1,6 +1,7 @@
 {% extends "parent.njk" %}
 
-{% block title %}{{__('ABOUT_PAGE_TITLE')}}{% endblock %}
+{% set pageTitle = __('ABOUT_PAGE_TITLE') %}
+{% set pageDescription = __('ABOUT_PAGE_DESCRIPTION') %}
 
 {% block body %}
     <div class="about">

@@ -1,6 +1,10 @@
 {% extends "parent.njk" %}
 
-{% block title %}{{__('HOME_PAGE_TITLE')}}{% endblock %}
+{% set pageTitle = __('HOME_PAGE_TITLE') %}
+{% set pageDescription %}
+    {{__('HOME_FEATURED_BILL_TITLE')}}{{featuredBill.title[locale]}}{{-' / '-}}
+    {{__('HOME_FEATURED_DEPUTY_TITLE')}}{{featuredDeputySpeech[locale]}}
+{% endset %}
 
 {% block body %}
     <div class="home">

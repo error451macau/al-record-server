@@ -1,6 +1,11 @@
 {% extends "parent.njk" %}
 
-{% block title %}{{deputy.name[locale]}}{% endblock %}
+{% set pageTitle = deputy.name[locale] %}
+{% set pageDescription %}
+    {{__('DEPUTY_METHOD_LONG_' + deputy.electedMethod)}}{{-' / '-}}
+    {{__('DEPUTY_QUALIFICATION')}}: {{deputy.qualifications[locale] | striptags(false) | truncate(100) | escape}}{{-' / '-}}
+    {{__('DEPUTY_JOB')}}: {{deputy.job[locale] | striptags(false) | truncate(100) | escape }}
+{% endset %}
 
 {% block body %}
     <div class="container deputy">

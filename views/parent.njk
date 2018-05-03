@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %} | {{__('SITE_TITLE')}}</title>
+    <title>{{pageTitle}} | {{__('SITE_TITLE')}}</title>
+    <meta name="description" content="{{pageDescription}}" />
+    <link rel="canonical" href="https://al.error451macau.com/{{locale}}{{canonicalPath}}" />
+
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <link rel="stylesheet" href="/main.css">
     
@@ -17,6 +20,13 @@
     <meta name="application-name" content="{{__('SITE_TITLE')}}">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:title" content="{{pageTitle}}" />
+    <meta property="og:description" content="{{pageDescription}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://al.error451macau.com/{{locale}}{{canonicalPath}}" />
+    <meta property="og:site_name" content="{{__('SITE_TITLE')}}" />
+    {# <meta property="og:image" content="" /> #}
 </head>
 <body>
     <input type="checkbox" id="sidebar-toggler" class="sidebar-toggler" style="display: none" />
